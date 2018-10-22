@@ -1,0 +1,28 @@
+{
+  "name": "swisshockeytool",
+  "version": "1.0.0",
+  "description": "The Swiss Hockey Tool (SHT) is an online tool that provide the ability to administer the organization of an Hockey tournament.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/matbgn/SwissHockeyTool.git"
+  },
+  "keywords": [
+    "hockey",
+    "tournament"
+  ],
+  "author": "Matthieu Borgognon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/matbgn/SwissHockeyTool/issues"
+  },
+  "homepage": "https://gitlab.com/matbgn/SwissHockeyTool#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
