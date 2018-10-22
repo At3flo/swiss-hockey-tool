@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
 
     <title>Swiss Hockey Tool</title>
 </head>
-<body>
-    
 
+<body>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-4">
+                    <img src="img/logoSwissHockey.png" class="img-fluid" alt="Swiss Hockey Logo">
+                </div>
+                <div class="col-12 col-sm-4">
+                    <h1>Swiss Hockey Tool</h1>
+                    <p data-i18n="app-tournament-manager">Tournament manager</p><br>
+                </div>
+                <div class="col-12 col-sm">
+                    <div class="col-4 ml-auto">
+                        <a href="#" data-locale="en" class="flag-icon flag-icon-us lang-switch"></a> <a href="#"
+                            data-locale="fr" class="flag-icon flag-icon-fr lang-switch"></a> <a href="#" data-locale="de"
+                            class="flag-icon flag-icon-de lang-switch"></a><br><br>
+                    </div>
+                    <div class="col-12 col-sm-6 ml-auto">
+                        <a class="btn btn-warning btn-lg btn-block" role="button" id="login">Login</a><br><br><br>
+                    </div>
+
+                    <div class="bottom-align-text col-12 ml-auto">
+                        <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span class="fa fa-plus"></span> <span data-i18n="app-addnewtournament">New Tournament</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+        </div>
+        <div class="row row-filter">
+            <div class="col-12">
+                Hello world
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/lib/jquery_i18n/CLDRPluralRuleParser.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.messagestore.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.fallbacks.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.language.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.parser.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.emitter.js"></script>
+    <script src="js/lib/jquery_i18n/jquery.i18n.emitter.bidi.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,9 @@
+.bottom-align-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+ }
+
+ .row-filter{
+     border-bottom: 1px ridge;
+ }

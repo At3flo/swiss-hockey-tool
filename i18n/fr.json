@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Matthieu Borgognon"
+        ],
+        "last-updated": "2018-10-22",
+        "locale": "fr"
+    },
+
+    "app-tournament-manager": "Logiciel de gestion de tournoi",
+    "app-addnewtournament": "Ajouter un nouveau tournoi"
+}
