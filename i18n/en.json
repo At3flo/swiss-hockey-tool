@@ -7,6 +7,7 @@
         "locale": "en"
     },
 
-    "app-tournament-manager": "Tournament manager",
-    "app-addnewtournament": "Add a new tournament"
+    "app-tournamentManager": "Tournament manager",
+    "app-login": "Login",
+    "app-addNewTournament": "Add a new tournament"
 }

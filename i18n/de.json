@@ -7,7 +7,8 @@
         "locale": "de"
     },
 
-    "app-tournament-manager": "Turnierverwaltungssoftware",
-    "app-addnewtournament": "neues Turnier hinzufügen"
+    "app-tournamentManager": "Turnierverwaltungssoftware",
+    "app-login": "Einloggen",
+    "app-addNewTournament": "neues Turnier hinzufügen"
     
 }
