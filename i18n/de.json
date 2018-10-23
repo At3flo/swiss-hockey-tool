@@ -7,8 +7,8 @@
         "locale": "de"
     },
 
-    "app-tournamentManager": "Turnierverwaltungssoftware",
-    "app-login": "Einloggen",
-    "app-addNewTournament": "neues Turnier hinzufügen"
+    "trans-tournamentManager": "Turnierverwaltungssoftware",
+    "trans-login": "Einloggen",
+    "trans-addNewTournament": "neues Turnier hinzufügen"
     
 }

@@ -7,7 +7,20 @@
         "locale": "en"
     },
 
-    "app-tournamentManager": "Tournament manager",
-    "app-login": "Login",
-    "app-addNewTournament": "Add a new tournament"
+    "trans-tournamentManager": "Tournament manager",
+    "trans-login": "Login",
+    "trans-addNewTournament": "Add a new tournament",
+    "trans-daterange": "Date range",
+    "trans-hideUnscheduledEvents": "Hide unscheduled events",
+    "trans-categories":"Categories",
+    "trans-allcategories":"All",
+    "trans-challenge":"Challenge",
+    "trans-elite":"Elite",
+    "trans-U8":"U8",
+    "trans-U10":"U10",
+    "trans-U12":"U12",
+    "trans-U15":"U15",
+    "trans-teams":"Teams",
+    "trans-team0":"Team0",
+    "trans-filter":"Filter"
 }

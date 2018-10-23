@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="node_modules/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
 
     <title>Swiss Hockey Tool</title>
@@ -20,24 +21,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-4">
-                    <img src="img/logoSwissHockey.png" class="img-fluid" alt="Swiss Hockey Logo">
+                    <a href="#"><img src="img/logoSwissHockey.png" class="img-fluid" alt="Swiss Hockey Logo"></a>
                 </div>
                 <div class="col-12 col-sm-4">
                     <h1>Swiss Hockey Tool</h1>
-                    <p data-i18n="app-tournamentManager">Tournament manager</p><br>
+                    <p data-i18n="trans-tournamentManager">Tournament manager</p><br>
                 </div>
-                <div class="col-12 col-sm">
+                <div class="col-12 col-lg-4">
                     <div class="col-4 ml-auto">
                         <a href="#" data-locale="en" class="flag-icon flag-icon-us lang-switch"></a> <a href="#"
                             data-locale="fr" class="flag-icon flag-icon-fr lang-switch"></a> <a href="#" data-locale="de"
                             class="flag-icon flag-icon-de lang-switch"></a><br><br>
                     </div>
                     <div class="col-12 col-sm-6 ml-auto">
-                        <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span data-i18n="app-login">Login</span></a><br><br><br>
+                        <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span data-i18n="trans-login">Login</span></a><br><br><br>
                     </div>
 
                     <div class="bottom-align-text col-12 ml-auto">
-                        <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span class="fa fa-plus"></span> <span data-i18n="app-addNewTournament">Add a new tournament</span></a>
+                        <a class="btn btn-warning btn-lg btn-block" role="button" id="addnewtournament"><span class="fa fa-plus"></span>
+                            <span data-i18n="trans-addNewTournament">Add a new tournament</span></a>
                     </div>
                 </div>
             </div>
@@ -45,14 +47,69 @@
     </header>
 
     <div class="container">
-        <div class="row">
-            <div class="col-3">
+        <div class="row align-items-center">
+            <div class="col-3 col-sm-3 col-md-2">
+                <span data-i18n="trans-daterange">Date range</span> :
+            </div>
+            <div class="col-8 col-sm-6">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" name="daterange" data-target="#datetimepicker" />
+                            <div class="input-group-append" data-target="#datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="material-switch pull-right">
 
+                    <input id="hideUnscheduledEvents" name="hideUnscheduledEvents" type="checkbox" />
+                    <label for="hideUnscheduledEvents" class="label-primary"></label>
+                    &nbsp; <span data-i18n="trans-hideUnscheduledEvents">Hide unscheduled events</span>
+                </div>
             </div>
         </div>
-        <div class="row row-filter">
-            <div class="col-12">
-                Hello world
+        <div class="row row-filter align-items-center">
+            <div class="col-3 col-md-2">
+                <span data-i18n="trans-categories">Categories</span> :
+            </div>
+            <div class="col-9 col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
+                            data-i18n="trans-allcategories">All</span>
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><span data-i18n="trans-allcategories">All</span></li>
+                        <li class="dropdown-header"><span data-i18n="trans-challenge">Challenge</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-U8">U8</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-U10">U10</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-U12">U12</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-U15">U15</span></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header"><span data-i18n="trans-elite">Elite</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-U12">U12</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-3 col-md-2">
+                <span data-i18n="trans-teams">Teams</span> :
+            </div>
+            <div class="col-9 col-md-4">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
+                            data-i18n="trans-allcategories">All</span>
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><span data-i18n="trans-allcategories">All</span></li>
+                        <li class="dropdown-item"><span data-i18n="trans-team0">Team0</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col text-right">
+                <button type="submit" class="btn btn-warning"><span data-i18n="trans-filter">Filter</span></button>
             </div>
         </div>
     </div>
@@ -69,6 +126,9 @@
     <script src="js/lib/jquery_i18n/jquery.i18n.emitter.bidi.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/moment/min/moment.min.js"></script>
+    <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
+    <script src="node_modules/daterangepicker/daterangepicker.js"></script>
     <script src="js/lib/history/jquery.history.js"></script>
     <script src="js/lib/url/url.min.js"></script>
     <script src="js/scripts.js"></script>

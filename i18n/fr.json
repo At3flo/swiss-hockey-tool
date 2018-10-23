@@ -7,7 +7,20 @@
         "locale": "fr"
     },
 
-    "app-tournamentManager": "Logiciel de gestion de tournoi",
-    "app-login": "Connexion",
-    "app-addNewTournament": "Ajouter un nouveau tournoi"
+    "trans-tournamentManager": "Logiciel de gestion de tournoi",
+    "trans-login": "Connexion",
+    "trans-addNewTournament": "Ajouter un nouveau tournoi",
+    "trans-daterange": "Période",
+    "trans-hideUnscheduledEvents": "Masquer les événements non planifiés",
+    "trans-categories":"Catégories",
+    "trans-allcategories":"Toutes",
+    "trans-challenge":"Challenge",
+    "trans-elite":"Elite",
+    "trans-U8":"M8",
+    "trans-U10":"M10",
+    "trans-U12":"M12",
+    "trans-U15":"M15",
+    "trans-teams":"Equipes",
+    "trans-team0":"Equipe0",
+    "trans-filter":"Filtrer"
 }
