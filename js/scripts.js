@@ -35,8 +35,6 @@ jQuery(function () {
   });
 });
 
-
-
 $(function() {
   $('input[name="daterange"]').daterangepicker({
     "locale": {
@@ -77,4 +75,28 @@ $(function() {
   }, function(start, end, label) {
     console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
   });
+});
+
+$(".plusSelector").on('click', function (e) {
+  e.preventDefault ();
+  var target = $($(this).attr('href')) ;
+  if (target.is(':visible')) {
+      target.slideUp() ;
+  }
+  else {
+      var vis = target.parent('.row').find('.collapse').filter(':visible') ;
+      if (vis.length > 0) {
+          vis.slideUp(function () {
+              target.slideDown();
+          }) ;
+      }
+      else {
+          $('.collapse').filter(':visible').slideUp() ;
+          target.slideDown() ;   
+      }
+  }
+});
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
 });

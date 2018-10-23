@@ -22,5 +22,11 @@
     "trans-U15":"U15",
     "trans-teams":"Teams",
     "trans-team0":"Team0",
-    "trans-filter":"Filter"
+    "trans-filter":"Filter",
+    "trans-dateAndTime":"Date and time",
+    "trans-status":"Status",
+    "trans-location":"Location",
+    "trans-organizer":"Organizer",
+    "trans-contact":"Contact",
+    "trans-categories-shortened":"Cat."
 }
