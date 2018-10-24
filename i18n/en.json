@@ -35,5 +35,9 @@
     "trans-U10Challenge":"U10 Challenge",
     "trans-U12Challenge":"U12 Challenge",
     "trans-U15Challenge":"U15 Challenge",
-    "trans-U12Elite":"U12 Elite"
+    "trans-U12Elite":"U12 Elite",
+    "trans-date":"Date",
+    "trans-add":"Add",
+    "trans-hour":"Hour",
+    "trans-otherInfos":"Other informations"
 }

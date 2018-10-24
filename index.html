@@ -12,6 +12,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="node_modules/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
 
     <link rel="icon" href="img/favicon.png">
@@ -20,6 +21,125 @@
 </head>
 
 <body>
+
+    <!-- Modal add new tournament -->
+    <div id="addnewtournament" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><span data-i18n="trans-addNewTournament">Add a new tournament</span></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-date">Date</span> :
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="sr-only" for="date"><span data-i18n="trans-date">Date</span></label>
+                                <input type="date" class="form-control form-control-sm mr-1" id="date" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-hour">Hour</span> :
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="sr-only" for="hour"><span data-i18n="trans-hour">Hour</span></label>
+                                <input type="time" class="form-control form-control-sm mr-1" id="hour">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-location">Location</span> :
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="location"><span data-i18n="trans-location">Location</span></label>
+                                <textarea rows="4" class="form-control form-control-sm mr-1" id="location" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-organizer">Organizer</span> :
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="organizer"><span data-i18n="trans-organizer">Organizer</span></label>
+                                <select class="selectpicker form-control form-control-sm mr-1" id="organizer" required
+                                    data-style="btn-default">
+                                    <option>Basler Hockey Club 1911</option>
+                                    <option>Berner Hockey-Club</option>
+                                    <option>Black Boys Hockey Club Genève</option>
+                                    <option>Grasshopper Club Zürich</option>
+                                    <option>HC La Côte</option>
+                                    <option>HC Olten</option>
+                                    <option>HC Rotweiss Wettingen</option>
+                                    <option>HC Steffisburg</option>
+                                    <option>HC Wettingen</option>
+                                    <option>Hockey Athletic Club Lugano</option>
+                                    <option>Luzerner SC</option>
+                                    <option>Neuchâtel Hockey Club</option>
+                                    <option>Red Sox Hockey Club Zürich</option>
+                                    <option>Servette HC</option>
+                                    <option>Stade Lausanne Hockey sur Gazon</option>
+                                    <option>USTS Field Hockey</option>
+                                    <option>Urania Genève Sports</option>
+                                    <option>Zürichsee Hockey Team</option>
+                                    <option>HC Konstanz</option>
+                                    <option>Grizzlies St. Gallen</option>
+                                    <option>Spielgemeinschaft Zürich U15 Girls</option>
+                                    <option>AGHGA Filles U15</option>
+                                    <option>Spielgemeinschaft BeHC/HCSt</option>
+                                    <option>Hockey Club Lahr</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-contact">Contact</span> :
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="contact"><span data-i18n="trans-contact">Contact</span></label>
+                                <textarea rows="2" class="form-control form-control-sm mr-1" id="contact" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-categories">Categories</span> :
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U8">U8</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Challenge">U10 Challenge</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Challenge">U12 Challenge</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Challenge">U15 Challenge</span></label></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Girls">U12 Girls</span></label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Girls">U15 Girls</span></label></div>
+                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Elite">U12 Elite</span></label></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <span data-i18n="trans-otherInfos">Other informations</span> :
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <label class="sr-only" for="otherInfos"><span data-i18n="trans-otherInfos">Other informations</span></label>
+                                    <textarea rows="4" class="form-control form-control-sm mr-1" id="otherInfos"></textarea>
+                                </div>
+                            </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1"><span data-i18n="trans-add">Add</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header class="jumbotron">
         <div class="container">
             <div class="row">
@@ -41,7 +161,8 @@
                     </div>
 
                     <div class="bottom-align-text col-12 ml-auto">
-                        <a class="btn btn-warning btn-lg btn-block" role="button" id="addnewtournament"><span class="fa fa-plus"></span>
+                        <a class="btn btn-warning btn-lg btn-block" role="button" data-toggle="modal" data-target="#addnewtournament"><span
+                                class="fa fa-plus"></span>
                             <span data-i18n="trans-addNewTournament">Add a new tournament</span></a>
                     </div>
                 </div>
@@ -397,6 +518,7 @@
     <script src="node_modules/moment/min/moment.min.js"></script>
     <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
     <script src="node_modules/daterangepicker/daterangepicker.js"></script>
+    <script src="node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="js/lib/history/jquery.history.js"></script>
     <script src="js/lib/url/url.min.js"></script>
     <script src="js/scripts.js"></script>
