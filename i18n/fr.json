@@ -28,5 +28,12 @@
     "trans-location":"Lieu",
     "trans-organizer":"Organisateur",
     "trans-contact":"Contact",
-    "trans-categories-shortened":"Cat."
+    "trans-categories-shortened":"Cat.",
+    "trans-teamsPresent":"Equipes présentent",
+    "trans-categoriesAvailable":"Catégories disponibles",
+    "trans-U10Girls":"M10 Filles",
+    "trans-U10Challenge":"M10 Challenge",
+    "trans-U12Challenge":"M12 Challenge",
+    "trans-U15Challenge":"M15 Challenge",
+    "trans-U12Elite":"M12 Elite"
 }

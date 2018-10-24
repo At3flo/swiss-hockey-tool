@@ -28,5 +28,12 @@
     "trans-location":"Location",
     "trans-organizer":"Organizer",
     "trans-contact":"Contact",
-    "trans-categories-shortened":"Cat."
+    "trans-categories-shortened":"Cat.",
+    "trans-teamsPresent":"Teams present",
+    "trans-categoriesAvailable":"Categories available",
+    "trans-U10Girls":"U10 Girls",
+    "trans-U10Challenge":"U10 Challenge",
+    "trans-U12Challenge":"U12 Challenge",
+    "trans-U15Challenge":"U15 Challenge",
+    "trans-U12Elite":"U12 Elite"
 }

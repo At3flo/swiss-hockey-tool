@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="node_modules/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
 
+    <link rel="icon" href="img/favicon.png">
+
     <title>Swiss Hockey Tool</title>
 </head>
 
 <body>
-
     <header class="jumbotron">
         <div class="container">
             <div class="row">
@@ -170,10 +171,10 @@
             </div>
             <div class="col-1">
                 <div class="grid-border text-center">
-                    <div class="btn btn-sq-xs btn-success sqValidation" data-toggle="tooltip" data-html="true" title='Tournament confirmed'
-                        data-placement="bottom"></div>
-                    <div class="btn btn-sq-xs btn-danger sqPlaces" data-toggle="tooltip" data-html="true" title='No more places'
-                        data-placement="bottom"></div>
+                    <div class="btn btn-sq-xs btn-success sqValidation" data-toggle="popover" title='Tournament statement'
+                        data-content='Confirmed' data-trigger="hover" data-placement="left"></div>
+                    <div class="btn btn-sq-xs btn-danger sqPlaces" data-toggle="popover" title='Availability of places'
+                        data-content='No more places' data-trigger="hover" data-placement="right"></div>
                 </div>
             </div>
             <div class="col-12 col-sm-2">
@@ -193,12 +194,14 @@
             </div>
             <div class="col-6 col-sm-1">
                 <div class="grid-border">
-                    <div class="btn btn-sm btn-primary"><i class="fas fa-users-cog fa-1x"></i></div>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
+                            class="fas fa-users-cog fa-1x"></i></button>
                 </div>
             </div>
             <div class="col-6 col-sm-1">
                 <div class="grid-border">
-                    <div class="btn btn-sm btn-primary"><i class="fa fa-users fa-1x"></i></div>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent1"><i
+                            class="fa fa-users fa-1x"></i></button>
                 </div>
             </div>
             <div class="row">
@@ -219,6 +222,48 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal categories -->
+        <div id="categoriesAvailable1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><span data-i18n="trans-categoriesAvailable">Categories available</span></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li><span data-i18n="trans-U10Girls">U10 Girls</span></li>
+                            <li><span data-i18n="trans-U10Challenge">U10 Challenge</span></li>
+                            <li><span data-i18n="trans-U12Challenge">U12 Challenge</span></li>
+                            <li><span data-i18n="trans-U15Challenge">U15 Challenge</span></li>
+                            <li><span data-i18n="trans-U12Elite">U12 Elite</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="teamsPresent1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><span data-i18n="trans-teamsPresent">Teams present</span></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li><span data-i18n="trans-team0">Team0</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row row-cards">
             <div class="col-1">
                 <a href="#collapseTwo" class="fa fa-plus plusSelector"></a>
@@ -230,10 +275,10 @@
             </div>
             <div class="col-1">
                 <div class="grid-border text-center">
-                    <div class="btn btn-sq-xs btn-success sqValidation" data-toggle="tooltip" data-html="true" title='Tournament confirmed'
-                        data-placement="bottom"></div>
-                    <div class="btn btn-sq-xs btn-danger sqPlaces" data-toggle="tooltip" data-html="true" title='No more places'
-                        data-placement="bottom"></div>
+                    <div class="btn btn-sq-xs btn-danger sqValidation" data-toggle="popover" title='Tournament statement'
+                        data-content='Cancelled' data-trigger="hover" data-placement="left"></div>
+                    <div class="btn btn-sq-xs btn-success sqPlaces" data-toggle="popover" title='Availability of places'
+                        data-content='Free places' data-trigger="hover" data-placement="right"></div>
                 </div>
             </div>
             <div class="col-12 col-sm-2">
@@ -253,12 +298,14 @@
             </div>
             <div class="col-6 col-sm-1">
                 <div class="grid-border">
-                    <div class="btn btn-sm btn-primary"><i class="fas fa-users-cog fa-1x"></i></div>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable2"><i
+                            class="fas fa-users-cog fa-1x"></i></button>
                 </div>
             </div>
             <div class="col-6 col-sm-1">
                 <div class="grid-border">
-                    <div class="btn btn-sm btn-primary"><i class="fa fa-users fa-1x"></i></div>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent2"><i
+                            class="fa fa-users fa-1x"></i></button>
                 </div>
             </div>
             <div class="row">
@@ -279,6 +326,48 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal categories -->
+        <div id="categoriesAvailable2" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><span data-i18n="trans-categoriesAvailable">Categories available</span></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li><span data-i18n="trans-U10Girls">U10 Girls</span></li>
+                            <li><span data-i18n="trans-U10Challenge">U10 Challenge</span></li>
+                            <li><span data-i18n="trans-U12Challenge">U12 Challenge</span></li>
+                            <li><span data-i18n="trans-U15Challenge">U15 Challenge</span></li>
+                            <li><span data-i18n="trans-U12Elite">U12 Elite</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="teamsPresent2" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><span data-i18n="trans-teamsPresent">Teams present</span></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li><span data-i18n="trans-team0">Team0</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
