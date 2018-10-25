@@ -1,11 +1,13 @@
-var set_locale_to = function (locale) {
-  if (locale) {
-    $.i18n().locale = locale;
-  }
-  $('body').i18n();
-};
+// jQuery for the localization of the DOM
+$(document).ready(function() {
 
-jQuery(function () {
+  let set_locale_to = function (locale) {
+    if (locale) {
+      $.i18n().locale = locale;
+    }
+    $('body').i18n();
+  };
+
   $.i18n().load({
     'en': 'i18n/en.json',
     'fr': 'i18n/fr.json',
@@ -35,7 +37,8 @@ jQuery(function () {
   });
 });
 
-$(function() {
+// Parameters for the calendar date range
+$(document).ready(function() {
   $('input[name="daterange"]').daterangepicker({
     "locale": {
       "format": "DD/MM/YYYY",
@@ -77,6 +80,7 @@ $(function() {
   });
 });
 
+// jQuery for the plus hide and seek button
 $(".plusSelector").on('click', function (e) {
   e.preventDefault ();
   var target = $($(this).attr('href')) ;
@@ -97,10 +101,7 @@ $(".plusSelector").on('click', function (e) {
   }
 });
 
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
-
+//jQuery activation for the popover info boxes
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
 });
