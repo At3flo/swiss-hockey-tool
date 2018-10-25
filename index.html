@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.min.css">
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-select/dist/css/bootstrap-select.min.css">   
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+    <!-- endbuild -->
 
     <link rel="icon" href="img/favicon.png">
 
@@ -152,10 +153,10 @@
                     <p data-i18n="trans-tournamentManager">Tournament manager</p><br>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <div class="col-4 ml-auto">
-                        <a href="#" data-locale="en" class="flag-icon flag-icon-us lang-switch"></a> <a href="#"
-                            data-locale="fr" class="flag-icon flag-icon-fr lang-switch"></a> <a href="#" data-locale="de"
-                            class="flag-icon flag-icon-de lang-switch"></a><br><br>
+                    <div class="col-5 ml-auto">
+                        <a href="#" data-locale="en" class="lang-switch"><img src="img/flag-usa.png" height="35px" alt="English laguage flag"></a> <a href="#"
+                            data-locale="fr" class="lang-switch"><img src="img/flag-france.png" height="35px" alt="French laguage flag"></a> <a href="#" data-locale="de"
+                            class="lang-switch"><img src="img/flag-germany.png" height="35px" alt="German laguage flag"></a><br><br>
                     </div>
                     <div class="col-12 col-sm-6 ml-auto">
                         <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span data-i18n="trans-login">Login</span></a><br><br><br>
@@ -504,7 +505,7 @@
         </div>
     </footer>
 
-    <!-- Javascript -->
+    <!-- build:js js/main.js -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/lib/jquery_i18n/CLDRPluralRuleParser.js"></script>
     <script src="js/lib/jquery_i18n/jquery.i18n.js"></script>
@@ -523,6 +524,7 @@
     <script src="js/lib/history/jquery.history.js"></script>
     <script src="js/lib/url/url.min.js"></script>
     <script src="js/scripts.js"></script>
+    <!-- endbuild -->
 
 </body>
 

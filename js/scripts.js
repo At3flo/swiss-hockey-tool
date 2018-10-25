@@ -1,7 +1,7 @@
 // jQuery for the localization of the DOM
 $(document).ready(function() {
 
-  let set_locale_to = function (locale) {
+  var set_locale_to = function (locale) {
     if (locale) {
       $.i18n().locale = locale;
     }
