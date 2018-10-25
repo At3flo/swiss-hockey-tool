@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<!-- Setting the welcoming language to english -->
 <html lang="en" dir="ltr">
 
 <head>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-select/dist/css/bootstrap-select.min.css">   
+    <link rel="stylesheet" href="node_modules/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
     <!-- endbuild -->
 
@@ -21,9 +23,13 @@
     <title>Swiss Hockey Tool</title>
 </head>
 
+<!-- IMPORTANT !!! 
+    The code below systematically uses data-i18n tags to manage localization and internationalization 
+    via JSON files such as en.json, fr.json and de.json. The system is based on a simple key-value process, everytime started with trans-* -->
+
 <body>
 
-    <!-- Modal add new tournament -->
+    <!-- Modal to add a new tournament -->
     <div id="addnewtournament" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -35,6 +41,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
+                        <!-- Date of the tournament -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
                                 <span data-i18n="trans-date">Date</span> :
@@ -44,15 +51,17 @@
                                 <input type="date" class="form-control form-control-sm mr-1" id="date" required>
                             </div>
                         </div>
+                        <!-- Starting time of the tournament -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                <span data-i18n="trans-hour">Hour</span> :
+                                <span data-i18n="trans-hour">Time</span> :
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="sr-only" for="hour"><span data-i18n="trans-hour">Hour</span></label>
                                 <input type="time" class="form-control form-control-sm mr-1" id="hour">
                             </div>
                         </div>
+                        <!-- Location of the tournament -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
                                 <span data-i18n="trans-location">Location</span> :
@@ -62,6 +71,7 @@
                                 <textarea rows="3" class="form-control form-control-sm mr-1" id="location" required></textarea>
                             </div>
                         </div>
+                        <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
                                 <span data-i18n="trans-organizer">Organizer</span> :
@@ -97,6 +107,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Who's the person responsible of the tournament -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
                                 <span data-i18n="trans-contact">Contact</span> :
@@ -106,32 +117,43 @@
                                 <textarea rows="1" class="form-control form-control-sm mr-1" id="contact" required></textarea>
                             </div>
                         </div>
+                        <!-- Categories available for the tournament -->
                         <div class="form-row">
                             <div class="form-group col-sm-4">
                                 <span data-i18n="trans-categories">Categories</span> :
                             </div>
                             <div class="form-group col-sm-4">
                                 <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U8">U8</span></label></div>
-                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Challenge">U10 Challenge</span></label></div>
-                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Challenge">U12 Challenge</span></label></div>
-                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Challenge">U15 Challenge</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Challenge">U10
+                                            Challenge</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Challenge">U12
+                                            Challenge</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Challenge">U15
+                                            Challenge</span></label></div>
                             </div>
                             <div class="form-group col-sm-4">
-                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Elite">U10 Elite</span></label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Elite">U12 Elite</span></label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Girls">U12 Girls</span></label></div>
-                                    <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Girls">U15 Girls</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Elite">U10
+                                            Elite</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Elite">U12
+                                            Elite</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Girls">U12
+                                            Girls</span></label></div>
+                                <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Girls">U15
+                                            Girls</span></label></div>
                             </div>
                         </div>
+                        <!-- Others infos -->
                         <div class="form-row">
-                                <div class="form-group col-sm-4">
-                                    <span data-i18n="trans-otherInfos">Other informations</span> :
-                                </div>
-                                <div class="form-group col-sm-8">
-                                    <label class="sr-only" for="otherInfos"><span data-i18n="trans-otherInfos">Other informations</span></label>
-                                    <textarea rows="4" class="form-control form-control-sm mr-1" id="otherInfos"></textarea>
-                                </div>
+                            <div class="form-group col-sm-4">
+                                <span data-i18n="trans-otherInfos">Other informations</span> :
                             </div>
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="otherInfos"><span data-i18n="trans-otherInfos">Other
+                                        informations</span></label>
+                                <textarea rows="4" class="form-control form-control-sm mr-1" id="otherInfos"></textarea>
+                            </div>
+                        </div>
+                        <!-- Submit and cancel buttons -->
                         <div class="form-row">
                             <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-sm ml-1"><span data-i18n="trans-add">Add</span></button>
@@ -154,9 +176,12 @@
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="col-5 ml-auto">
-                        <a href="#" data-locale="en" class="lang-switch"><img src="img/flag-usa.png" height="35px" alt="English laguage flag"></a> <a href="#"
-                            data-locale="fr" class="lang-switch"><img src="img/flag-france.png" height="35px" alt="French laguage flag"></a> <a href="#" data-locale="de"
-                            class="lang-switch"><img src="img/flag-germany.png" height="35px" alt="German laguage flag"></a><br><br>
+
+                        <!-- Language switch "buttons"-->
+                        <a href="#" data-locale="en" class="lang-switch"><img src="img/flag-usa.png" height="35px" alt="English laguage flag"></a>
+                        <a href="#" data-locale="fr" class="lang-switch"><img src="img/flag-france.png" height="35px"
+                                alt="French laguage flag"></a> <a href="#" data-locale="de" class="lang-switch"><img
+                                src="img/flag-germany.png" height="35px" alt="German laguage flag"></a><br><br>
                     </div>
                     <div class="col-12 col-sm-6 ml-auto">
                         <a class="btn btn-warning btn-lg btn-block" role="button" id="login"><span data-i18n="trans-login">Login</span></a><br><br><br>
@@ -172,6 +197,7 @@
         </div>
     </header>
 
+    <!-- All the filters' section -->
     <div class="container">
         <div class="row align-items-center">
             <div class="col-4 col-md-2">
@@ -179,6 +205,8 @@
             </div>
             <div class="col-8 col-sm-6">
                 <div class="form-group">
+
+                    <!-- Calendar with date range -->
                     <div class="form-group">
                         <div class="input-group date" id="datetimepicker" data-target-input="nearest">
                             <input type="text" class="form-control datetimepicker-input" name="daterange" data-target="#datetimepicker" />
@@ -203,6 +231,8 @@
                 <span data-i18n="trans-categories">Categories</span> :
             </div>
             <div class="col-7 col-md-2">
+
+                <!-- Simple dropdown selector -->
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
                             data-i18n="trans-allcategories">All</span>
@@ -224,6 +254,8 @@
                 <span data-i18n="trans-teams">Teams</span> :
             </div>
             <div class="col-7 col-md-4">
+
+                <!-- Simple dropdown selector -->
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
                             data-i18n="trans-allcategories">All</span>
@@ -242,6 +274,9 @@
     </div>
 
     <div class="container">
+
+        <!-- Header of the subsequent entries below -->
+
         <div class="row row-cards row-cards-top">
             <div class="col-1">
 
@@ -283,8 +318,9 @@
             </div>
         </div>
 
-        <!-- Start of entry -->
+        <!-- Start of first entry -->
 
+        <!-- Fake values for showing the result -->
         <div class="row row-cards">
             <div class="col-1">
                 <a href="#collapseOne" class="fa fa-plus plusSelector"></a>
@@ -392,6 +428,11 @@
 
         <!-- End of entry -->
 
+
+        <!-- Start of second entry -->
+
+        <!-- Fake values for showing the result -->
+
         <div class="row row-cards">
             <div class="col-1">
                 <a href="#collapseTwo" class="fa fa-plus plusSelector"></a>
@@ -496,7 +537,10 @@
             </div>
         </div>
 
+        <!-- End of entry -->
+
     </div>
+
 
     <footer>
         <div class="container">
