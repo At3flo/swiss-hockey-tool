@@ -9,9 +9,10 @@
     "lite": "lite-server",
     "clean": "rimraf dist",
     "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+    "copyi18n": "copyfiles -f i18n/* dist/i18n",
     "imagemin": "imagemin img/* -o dist/img",
     "usemin": "usemin index.html -d dist --htmlmin -o dist/index.html",
-    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin"
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run copyi18n && npm run usemin"
   },
   "repository": {
     "type": "git",
