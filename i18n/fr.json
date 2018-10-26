@@ -41,5 +41,7 @@
     "trans-date":"Date",
     "trans-add":"Ajouter",
     "trans-hour":"Heure",
-    "trans-otherInfos":"Autres informations"
+    "trans-otherInfos":"Autres informations",
+    "trans-username":"Nom d'utilisateur",
+    "trans-password":"Mot de passe"
 }
