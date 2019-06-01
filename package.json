@@ -16,18 +16,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/matbgn/SwissHockeyTool.git"
+    "url": "git+ssh://git@github.com:At3flo/swiss-hockey-tool.git"
   },
   "keywords": [
+    "sport",
     "hockey",
     "tournament"
   ],
   "author": "Matthieu Borgognon",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/matbgn/SwissHockeyTool/issues"
+    "url": "https://github.com/At3flo/swiss-hockey-tool/issues"
   },
-  "homepage": "https://gitlab.com/matbgn/SwissHockeyTool#readme",
+  "homepage": "https://github.com/At3flo/swiss-hockey-tool#readme",
   "devDependencies": {
     "cssmin": "^0.4.3",
     "htmlmin": "0.0.7",
