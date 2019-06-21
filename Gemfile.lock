@@ -170,6 +170,8 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2019.1)
+      tzinfo (>= 1.0.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     warden (1.2.8)
@@ -208,6 +210,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  tzinfo-data
   uglifier
   web-console (>= 3.3.0)
   webpacker
@@ -216,4 +219,4 @@ RUBY VERSION
    ruby 2.4.3p205
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
