@@ -1,19 +1,7 @@
 {
-  "name": "swisshockeytool",
-  "version": "1.0.0",
+  "name": "swiss-hockey-tool",
+  "version": "0.1.0",
   "description": "The Swiss Hockey Tool (SHT) is an online tool that provide the ability to administer the organization of an Hockey tournament.",
-  "main": "index.html",
-  "scripts": {
-    "start": "npm run lite",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server",
-    "clean": "rimraf dist",
-    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
-    "copyi18n": "copyfiles -f i18n/* dist/i18n",
-    "imagemin": "imagemin img/* -o dist/img",
-    "usemin": "usemin index.html -d dist --htmlmin -o dist/index.html",
-    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run copyi18n && npm run usemin"
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:At3flo/swiss-hockey-tool.git"
@@ -24,27 +12,14 @@
     "tournament"
   ],
   "author": "Matthieu Borgognon",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/At3flo/swiss-hockey-tool/issues"
   },
   "homepage": "https://github.com/At3flo/swiss-hockey-tool#readme",
-  "devDependencies": {
-    "cssmin": "^0.4.3",
-    "htmlmin": "0.0.7",
-    "lite-server": "^2.4.0",
-    "rimraf": "^2.6.2",
-    "uglify-js": "^2.6.0",
-    "usemin-cli": "^0.5.1"
-  },
+  "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "bootstrap-select": "^1.13.3",
-    "daterangepicker": "^3.0.3",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.4.0",
-    "moment": "^2.22.2",
-    "popover": "^2.4.1",
-    "popper.js": "^1.14.4"
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   }
 }
