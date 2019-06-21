@@ -191,9 +191,9 @@
         <div class="col-5 ml-auto">
 
           <!-- Language switch "buttons"-->
-          <a href="#" data-locale="en" class="lang-switch"><%= image_tag ("/assets/flag-usa.png"), class: "img-reponsive img-flag", alt: "English laguage flag" %></a>
-          <a href="#" data-locale="fr" class="lang-switch"><%= image_tag ("/assets/flag-france.png"), class: "img-reponsive img-flag", alt: "French laguage flag" %></a> 
-          <a href="#" data-locale="de" class="lang-switch"><%= image_tag ("/assets/flag-germany.png"), class: "img-reponsive img-flag", alt: "German laguage flag" %></a><br><br>
+          <a href="#" data-locale="en" class="lang-switch"><%= image_tag asset_path("flag-usa.png"), class: "img-reponsive img-flag", alt: "English laguage flag" %></a>
+          <a href="#" data-locale="fr" class="lang-switch"><%= image_tag asset_path("flag-france.png"), class: "img-reponsive img-flag", alt: "French laguage flag" %></a> 
+          <a href="#" data-locale="de" class="lang-switch"><%= image_tag asset_path("flag-germany.png"), class: "img-reponsive img-flag", alt: "German laguage flag" %></a><br><br>
         </div>
         <div class="col-12 col-sm-6 ml-auto">
           <%= link_to "Login", new_user_session_path, class: "btn btn-warning btn-lg btn-block" %><br><br><br>
