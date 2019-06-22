@@ -33,38 +33,37 @@ en:
   login: "Login"
   tournamentManager: "Tournament manager"
   dateAndTime: "Date and time"
-  # addNewTournament: "Add a new tournament"
-  # daterange: "Date range"
-  # hideUnscheduledEvents: "Hide unscheduled events"
-#     "trans-categories":"Categories",
-#     "trans-allcategories":"All",
-#     "trans-challenge":"Challenge",
-#     "trans-elite":"Elite",
-#     "trans-U8":"U8",
-#     "trans-U10":"U10",
-#     "trans-U12":"U12",
-#     "trans-U15":"U15",
-#     "trans-teams":"Teams",
-#     "trans-team0":"Team0",
-#     "trans-filter":"Filter",
-  
-#     "trans-status":"Status",
-#     "trans-location":"Location",
-#     "trans-organizer":"Organizer",
-#     "trans-contact":"Contact",
-#     "trans-categories-shortened":"Cat.",
-#     "trans-teamsPresent":"Teams present",
-#     "trans-categoriesAvailable":"Categories available",
-#     "trans-U12Girls":"U12 Girls",
-#     "trans-U15Girls":"U15 Girls",
-#     "trans-U10Challenge":"U10 Challenge",
-#     "trans-U12Challenge":"U12 Challenge",
-#     "trans-U15Challenge":"U15 Challenge",
-#     "trans-U10Elite":"U10 Elite",
-#     "trans-U12Elite":"U12 Elite",
-#     "trans-date":"Date",
-#     "trans-add":"Add",
-#     "trans-hour":"Time",
-#     "trans-otherInfos":"Other informations",
-#     "trans-username":"Username",
-#     "trans-password":"Password"
+  addNewTournament: "Add a new tournament"
+  daterange: "Date range"
+  hideUnscheduledEvents: "Hide unscheduled events"
+  categories: "Categories"
+  allcategories: "All"
+  challenge: "Challenge"
+  elite: "Elite"
+  U8: "U8"
+  U10: "U10"
+  U12: "U12"
+  U15: "U15"
+  teams: "Teams"
+  team0: "Team0"
+  filter: "Filter"
+  status: "Status"
+  location: "Location"
+  organizer: "Organizer"
+  contact: "Contact"
+  categories-shortened: "Cat."
+  teamsPresent: "Teams present"
+  categoriesAvailable: "Categories available"
+  U12Girls: "U12 Girls"
+  U15Girls: "U15 Girls"
+  U10Challenge: "U10 Challenge"
+  U12Challenge: "U12 Challenge"
+  U15Challenge: "U15 Challenge"
+  U10Elite: "U10 Elite"
+  U12Elite: "U12 Elite"
+  date: "Date"
+  add: "Add"
+  hour: "Time"
+  otherInfos: "Other informations"
+  username: "Username"
+  password: "Password"

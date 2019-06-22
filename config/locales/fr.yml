@@ -2,37 +2,37 @@ fr:
   login: "Connexion"
   tournamentManager: "Logiciel de gestion de tournoi"
   dateAndTime: "Date et heure"
-  # addNewTournament: "Ajouter un nouveau tournoi"
-  # daterange: "Période"
-  # hideUnscheduledEvents: "Masquer les événements non planifiés"
-  #   "trans-categories":"Catégories",
-  #   "trans-allcategories":"Toutes",
-  #   "trans-challenge":"Challenge",
-  #   "trans-elite":"Elite",
-  #   "trans-U8":"M8",
-  #   "trans-U10":"M10",
-  #   "trans-U12":"M12",
-  #   "trans-U15":"M15",
-  #   "trans-teams":"Equipes",
-  #   "trans-team0":"Equipe0",
-  #   "trans-filter":"Filtrer",
-  #   "trans-status":"Statut",
-  #   "trans-location":"Lieu",
-  #   "trans-organizer":"Organisateur",
-  #   "trans-contact":"Contact",
-  #   "trans-categories-shortened":"Cat.",
-  #   "trans-teamsPresent":"Equipes présentent",
-  #   "trans-categoriesAvailable":"Catégories disponibles",
-  #   "trans-U12Girls":"M12 Filles",
-  #   "trans-U15Girls":"M15 Filles",
-  #   "trans-U10Challenge":"M10 Challenge",
-  #   "trans-U12Challenge":"M12 Challenge",
-  #   "trans-U15Challenge":"M15 Challenge",
-  #   "trans-U10Elite":"M10 Elite",
-  #   "trans-U12Elite":"M12 Elite",
-  #   "trans-date":"Date",
-  #   "trans-add":"Ajouter",
-  #   "trans-hour":"Heure",
-  #   "trans-otherInfos":"Autres informations",
-  #   "trans-username":"Nom d'utilisateur",
-  #   "trans-password":"Mot de passe"
+  addNewTournament: "Ajouter un nouveau tournoi"
+  daterange: "Période"
+  hideUnscheduledEvents: "Masquer les événements non planifiés"
+  categories: "Catégories"
+  allcategories: "Toutes"
+  challenge: "Challenge"
+  elite: "Elite"
+  U8: "M8"
+  U10: "M10"
+  U12: "M12"
+  U15: "M15"
+  teams: "Equipes"
+  team0: "Equipe0"
+  filter: "Filtrer"
+  status: "Statut"
+  location: "Lieu"
+  organizer: "Organisateur"
+  contact: "Contact"
+  categories-shortened: "Cat."
+  teamsPresent: "Equipes présentent"
+  categoriesAvailable: "Catégories disponibles"
+  U12Girls: "M12 Filles"
+  U15Girls: "M15 Filles"
+  U10Challenge: "M10 Challenge"
+  U12Challenge: "M12 Challenge"
+  U15Challenge: "M15 Challenge"
+  U10Elite: "M10 Elite"
+  U12Elite: "M12 Elite"
+  date: "Date"
+  add: "Ajouter"
+  hour: "Heure"
+  otherInfos: "Autres informations"
+  username: "Nom d'utilisateur"
+  password: "Mot de passe"

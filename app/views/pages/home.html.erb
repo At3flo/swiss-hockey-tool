@@ -12,19 +12,19 @@
         <form action="/" method="post">
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-username">Username</span> :
+              <%= t "username" %> :
             </div>
             <div class="form-group col-sm-4">
-              <label class="sr-only" for="username"><span data-i18n="trans-username">Username</span></label>
+              <label class="sr-only" for="username"><%= t "username" %></label>
               <input type="text" class="form-control form-control-sm mr-1" id="username" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-password">Password</span> :
+              <%= t "password" %> :
             </div>
             <div class="form-group col-sm-4">
-              <label class="sr-only" for="password"><span data-i18n="trans-password">Password</span></label>
+              <label class="sr-only" for="password"><%= t "password" %></label>
               <input type="password" class="form-control form-control-sm mr-1" id="password" required
                 autocomplete="off">
             </div>
@@ -55,40 +55,40 @@
           <!-- Date of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-date">Date</span> :
+              <%= t "date" %> :
             </div>
             <div class="form-group col-sm-4">
-              <label class="sr-only" for="date"><span data-i18n="trans-date">Date</span></label>
+              <label class="sr-only" for="date"><%= t "date" %></label>
               <input type="date" class="form-control form-control-sm mr-1" id="date" required>
             </div>
           </div>
           <!-- Starting time of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-hour">Time</span> :
+              <%= t "hour" %> :
             </div>
             <div class="form-group col-sm-4">
-              <label class="sr-only" for="hour"><span data-i18n="trans-hour">Hour</span></label>
+              <label class="sr-only" for="hour"><%= t "hour" %></label>
               <input type="time" class="form-control form-control-sm mr-1" id="hour">
             </div>
           </div>
           <!-- Location of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-location">Location</span> :
+              <%= t "location" %> :
             </div>
             <div class="form-group col-sm-8">
-              <label class="sr-only" for="location"><span data-i18n="trans-location">Location</span></label>
+              <label class="sr-only" for="location"><%= t "location" %>Location</span></label>
               <textarea rows="3" class="form-control form-control-sm mr-1" id="location" required></textarea>
             </div>
           </div>
           <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-organizer">Organizer</span> :
+              <%= t "organizer" %> :
             </div>
             <div class="form-group col-sm-8">
-              <label class="sr-only" for="organizer"><span data-i18n="trans-organizer">Organizer</span></label>
+              <label class="sr-only" for="organizer"><%= t "organizer" %></label>
               <select class="selectpicker form-control form-control-sm mr-1" id="organizer" required
                 data-style="btn-default">
                 <option>Basler Hockey Club 1911</option>
@@ -121,54 +121,46 @@
           <!-- Who's the person responsible of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-contact">Contact</span> :
+              <%= t "contact" %> :
             </div>
             <div class="form-group col-sm-8">
-              <label class="sr-only" for="contact"><span data-i18n="trans-contact">Contact</span></label>
+              <label class="sr-only" for="contact"><%= t "contact" %></label>
               <textarea rows="1" class="form-control form-control-sm mr-1" id="contact" required></textarea>
             </div>
           </div>
           <!-- Categories available for the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-categories">Categories</span> :
+              <%= t "categories" %> :
             </div>
             <div class="form-group col-sm-4">
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U8">U8</span></label>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U8" %></label>
               </div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Challenge">U10
-                    Challenge</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Challenge">U12
-                    Challenge</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Challenge">U15
-                    Challenge</span></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U10Challenge" %></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Challenge" %></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U15Challenge" %></label></div>
             </div>
             <div class="form-group col-sm-4">
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U10Elite">U10
-                    Elite</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Elite">U12
-                    Elite</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U12Girls">U12
-                    Girls</span></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <span data-i18n="trans-U15Girls">U15
-                    Girls</span></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U10Elite" %></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Elite" %></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Girls" %></label></div>
+              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U15Girls" %></label></div>
             </div>
           </div>
           <!-- Others infos -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <span data-i18n="trans-otherInfos">Other informations</span> :
+              <%= t "otherInfos" %> :
             </div>
             <div class="form-group col-sm-8">
-              <label class="sr-only" for="otherInfos"><span data-i18n="trans-otherInfos">Other
-                  informations</span></label>
+              <label class="sr-only" for="otherInfos"><%= t "otherInfos" %></label>
               <textarea rows="4" class="form-control form-control-sm mr-1" id="otherInfos"></textarea>
             </div>
           </div>
           <!-- Submit and cancel buttons -->
           <div class="form-row">
             <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-sm ml-1"><span data-i18n="trans-add">Add</span></button>
+            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t "add" %></button>
           </div>
         </form>
       </div>
@@ -251,44 +243,42 @@
   </div>
   <div class="row row-filter align-items-center">
     <div class="col-5 col-md-2">
-      <span data-i18n="trans-categories">Categories</span> :
+      <%  t "categories" %> :
     </div>
     <div class="col-7 col-md-2">
 
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
-            data-i18n="trans-allcategories">All</span>
-          <span class="caret"></span></button>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
+        <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li class="dropdown-item"><span data-i18n="trans-allcategories">All</span></li>
-          <li class="dropdown-header"><span data-i18n="trans-challenge">Challenge</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-U8">U8</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-U10">U10</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-U12">U12</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-U15">U15</span></li>
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+          <li class="dropdown-header"><%= t "challenge" %></li>
+          <li class="dropdown-item"><%= t "U8" %></li>
+          <li class="dropdown-item"><%= t "U10" %></li>
+          <li class="dropdown-item"><%= t "U12" %></li>
+          <li class="dropdown-item"><%= t "U15" %></li>
           <li class="divider"></li>
-          <li class="dropdown-header"><span data-i18n="trans-elite">Elite</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-U12">U12</span></li>
+          <li class="dropdown-header"><%= t "elite" %></li>
+          <li class="dropdown-item"><%= t "U12" %></li>
         </ul>
       </div>
     </div>
     <div class="col-5 col-md-2">
-      <span data-i18n="trans-teams">Teams</span> :
+      <%= t "teams" %> :
     </div>
     <div class="col-7 col-md-4">
 
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
-            data-i18n="trans-allcategories">All</span>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
           <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li class="dropdown-item"><span data-i18n="trans-allcategories">All</span></li>
-          <li class="dropdown-item"><span data-i18n="trans-team0">Team0</span></li>
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+          <li class="dropdown-item"><%= t "team0" %></li>
         </ul>
       </div>
     </div>
     <div class="col text-right">
-      <button type="submit" class="btn btn-warning"><span data-i18n="trans-filter">Filter</span></button>
+      <button type="submit" class="btn btn-warning"><%= t "filter" %></button>
     </div>
   </div>
   <hr>
@@ -309,32 +299,32 @@
     </div>
     <div class="col-12 col-md-1">
       <div class="grid-border">
-        <span data-i18n="trans-status">Status</span>
+        <%= t "status" %>
       </div>
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <span data-i18n="trans-location">Location</span>
+        <%= t "location" %>
       </div>
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <span data-i18n="trans-organizer">Organizer</span>
+        <%= t "organizer" %>
       </div>
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <span data-i18n="trans-contact">Contact</span>
+        <%= t "contact" %>
       </div>
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border">
-        <span data-i18n="trans-categories-shortened">Cat.</span>
+        <%= t "categories-shortened" %>
       </div>
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border">
-        <span data-i18n="trans-teams">Teams</span>
+        <%= t "teams" %>
       </div>
     </div>
   </div>
@@ -415,16 +405,16 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title"><span data-i18n="trans-categoriesAvailable">Categories available</span></h4>
+          <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <ul>
-            <li><span data-i18n="trans-U12Girls">U10 Girls</span></li>
-            <li><span data-i18n="trans-U10Challenge">U10 Challenge</span></li>
-            <li><span data-i18n="trans-U12Challenge">U12 Challenge</span></li>
-            <li><span data-i18n="trans-U15Challenge">U15 Challenge</span></li>
-            <li><span data-i18n="trans-U12Elite">U12 Elite</span></li>
+            <li><%= t "U12Girls" %></li>
+            <li><%= t "U10Challenge" %></li>
+            <li><%= t "U12Challenge" %></li>
+            <li><%= t "U15Challenge" %></li>
+            <li><%= t "U12Elite" %></li>
           </ul>
         </div>
       </div>
@@ -438,12 +428,12 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title"><span data-i18n="trans-teamsPresent">Teams present</span></h4>
+          <h4 class="modal-title"><%= t "teamsPresent" %></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <ul>
-            <li><span data-i18n="trans-team0">Team0</span></li>
+            <li><%= t "team0" %></li>
           </ul>
         </div>
       </div>
@@ -456,10 +446,9 @@
   <!-- Start of second entry -->
 
   <!-- Fake values for showing the result -->
-
   <div class="row row-cards">
     <div class="col-1">
-      <a href="#collapseTwo" class="fa fa-plus plusSelector"></a>
+      <a href="#collapseOne" class="fa fa-plus plusSelector"></a>
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
@@ -468,10 +457,10 @@
     </div>
     <div class="col-12 col-md-1">
       <div class="grid-border text-center">
-        <div class="btn btn-sq-xs btn-danger sqValidation" data-toggle="popover" title='Tournament statement'
-          data-content='Cancelled' data-trigger="hover" data-placement="left"></div>
-        <div class="btn btn-sq-xs btn-success sqPlaces" data-toggle="popover" title='Availability of places'
-          data-content='Free places' data-trigger="hover" data-placement="right"></div>
+        <div class="btn btn-sq-xs btn-success sqValidation" data-toggle="popover" title='Tournament statement'
+          data-content='Confirmed' data-trigger="hover" data-placement="left"></div>
+        <div class="btn btn-sq-xs btn-danger sqPlaces" data-toggle="popover" title='Availability of places'
+          data-content='No more places' data-trigger="hover" data-placement="right"></div>
       </div>
     </div>
     <div class="col-12 col-md-2">
@@ -491,18 +480,18 @@
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border">
-        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable2"><i
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
             class="fas fa-users-cog fa-1x"></i></button>
       </div>
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border">
-        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent2"><i
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent1"><i
             class="fa fa-users fa-1x"></i></button>
       </div>
     </div>
     <div class="row">
-      <div class="row collapse" id="collapseTwo">
+      <div class="row collapse" id="collapseOne">
         <div class="col-11 ml-auto">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
           squid.
@@ -524,40 +513,41 @@
   </div>
 
   <!-- Modal categories -->
-  <div id="categoriesAvailable2" class="modal fade" role="dialog">
+  <div id="categoriesAvailable1" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title"><span data-i18n="trans-categoriesAvailable">Categories available</span></h4>
+          <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <ul>
-            <li><span data-i18n="trans-U12Girls">U10 Girls</span></li>
-            <li><span data-i18n="trans-U10Challenge">U10 Challenge</span></li>
-            <li><span data-i18n="trans-U12Challenge">U12 Challenge</span></li>
-            <li><span data-i18n="trans-U15Challenge">U15 Challenge</span></li>
-            <li><span data-i18n="trans-U12Elite">U12 Elite</span></li>
+            <li><%= t "U12Girls" %></li>
+            <li><%= t "U10Challenge" %></li>
+            <li><%= t "U12Challenge" %></li>
+            <li><%= t "U15Challenge" %></li>
+            <li><%= t "U12Elite" %></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="teamsPresent2" class="modal fade" role="dialog">
+  <!-- Modal teams -->
+  <div id="teamsPresent1" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title"><span data-i18n="trans-teamsPresent">Teams present</span></h4>
+          <h4 class="modal-title"><%= t "teamsPresent" %></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <ul>
-            <li><span data-i18n="trans-team0">Team0</span></li>
+            <li><%= t "team0" %></li>
           </ul>
         </div>
       </div>
