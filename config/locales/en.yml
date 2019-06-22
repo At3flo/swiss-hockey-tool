@@ -30,4 +30,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  login: "Login"
+  tournamentManager: "Tournament manager"
+  dateAndTime: "Date and time"
+  # addNewTournament: "Add a new tournament"
+  # daterange: "Date range"
+  # hideUnscheduledEvents: "Hide unscheduled events"
+#     "trans-categories":"Categories",
+#     "trans-allcategories":"All",
+#     "trans-challenge":"Challenge",
+#     "trans-elite":"Elite",
+#     "trans-U8":"U8",
+#     "trans-U10":"U10",
+#     "trans-U12":"U12",
+#     "trans-U15":"U15",
+#     "trans-teams":"Teams",
+#     "trans-team0":"Team0",
+#     "trans-filter":"Filter",
+  
+#     "trans-status":"Status",
+#     "trans-location":"Location",
+#     "trans-organizer":"Organizer",
+#     "trans-contact":"Contact",
+#     "trans-categories-shortened":"Cat.",
+#     "trans-teamsPresent":"Teams present",
+#     "trans-categoriesAvailable":"Categories available",
+#     "trans-U12Girls":"U12 Girls",
+#     "trans-U15Girls":"U15 Girls",
+#     "trans-U10Challenge":"U10 Challenge",
+#     "trans-U12Challenge":"U12 Challenge",
+#     "trans-U15Challenge":"U15 Challenge",
+#     "trans-U10Elite":"U10 Elite",
+#     "trans-U12Elite":"U12 Elite",
+#     "trans-date":"Date",
+#     "trans-add":"Add",
+#     "trans-hour":"Time",
+#     "trans-otherInfos":"Other informations",
+#     "trans-username":"Username",
+#     "trans-password":"Password"

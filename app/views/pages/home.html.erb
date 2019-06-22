@@ -5,7 +5,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><span data-i18n="trans-login">Login</span></h4>
+        <h4 class="modal-title"><%= t 'login' %></h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
@@ -32,8 +32,7 @@
           <!-- Submit and cancel buttons -->
           <div class="form-row">
             <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-sm ml-1"><span
-                data-i18n="trans-login">Login</span></button>
+            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
           </div>
         </form>
       </div>
@@ -48,7 +47,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><span data-i18n="trans-addNewTournament">Add a new tournament</span></h4>
+        <h4 class="modal-title"><%= t 'addNewTournament' %></h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
@@ -185,40 +184,51 @@
       </div>
       <div class="col-12 col-sm-4">
         <h1>Swiss Hockey Tool</h1>
-        <p data-i18n="trans-tournamentManager">Tournament manager</p><br>
+        <p><%= t 'tournamentManager' %></p><br>
       </div>
       <div class="col-12 col-lg-4">
-        <div class="col-5 ml-auto">
+        <div class="col-5 ml-auto flags">
 
           <!-- Language switch "buttons"-->
-          <a href="#" data-locale="en" class="lang-switch"><%= image_tag asset_path("flag-usa.png"), class: "img-reponsive img-flag", alt: "English laguage flag" %></a>
-          <a href="#" data-locale="fr" class="lang-switch"><%= image_tag asset_path("flag-france.png"), class: "img-reponsive img-flag", alt: "French laguage flag" %></a> 
-          <a href="#" data-locale="de" class="lang-switch"><%= image_tag asset_path("flag-germany.png"), class: "img-reponsive img-flag", alt: "German laguage flag" %></a><br><br>
+          <%= link_to root_path(locale: :en) do %>
+            <%= image_tag asset_path("flag-usa.png"), class: "img-reponsive img-flag", alt: "English laguage flag" %>
+          <% end %>
+          <%= link_to root_path(locale: :fr) do %>
+            <%= image_tag asset_path("flag-france.png"), class: "img-reponsive img-flag", alt: "French laguage flag" %> 
+          <% end %>
+          <%= link_to root_path(locale: :de) do %>
+            <%= image_tag asset_path("flag-germany.png"), class: "img-reponsive img-flag", alt: "German laguage flag" %>
+          <% end %>  
+          <br><br>
         </div>
         <div class="col-12 col-sm-6 ml-auto">
-          <%= link_to "Login", new_user_session_path, class: "btn btn-warning btn-lg btn-block" %><br><br><br>
+          <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block login-btn" do %>
+            <span><%= t 'login' %></span>
+          <% end %>
+          <br><br><br>
         </div>
 
-        <div class="bottom-align-text col-12 ml-auto">
-          <a class="btn btn-warning btn-lg btn-block" role="button" data-toggle="modal"
-            data-target="#addnewtournament"><span class="fa fa-plus"></span>
-            <span data-i18n="trans-addNewTournament">Add a new tournament</span></a>
-        </div>
+        <% if user_signed_in? %>
+          <div class="bottom-align-text col-12 ml-auto">
+            <a class="btn btn-warning btn-lg btn-block" role="button" data-toggle="modal"
+              data-target="#addnewtournament"><span class="fa fa-plus"></span>
+              <%= t 'addNewTournament' %></a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </header>
 
 <!-- All the filters' section -->
-<div class="container">
+<!-- <div class="container">
   <div class="row align-items-center">
     <div class="col-4 col-md-2">
-      <span data-i18n="trans-daterange">Date range</span> :
+      <%= t 'daterange' %> :
     </div>
     <div class="col-8 col-sm-6">
       <div class="form-group">
 
-        <!-- Calendar with date range -->
         <div class="form-group">
           <div class="input-group date" id="datetimepicker" data-target-input="nearest">
             <input type="text" class="form-control datetimepicker-input" name="daterange"
@@ -235,7 +245,7 @@
 
         <input id="hideUnscheduledEvents" name="hideUnscheduledEvents" type="checkbox" />
         <label for="hideUnscheduledEvents" class="label-primary"></label>
-        &nbsp; <span data-i18n="trans-hideUnscheduledEvents">Hide unscheduled events</span>
+        &nbsp; <%= t 'hideUnscheduledEvents' %>
       </div>
     </div>
   </div>
@@ -245,7 +255,6 @@
     </div>
     <div class="col-7 col-md-2">
 
-      <!-- Simple dropdown selector -->
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
             data-i18n="trans-allcategories">All</span>
@@ -268,7 +277,6 @@
     </div>
     <div class="col-7 col-md-4">
 
-      <!-- Simple dropdown selector -->
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span
             data-i18n="trans-allcategories">All</span>
@@ -284,7 +292,7 @@
     </div>
   </div>
   <hr>
-</div>
+</div> -->
 
 <div class="container">
 
@@ -296,7 +304,7 @@
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <span data-i18n="trans-dateAndTime">Date and time</span>
+        <%= t 'dateAndTime' %>
       </div>
     </div>
     <div class="col-12 col-md-1">

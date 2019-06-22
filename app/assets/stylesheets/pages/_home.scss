@@ -9,6 +9,11 @@
   height: 35px;
 }
 
+.flags a:hover {
+  text-decoration: none;
+  color: transparent !important;
+}
+
 .row-filter{
    padding-bottom: 30px;
 }
@@ -76,6 +81,10 @@
   width: 15px !important;
   height: 15px !important;
   padding:5px;
+}
+
+.login-btn {
+  width: 125%;
 }
 
 footer {
