@@ -51,7 +51,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <form>
+        <%= "<form action='/events' method='post'>".html_safe %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <!-- Date of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
@@ -59,7 +60,7 @@
             </div>
             <div class="form-group col-sm-4">
               <label class="sr-only" for="date"><%= t "date" %></label>
-              <input type="date" class="form-control form-control-sm mr-1" id="date" required>
+              <input type="date" class="form-control form-control-sm mr-1" id="date" name="date" required>
             </div>
           </div>
           <!-- Starting time of the tournament -->
@@ -69,17 +70,7 @@
             </div>
             <div class="form-group col-sm-4">
               <label class="sr-only" for="hour"><%= t "hour" %></label>
-              <input type="time" class="form-control form-control-sm mr-1" id="hour">
-            </div>
-          </div>
-          <!-- Location of the tournament -->
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <%= t "location" %> :
-            </div>
-            <div class="form-group col-sm-8">
-              <label class="sr-only" for="location"><%= t "location" %>Location</span></label>
-              <textarea rows="3" class="form-control form-control-sm mr-1" id="location" required></textarea>
+              <input type="time" class="form-control form-control-sm mr-1" id="hour" name="hour">
             </div>
           </div>
           <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
@@ -89,7 +80,7 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="organizer"><%= t "organizer" %></label>
-              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" required
+              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="organizer" required
                 data-style="btn-default">
                 <option>Basler Hockey Club 1911</option>
                 <option>Berner Hockey-Club</option>
@@ -118,6 +109,16 @@
               </select>
             </div>
           </div>
+          <!-- Location of the tournament -->
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "location" %> :
+            </div>
+            <div class="form-group col-sm-8">
+              <label class="sr-only" for="location"><%= t "location" %>Location</span></label>
+              <textarea rows="3" class="form-control form-control-sm mr-1" id="location" name="location" required></textarea>
+            </div>
+          </div>
           <!-- Who's the person responsible of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
@@ -125,7 +126,7 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="contact"><%= t "contact" %></label>
-              <textarea rows="1" class="form-control form-control-sm mr-1" id="contact" required></textarea>
+              <textarea rows="1" class="form-control form-control-sm mr-1" id="contact" name="contact" required></textarea>
             </div>
           </div>
           <!-- Categories available for the tournament -->
@@ -134,8 +135,7 @@
               <%= t "categories" %> :
             </div>
             <div class="form-group col-sm-4">
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U8" %></label>
-              </div>
+              <div class="checkbox"><label><%= "<input type='checkbox' id='U8' name='U8'>".html_safe %> <%= t "U8" %></label></div>
               <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U10Challenge" %></label></div>
               <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Challenge" %></label></div>
               <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U15Challenge" %></label></div>
@@ -153,8 +153,8 @@
               <%= t "otherInfos" %> :
             </div>
             <div class="form-group col-sm-8">
-              <label class="sr-only" for="otherInfos"><%= t "otherInfos" %></label>
-              <textarea rows="4" class="form-control form-control-sm mr-1" id="otherInfos"></textarea>
+              <label class="sr-only" for="other-infos"><%= t "otherInfos" %></label>
+              <textarea rows="4" class="form-control form-control-sm mr-1" id="other-infos" name="other-infos"></textarea>
             </div>
           </div>
           <!-- Submit and cancel buttons -->
