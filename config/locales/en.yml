@@ -86,3 +86,26 @@ en:
   availabilityOfPlaces: "Availability of places"
   placesLeft: "Places left: "
   full: "Full"
+  editATournament: "Edit an existing tournament"
+  simple_form:
+      labels:
+        defaults:
+          period: "Period of time"
+          start_time: "Start time"
+          is_outdoor: "Field"
+          location: "Location"
+          contact: "Contact"
+          category_id: "Category"
+          places_left: "Places left"
+          other_informations: "Other informations"
+  helpers:
+    submit: 
+      user:
+        create: "Submit"
+      event:
+        update: "Update tournament"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

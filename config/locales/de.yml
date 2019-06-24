@@ -55,3 +55,26 @@ de:
   availabilityOfPlaces: "Platzverfügbarkeit"
   placesLeft: "Freie Plätze: "
   full: "Komplett"
+  editATournament: "Bearbeiten eines bestehenden Turniers"
+  simple_form:
+      labels:
+        defaults:
+          period: "Zeitraum"
+          start_time: "Startzeit"
+          is_outdoor: "Feld"
+          location: "Ort"
+          contact: "Kontakt"
+          category_id: "Kategorie"
+          places_left: "Freie Plätze"
+          other_informations: "Sonstige Informationen"
+  helpers:
+    submit: 
+      user:
+        create: "Submit"
+      event:
+        update: "Turnier aktualisieren"
+  date:
+    order:
+      - :day
+      - :month
+      - :year

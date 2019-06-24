@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-6 mx-auto">
+      <div class="form-login">
+        <h1><%= t 'editATournament' %></h2>
+        <%= simple_form_for @event,
+          wrapper: :horizontal_form,
+          wrapper_mappings: {
+            boolean:       :horizontal_boolean,
+            check_boxes:   :horizontal_collection,
+            date:          :horizontal_multi_select,
+            datetime:      :horizontal_multi_select,
+            file:          :horizontal_file,
+            radio_buttons: :horizontal_collection,
+            range:         :horizontal_range,
+            time:          :horizontal_multi_select
+          } do |f| %>
+
+          <%= f.error_notification %>
+
+          <%= f.input :date %>
+
+          <%= f.input :period, as: :radio_buttons, collection: [["morning", @morning], ["afternoon", @afternoon], ["full-day", @fullDay]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
+
+          <%= f.input :start_time, as: :time, wrapper: :horizontal_multi_select %>
+
+          <%= f.input :club_id, collection: [[@event.club_id, Club.find(@event.club_id).name]], label_method: :second, value_method: :first, disabled: true %>
+
+          <%= f.input :is_outdoor, as: :radio_buttons, collection: [[true, @outdoor], [false, @indoor]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
+
+          <%= f.input :location %>
+
+          <%= f.input :contact %>
+
+          <%= f.input :category_id, as: :radio_buttons, collection: [[0, @categories[0]],
+                                                                     [1, @categories[1]],
+                                                                     [2, @categories[2]],
+                                                                     [3, @categories[3]],
+                                                                     [4, @categories[4]],
+                                                                     [5, @categories[5]],
+                                                                     [6, @categories[6]],
+                                                                     [7, @categories[7]]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
+
+          <%= f.input :places_left, prompt: :translate, input_html: { max: 10 } %>
+
+          <%= f.input :other_informations %>
+
+          <div class="form-group row mb-0">
+            <div class="col-sm-9 offset-sm-3">
+              <%= f.button :submit, class: "btn-primary" %>
+              <%= link_to root_path, class: "btn btn-outline-secondary" do %>
+                <%= t 'cancel' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

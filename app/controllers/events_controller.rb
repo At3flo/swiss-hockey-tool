@@ -10,6 +10,27 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @categories = []
+    Category.all.each do |category|
+      @categories << "#{t 'underShortened'}#{category.age} #{category.level}#{category.gender.capitalize if category.gender == 'girls'}".strip
+    end
+
+    @event = Event.find(params[:id])
+    
+    @indoor = t 'indoor'
+    @outdoor = t 'outdoor'
+
+    @morning = t 'morning'
+    @afternoon = t 'afternoon'
+    @fullDay = t 'fullDay'
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    raise
+  end
+
   private
 
   def event_params
