@@ -21603,3 +21603,252 @@ Processing by EventsController#edit as HTML
 Completed 200 OK in 262ms (Views: 234.0ms | ActiveRecord: 1.7ms)
 
 
+Started PATCH "/de/events/1" for ::1 at 2019-06-24 22:59:58 +0200
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VJIG6+FK4DOIoA8EnULXRRur+CPVbnjCsgo2trzLhXkAtYm40qhByNsMtXdx6ynMBP5H9f22OexNOgaABAiPwQ==", "event"=>{"date(3i)"=>"7", "date(2i)"=>"7", "date(1i)"=>"2019", "period"=>"full-day", "start_time(1i)"=>"2000", "start_time(2i)"=>"1", "start_time(3i)"=>"1", "start_time(4i)"=>"09", "start_time(5i)"=>"00", "is_outdoor"=>"true", "location"=>"Bahnhofweg 2, 6048 Horw", "contact"=>"Matthieu Borgognon, +4176 822 3948, matrash@bqn.ch", "category_id"=>"1", "places_left"=>"10", "other_informations"=>"TBD"}, "commit"=>"Turnier aktualisieren", "locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:30
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.8ms)
+
+
+  
+RuntimeError ():
+  
+app/controllers/events_controller.rb:31:in `update'
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:23 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:31 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:36 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:38 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:39 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:00:54 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:02:51 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:03:12 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:08:42 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:08:44 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:09:41 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:09:42 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:09:53 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:10:09 +0200
+  [1m[36mEvent Load (3.9ms)[0m  [1m[34mSELECT  "events".* FROM "events" ORDER BY "events"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:11:42 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:12:07 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:12:09 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:13:19 +0200
+Started PUT "/__web_console/repl_sessions/5e3d677c782a36f5b22a56e7968e3396" for ::1 at 2019-06-24 23:13:20 +0200
+Started GET "/de/events/1/edit" for ::1 at 2019-06-24 23:19:47 +0200
+Processing by EventsController#edit as HTML
+  Parameters: {"locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/events_controller.rb:15
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:19
+  Rendering events/edit.html.erb within layouts/application
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/edit.html.erb:29
+  Rendered events/edit.html.erb within layouts/application (60.9ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 417ms (Views: 273.2ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/de/events/1/edit" for ::1 at 2019-06-24 23:21:07 +0200
+Processing by EventsController#edit as HTML
+  Parameters: {"locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/events_controller.rb:15
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:19
+  Rendering events/edit.html.erb within layouts/application
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/edit.html.erb:29
+  Rendered events/edit.html.erb within layouts/application (54.1ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+Completed 200 OK in 413ms (Views: 249.4ms | ActiveRecord: 24.3ms)
+
+
+Started PATCH "/de/events/1" for ::1 at 2019-06-24 23:21:18 +0200
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0feyS5AeJfiEslHQAeisdcc62lUCNnS64f2o2sO6JoaF0D0Yo/yEA9ce66PtQVL82G9lgyruNZQezZjse3ksPg==", "event"=>{"date(3i)"=>"7", "date(2i)"=>"7", "date(1i)"=>"2019", "is_tournament_open"=>"false", "period"=>"full-day", "start_time(1i)"=>"2000", "start_time(2i)"=>"1", "start_time(3i)"=>"1", "start_time(4i)"=>"09", "start_time(5i)"=>"00", "is_outdoor"=>"true", "location"=>"Bahnhofweg 2, 6048 Horw", "contact"=>"Matthieu Borgognon, +4176 822 3948, matrash@bqn.ch", "category_id"=>"1", "places_left"=>"10", "other_informations"=>"TBD"}, "commit"=>"Turnier aktualisieren", "locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:33
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:45
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:47
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:47
+  [1m[36mEvent Update (0.9ms)[0m  [1m[33mUPDATE "events" SET "is_tournament_open" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["is_tournament_open", false], ["updated_at", "2019-06-24 21:21:18.703299"], ["id", 1]]
+  ↳ app/controllers/events_controller.rb:47
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:47
+Redirected to http://localhost:3000/de
+Completed 302 Found in 89ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/de" for ::1 at 2019-06-24 23:21:18 +0200
+Processing by PagesController#home as HTML
+  Parameters: {"locale"=>"de"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:5
+  [1m[36mClub Load (0.5ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:6
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/pages_controller.rb:12
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/views/pages/home.html.erb:143
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:191
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:192
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:193
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:194
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:197
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:198
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:199
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:200
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/pages/home.html.erb:422
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Club Load (0.0ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Club Load (0.0ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  Rendered pages/home.html.erb within layouts/application (89.9ms)
+  Rendered shared/_flashes.html.erb (0.8ms)
+Completed 200 OK in 323ms (Views: 291.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/de/events/1/edit" for ::1 at 2019-06-24 23:21:27 +0200
+Processing by EventsController#edit as HTML
+  Parameters: {"locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/events_controller.rb:15
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:19
+  Rendering events/edit.html.erb within layouts/application
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/edit.html.erb:29
+  Rendered events/edit.html.erb within layouts/application (47.1ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+Completed 200 OK in 280ms (Views: 252.4ms | ActiveRecord: 1.6ms)
+
+
+Started PATCH "/de/events/1" for ::1 at 2019-06-24 23:21:31 +0200
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u5eaGnfrI8mCrQDOjm3ANGpO9YR7TyTpj6hzPQwV6nDvsBVJRAmCMtEBur1ixD69dRtKUlOXZcdwmEMLtNbgyA==", "event"=>{"date(3i)"=>"7", "date(2i)"=>"7", "date(1i)"=>"2019", "is_tournament_open"=>"true", "period"=>"full-day", "start_time(1i)"=>"2000", "start_time(2i)"=>"1", "start_time(3i)"=>"1", "start_time(4i)"=>"09", "start_time(5i)"=>"00", "is_outdoor"=>"true", "location"=>"Bahnhofweg 2, 6048 Horw", "contact"=>"Matthieu Borgognon, +4176 822 3948, matrash@bqn.ch", "category_id"=>"1", "places_left"=>"10", "other_informations"=>"TBD"}, "commit"=>"Turnier aktualisieren", "locale"=>"de", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:33
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:47
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:47
+  [1m[36mEvent Update (1.0ms)[0m  [1m[33mUPDATE "events" SET "is_tournament_open" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["is_tournament_open", true], ["updated_at", "2019-06-24 21:21:31.540185"], ["id", 1]]
+  ↳ app/controllers/events_controller.rb:47
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:47
+Redirected to http://localhost:3000/de
+Completed 302 Found in 17ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/de" for ::1 at 2019-06-24 23:21:31 +0200
+Processing by PagesController#home as HTML
+  Parameters: {"locale"=>"de"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:5
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:6
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/pages_controller.rb:12
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mClub Load (0.4ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/views/pages/home.html.erb:143
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:191
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:192
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:193
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:194
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:197
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:198
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:199
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:200
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/pages/home.html.erb:422
+  [1m[36mClub Load (0.3ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Club Load (0.0ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Club Load (0.0ms)[0m  [1m[34mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:471
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:487
+  Rendered pages/home.html.erb within layouts/application (64.7ms)
+  Rendered shared/_flashes.html.erb (0.7ms)
+Completed 200 OK in 304ms (Views: 270.4ms | ActiveRecord: 3.6ms)
+
+

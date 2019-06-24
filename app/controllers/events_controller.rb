@@ -17,6 +17,9 @@ class EventsController < ApplicationController
     end
 
     @event = Event.find(params[:id])
+
+    @open = t 'open'
+    @close = t 'close'
     
     @indoor = t 'indoor'
     @outdoor = t 'outdoor'
@@ -28,7 +31,24 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    raise
+    
+    @event.date = Time.new(params[:event]["date(1i)"], params[:event]["date(2i)"], params[:event]["date(3i)"]).strftime("%F")
+    @event.period = params[:event][:period]
+    @event.start_time = Time.new(2000, 1, 1, params[:event]["start_time(4i)"], params[:event]["start_time(5i)"]).strftime("%H:%M")
+    @event.places_left = params[:event][:places_left]
+    @event.location = params[:event][:location]
+    @event.contact = params[:event][:contact]
+    @event.is_tournament_open = params[:event][:is_tournament_open]
+    @event.is_outdoor = params[:event][:is_outdoor]
+    @event.other_informations = params[:event][:other_informations]
+    @event.user = current_user
+    @event.category = Category.find(params[:event][:category_id])
+    
+    if @event.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private

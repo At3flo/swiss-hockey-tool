@@ -20,6 +20,8 @@
 
           <%= f.input :date %>
 
+          <%= f.input :is_tournament_open, as: :radio_buttons, collection: [[true, @open], [false, @close]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
+
           <%= f.input :period, as: :radio_buttons, collection: [["morning", @morning], ["afternoon", @afternoon], ["full-day", @fullDay]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
 
           <%= f.input :start_time, as: :time, wrapper: :horizontal_multi_select %>

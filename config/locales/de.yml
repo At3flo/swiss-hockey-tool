@@ -62,6 +62,7 @@ de:
           period: "Zeitraum"
           start_time: "Startzeit"
           is_outdoor: "Feld"
+          is_tournament_open: "Turnierstatus"
           location: "Ort"
           contact: "Kontakt"
           category_id: "Kategorie"

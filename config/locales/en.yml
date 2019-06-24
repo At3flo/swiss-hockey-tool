@@ -93,6 +93,7 @@ en:
           period: "Period of time"
           start_time: "Start time"
           is_outdoor: "Field"
+          is_tournament_open: "Tournament state"
           location: "Location"
           contact: "Contact"
           category_id: "Category"
