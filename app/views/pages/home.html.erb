@@ -137,31 +137,9 @@
               <label class="sr-only" for="organizer"><%= t "organizer" %></label>
               <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="organizer" required
                 data-style="btn-default">
-
-                <option>Basler Hockey Club 1911</option>
-                <option>Berner Hockey-Club</option>
-                <option>Black Boys Hockey Club Genève</option>
-                <option>Grasshopper Club Zürich</option>
-                <option>HC La Côte</option>
-                <option>HC Olten</option>
-                <option>HC Rotweiss Wettingen</option>
-                <option>HC Steffisburg</option>
-                <option>HC Wettingen</option>
-                <option>Hockey Athletic Club Lugano</option>
-                <option>Luzerner SC</option>
-                <option>Neuchâtel Hockey Club</option>
-                <option>Red Sox Hockey Club Zürich</option>
-                <option>Servette HC</option>
-                <option>Stade Lausanne Hockey sur Gazon</option>
-                <option>USTS Field Hockey</option>
-                <option>Urania Genève Sports</option>
-                <option>Zürichsee Hockey Team</option>
-                <option>HC Konstanz</option>
-                <option>Grizzlies St. Gallen</option>
-                <option>Spielgemeinschaft Zürich U15 Girls</option>
-                <option>AGHGA Filles U15</option>
-                <option>Spielgemeinschaft BeHC/HCSt</option>
-                <option>Hockey Club Lahr</option>
+                <% Club.all.each do |club| %>
+                  <option><%= club.name %></option>
+                <% end %>
               </select>
             </div>
           </div>
@@ -203,16 +181,16 @@
               <%= t "categories" %> :
             </div>
             <div class="form-group col-sm-4">
-              <div class="checkbox"><label><%= "<input type='checkbox' id='U8' name='U8'>".html_safe %> <%= t "U8" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U10Challenge" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Challenge" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U15Challenge" %></label></div>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[0]' value='#{@categories[0][1..-1]}'>#{@categories[0]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[1]' value='#{@categories[1][1..-1]}'>#{@categories[1]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[2]' value='#{@categories[2][1..-1]}'>#{@categories[2]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[3]' value='#{@categories[3][1..-1]}'>#{@categories[3]}</label></div>".html_safe %>
             </div>
             <div class="form-group col-sm-4">
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U10Elite" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Elite" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U12Girls" %></label></div>
-              <div class="checkbox"><label><input type="checkbox" value=""> <%= t "U15Girls" %></label></div>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[4]' value='#{@categories[4][1..-1]}'>#{@categories[4]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[5]' value='#{@categories[5][1..-1]}'>#{@categories[5]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[6]' value='#{@categories[6][1..-1]}'>#{@categories[6]}</label></div>".html_safe %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[7]' value='#{@categories[7][1..-1]}'>#{@categories[7]}</label></div>".html_safe %>
             </div>
           </div>
           <!-- Others infos -->
