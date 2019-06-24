@@ -1,0 +1,560 @@
+<!-- Modal for login -->
+<div id="login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t 'login' %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="/" method="post">
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "username" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="username"><%= t "username" %></label>
+              <input type="text" class="form-control form-control-sm mr-1" id="username" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "password" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="password"><%= t "password" %></label>
+              <input type="password" class="form-control form-control-sm mr-1" id="password" required
+                autocomplete="off">
+            </div>
+          </div>
+          <!-- Submit and cancel buttons -->
+          <div class="form-row">
+            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for new user -->
+<div id="addNewUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t 'addNewUser' %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="/" method="post">
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "username" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="username"><%= t "username" %></label>
+              <input type="text" class="form-control form-control-sm mr-1" id="username" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "password" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="password"><%= t "password" %></label>
+              <input type="password" class="form-control form-control-sm mr-1" id="password" required
+                autocomplete="off">
+            </div>
+          </div>
+          <!-- Submit and cancel buttons -->
+          <div class="form-row">
+            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to add a new tournament -->
+<div id="addnewtournament" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t 'addNewTournament' %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= "<form action='/events' method='post'>".html_safe %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <!-- Date of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "date" %> :
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="sr-only" for="date"><%= t "date" %></label>
+            <input type="date" class="form-control form-control-sm mr-1" id="date" name="date" required>
+          </div>
+        </div>
+        <!-- Period of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "period" %> :
+          </div>
+          <div class="form-group col-sm-4">
+            <div class="radio"><label><input type="radio" name="period" value="morning" required>
+                <%= t "morning" %></label></div>
+            <div class="radio"><label><input type="radio" name="period" value="afternoon"> <%= t "afternoon" %></label>
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <div class="radio"><label><input type="radio" name="period" value="full-day"> <%= t "fullDay" %></label>
+            </div>
+          </div>
+        </div>
+        <!-- Starting time of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "startTime" %> :
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="sr-only" for="start-time"><%= t "startTime" %></label>
+            <input type="time" class="form-control form-control-sm mr-1" id="start-time" name="start_time" required>
+          </div>
+        </div>
+        <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "organizer" %> :
+          </div>
+          <div class="form-group col-sm-8">
+            <label class="sr-only" for="organizer"><%= t "organizer" %></label>
+            <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
+              data-style="btn-default">
+              <% Club.all.each do |club| %>
+              <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        <!-- Outdoor or indoor tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "field" %> :
+          </div>
+          <div class="form-group col-sm-4">
+            <div class="radio"><label><input type="radio" name="is_outdoor" value="true" required>
+                <%= t "outdoor" %></label></div>
+          </div>
+          <div class="form-group col-sm-4">
+            <div class="radio"><label><input type="radio" name="is_outdoor" value="false"> <%= t "indoor" %></label>
+            </div>
+          </div>
+        </div>
+        <!-- Location of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "location" %> :
+          </div>
+          <div class="form-group col-sm-8">
+            <label class="sr-only" for="location"><%= t "location" %>Location</span></label>
+            <textarea rows="2" class="form-control form-control-sm mr-1" id="location" name="location"
+              required><%= @location %></textarea>
+          </div>
+        </div>
+        <!-- Who's the person responsible of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "contact" %> :
+          </div>
+          <div class="form-group col-sm-8">
+            <label class="sr-only" for="contact"><%= t "contact" %></label>
+            <textarea rows="2" class="form-control form-control-sm mr-1" id="contact" name="contact"
+              required><%= @contact %></textarea>
+          </div>
+        </div>
+        <!-- Categories available for the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "category" %> :
+          </div>
+          <div class="form-group col-sm-4">
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id}' required>&nbsp;#{@categories[0]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+1}'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+2}'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+3}'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
+          </div>
+          <div class="form-group col-sm-4">
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+4}'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+5}'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+6}'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
+            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+7}'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
+          </div>
+        </div>
+        <!-- Who's the person responsible of the tournament -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "maxNumberOfTeams" %> :
+          </div>
+          <div class="form-group col-sm-8">
+            <input type="number" class="form-control form-control-sm mr-1" name="places_left" max="10"
+              required></textarea>
+          </div>
+        </div>
+        <!-- Others infos -->
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <%= t "otherInfos" %> :
+          </div>
+          <div class="form-group col-sm-8">
+            <label class="sr-only" for="other-infos"><%= t "otherInfos" %></label>
+            <textarea rows="4" class="form-control form-control-sm mr-1" id="other-infos"
+              name="other_informations"></textarea>
+          </div>
+        </div>
+        <!-- Submit and cancel buttons -->
+        <div class="form-row">
+          <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t "add" %></button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <a
+          href="#"><%= image_tag asset_path('logoSwissHockey.png'), class: "img-responsive", alt: "Swiss Hockey Logo" %></a>
+      </div>
+      <div class="col-12 col-sm-4">
+        <h1>Swiss Hockey Tool</h1>
+        <p><%= t 'tournamentManager' %></p><br>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="col-5 ml-auto flags">
+
+          <!-- Language switch "buttons"-->
+          <%= link_to root_path(locale: :en) do %>
+          <%= image_tag asset_path("flag-usa.png"), class: "img-reponsive img-flag", alt: "English laguage flag" %>
+          <% end %>
+          <%= link_to root_path(locale: :fr) do %>
+          <%= image_tag asset_path("flag-france.png"), class: "img-reponsive img-flag", alt: "French laguage flag" %>
+          <% end %>
+          <%= link_to root_path(locale: :de) do %>
+          <%= image_tag asset_path("flag-germany.png"), class: "img-reponsive img-flag", alt: "German laguage flag" %>
+          <% end %>
+          <br><br>
+        </div>
+        <div class="col-12 col-sm-6 ml-auto">
+          <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-warning btn-lg btn-block login-btn" do %>
+          <span><%= t 'logout' %></span>
+          <% end %>
+          <% else %>
+          <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block login-btn" do %>
+          <span><%= t 'login' %></span>
+          <% end %>
+          <% end %>
+          <br><br><br>
+        </div>
+
+        <% if user_signed_in? %>
+        <div class="col-12 ml-auto">
+          <% if current_user.role == "admin" %>
+          <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
+            data-target="#addNewUser"><i class="fas fa-cogs"></i>
+            <%= t 'addNewUser' %></a>
+          <% end %>
+
+          <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
+            data-target="#addnewtournament"><span class="fa fa-plus"></span>
+            <%= t 'addNewTournament' %></a>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- All the filters' section -->
+<!-- <div class="container">
+  <div class="row align-items-center">
+    <div class="col-4 col-md-2">
+      <%= t 'daterange' %> :
+    </div>
+    <div class="col-8 col-sm-6">
+      <div class="form-group">
+
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" name="daterange"
+              data-target="#datetimepicker" />
+            <div class="input-group-append" data-target="#datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="material-switch pull-right">
+
+        <input id="hideUnscheduledEvents" name="hideUnscheduledEvents" type="checkbox" />
+        <label for="hideUnscheduledEvents" class="label-primary"></label>
+        &nbsp; <%= t 'hideUnscheduledEvents' %>
+      </div>
+    </div>
+  </div>
+  <div class="row row-filter align-items-center">
+    <div class="col-5 col-md-2">
+      <%  t "categories" %> :
+    </div>
+    <div class="col-7 col-md-2">
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+          <li class="dropdown-header"><%= t "challenge" %></li>
+          <li class="dropdown-item"><%= t "U8" %></li>
+          <li class="dropdown-item"><%= t "U10" %></li>
+          <li class="dropdown-item"><%= t "U12" %></li>
+          <li class="dropdown-item"><%= t "U15" %></li>
+          <li class="divider"></li>
+          <li class="dropdown-header"><%= t "elite" %></li>
+          <li class="dropdown-item"><%= t "U12" %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-5 col-md-2">
+      <%= t "teams" %> :
+    </div>
+    <div class="col-7 col-md-4">
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+          <li class="dropdown-item"><%= t "team0" %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col text-right">
+      <button type="submit" class="btn btn-warning"><%= t "filter" %></button>
+    </div>
+  </div>
+  <hr>
+</div> -->
+
+<div class="container">
+
+  <!-- Header of the subsequent entries below -->
+
+  <div class="row row-cards row-cards-top">
+    <div class="col-12 col-md-1">
+
+    </div>
+    <div class="col-6 col-md-2">
+      <div class="grid-border">
+        <%= t 'dateAndTime' %>
+      </div>
+    </div>
+    <div class="col-6 col-md-1">
+      <div class="grid-border">
+        <%= t "status" %>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-12 col-md-2">
+    <% else %>
+      <div class="col-12 col-md-3">
+    <% end %>
+      <div class="grid-border">
+        <%= t "location" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <div class="grid-border">
+        <%= t "organizer" %>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+    <div class="col-12 col-md-2">
+      <div class="grid-border">
+        <%= t "contact" %>
+      </div>
+    </div>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="col-6 col-md-1">
+    <% else %>
+      <div class="col-6 col-md-2">
+    <% end %>
+      <div class="grid-border">
+        <%= t "categories-shortened" %>
+      </div>
+    </div>
+    <div class="col-6 col-md-1">
+      <div class="grid-border">
+        <%= t "teams" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start of first entry -->
+
+  <!-- Fake values for showing the result -->
+  <% Event.all.each do |event| %>
+  <div class="row row-cards">
+    <div class="col-12 col-md-1">
+      <% if user_signed_in? && current_user.club_id == event.club_id || user_signed_in? && current_user.role == "admin" %>
+      <%= link_to root_path do %>
+      <i class="fas fa-pen editor-selector"></i>
+      <% end %>
+      <% end %>
+      <%= "<a href='#collapse#{event.id}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
+    </div>
+    <div class="col-6 col-md-2">
+      <div class="grid-border">
+        <span><%= "#{event.date.strftime("%d")}/#{event.date.strftime("%m")}/#{event.date.strftime("%Y")}" %>
+          <%= event.start_time.strftime("%R") %></span>
+      </div>
+    </div>
+    <div class="col-6 col-md-1">
+      <div class="grid-border text-center">
+        <% if event.is_tournament_open %>
+          <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
+            data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+        <% else %>
+          <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
+            data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+        <% end %>
+        <% if event.places_left > 0 %>
+          <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+            data-content='#{t 'placesLeft'}#{event.places_left}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+        <% else %>
+          <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+            data-content='#{t 'full'}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+        <% end %>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-12 col-md-2">
+    <% else %>
+      <div class="col-12 col-md-3">
+    <% end %>
+      <div class="grid-border">
+        <%= event.location %>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <div class="grid-border">
+        <%= Club.find(event.club_id).name %>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+    <div class="col-12 col-md-2">
+      <div class="grid-border">
+        <%= event.contact %>
+      </div>
+    </div>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="col-6 col-md-1">
+    <% else %>
+      <div class="col-6 col-md-2">
+    <% end %>
+      <div class="grid-border">
+        <%= "#{t 'underShortened'}#{Category.find(event.category_id).age} #{Category.find(event.category_id).level}#{Category.find(event.category_id).gender.capitalize if Category.find(event.category_id).gender == 'girls'}".strip %>
+        <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
+            class="fas fa-users-cog fa-1x"></i></button> -->
+      </div>
+    </div>
+    <div class="col-6 col-md-1">
+      <div class="grid-border text-center">
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent1"><i
+            class="fa fa-users fa-1x"></i></button>
+        <% if user_signed_in? %>
+        <%= link_to root_path do %>
+        <%= image_tag asset_path("blue_checkin.png"), class: "img-reponsive checkin-btn", alt: "Checkin button"%>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= "<div class='col collapse text-center' id='collapse#{event.id}'>".html_safe %>
+    <div class="card card-body">
+      <%= event.other_informations %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal categories -->
+<div id="categoriesAvailable1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><%= t "U12Girls" %></li>
+          <li><%= t "U10Challenge" %></li>
+          <li><%= t "U12Challenge" %></li>
+          <li><%= t "U15Challenge" %></li>
+          <li><%= t "U12Elite" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal teams -->
+<div id="teamsPresent1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t "teamsPresent" %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><%= t "team0" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- End of entry -->
+
+</div>
+
+
+<footer>
+  <div class="container">
+    <hr>
+    © 2018 Dev. by Matthieu Borgognon
+  </div>
+</footer>

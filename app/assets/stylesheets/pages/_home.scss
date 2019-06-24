@@ -1,0 +1,115 @@
+// Specific CSS for your home-page
+.bottom-align-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.img-flag {
+  height: 35px;
+}
+
+.flags a:hover {
+  text-decoration: none;
+  color: transparent !important;
+}
+
+.row-filter{
+   padding-bottom: 30px;
+}
+
+.row-cards{
+  padding-top: 30px;
+}
+
+.row-cards-top{
+  font-weight: bold;
+}
+
+.material-switch > input[type="checkbox"] {
+  display: none;   
+}
+
+.material-switch > label {
+  cursor: pointer;
+  height: 0px;
+  position: relative; 
+  width: 40px;  
+}
+
+.material-switch > label::before {
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: '';
+  height: 16px;
+  margin-top: -8px;
+  position:absolute;
+  opacity: 0.3;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+.material-switch > label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+  background: #428bca;
+  opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+  background: #428bca;
+  left: 20px;
+}
+
+.grid-border {
+  border-left: #cdcdcd medium solid;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.btn-sq-xs {
+  width: 15px !important;
+  height: 15px !important;
+  padding:5px;
+}
+
+.login-btn {
+  width: 150px;
+}
+
+.action-btn {
+  color: white !important; 
+  cursor: pointer;
+}
+
+.plus-selector {
+  text-decoration: none !important;
+  font-size: 20px;
+}
+
+.editor-selector {
+  font-size: 20px;
+  margin-right: 10px;
+  text-decoration: none !important;
+}
+
+.checkin-btn {
+  margin: 8px;
+  height: 24px;
+}
+
+footer {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 80%;
+}
