@@ -40,6 +40,48 @@
   </div>
 </div>
 
+<!-- Modal for new user -->
+<div id="addNewUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= t 'addNewUser' %></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="/" method="post">
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "username" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="username"><%= t "username" %></label>
+              <input type="text" class="form-control form-control-sm mr-1" id="username" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "password" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="sr-only" for="password"><%= t "password" %></label>
+              <input type="password" class="form-control form-control-sm mr-1" id="password" required
+                autocomplete="off">
+            </div>
+          </div>
+          <!-- Submit and cancel buttons -->
+          <div class="form-row">
+            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal to add a new tournament -->
 <div id="addnewtournament" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -63,14 +105,27 @@
               <input type="date" class="form-control form-control-sm mr-1" id="date" name="date" required>
             </div>
           </div>
+          <!-- Period of the tournament -->
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "period" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <div class="radio"><label><input type="radio" name="period" value="morning"> <%= t "morning" %></label></div>
+              <div class="radio"><label><input type="radio" name="period" value="afternoon"> <%= t "afternoon" %></label></div>
+            </div>
+            <div class="form-group col-sm-4">
+              <div class="radio"><label><input type="radio" name="period" value="full-day"> <%= t "fullDay" %></label></div>
+            </div>
+          </div>
           <!-- Starting time of the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <%= t "hour" %> :
+              <%= t "startTime" %> :
             </div>
             <div class="form-group col-sm-4">
-              <label class="sr-only" for="hour"><%= t "hour" %></label>
-              <input type="time" class="form-control form-control-sm mr-1" id="hour" name="hour">
+              <label class="sr-only" for="start-time"><%= t "startTime" %></label>
+              <input type="time" class="form-control form-control-sm mr-1" id="start-time" name="start-time">
             </div>
           </div>
           <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
@@ -82,6 +137,7 @@
               <label class="sr-only" for="organizer"><%= t "organizer" %></label>
               <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="organizer" required
                 data-style="btn-default">
+
                 <option>Basler Hockey Club 1911</option>
                 <option>Berner Hockey-Club</option>
                 <option>Black Boys Hockey Club Genève</option>
@@ -107,6 +163,18 @@
                 <option>Spielgemeinschaft BeHC/HCSt</option>
                 <option>Hockey Club Lahr</option>
               </select>
+            </div>
+          </div>
+          <!-- Outdoor or indoor tournament -->
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "field" %> :
+            </div>
+            <div class="form-group col-sm-4">
+              <div class="radio"><label><input type="radio" name="outdoor" value="true"> <%= t "outdoor" %></label></div>
+            </div>
+            <div class="form-group col-sm-4">
+              <div class="radio"><label><input type="radio" name="outdoor" value="false"> <%= t "indoor" %></label></div>
             </div>
           </div>
           <!-- Location of the tournament -->
@@ -194,14 +262,26 @@
           <br><br>
         </div>
         <div class="col-12 col-sm-6 ml-auto">
-          <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block login-btn" do %>
-            <span><%= t 'login' %></span>
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-warning btn-lg btn-block login-btn" do %>
+              <span><%= t 'logout' %></span>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block login-btn" do %>
+              <span><%= t 'login' %></span>
+            <% end %>
           <% end %>
           <br><br><br>
         </div>
 
         <% if user_signed_in? %>
           <div class="bottom-align-text col-12 ml-auto">
+            <% if current_user.role == "admin" %>
+            <a class="btn btn-warning btn-lg btn-block" role="button" data-toggle="modal"
+              data-target="#addNewUser"><i class="fas fa-cogs"></i>
+              <%= t 'addNewUser' %></a>
+            <% end %>
+
             <a class="btn btn-warning btn-lg btn-block" role="button" data-toggle="modal"
               data-target="#addnewtournament"><span class="fa fa-plus"></span>
               <%= t 'addNewTournament' %></a>
