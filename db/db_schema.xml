@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: https://kitt.lewagon.com/db/2177 --> 
+<!-- Active URL: https://kitt.lewagon.com/db/2177 -->
 <sql>
 <datatypes db="postgresql">
   <group label="Numeric" color="rgb(238,238,170)">
@@ -111,6 +111,9 @@
 <default>NULL</default></row>
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="period" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="start_time" null="1" autoincrement="0">
 <datatype>TIME</datatype>

@@ -47,3 +47,5 @@ fr:
   afternoon: "Après-midi"
   fullDay: "Journée entière"
   underShortened: "M"
+  category: "Catégorie"
+  maxNumberOfTeams: "Nombre d'équipes max."

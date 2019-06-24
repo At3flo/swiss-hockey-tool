@@ -111,7 +111,7 @@
               <%= t "period" %> :
             </div>
             <div class="form-group col-sm-4">
-              <div class="radio"><label><input type="radio" name="period" value="morning"> <%= t "morning" %></label></div>
+              <div class="radio"><label><input type="radio" name="period" value="morning" required> <%= t "morning" %></label></div>
               <div class="radio"><label><input type="radio" name="period" value="afternoon"> <%= t "afternoon" %></label></div>
             </div>
             <div class="form-group col-sm-4">
@@ -125,7 +125,7 @@
             </div>
             <div class="form-group col-sm-4">
               <label class="sr-only" for="start-time"><%= t "startTime" %></label>
-              <input type="time" class="form-control form-control-sm mr-1" id="start-time" name="start-time">
+              <input type="time" class="form-control form-control-sm mr-1" id="start-time" name="start_time" required>
             </div>
           </div>
           <!-- Who's the organizer of the tournament based on the today (october 2018) updated list http://www.swisshockey.org -->
@@ -135,10 +135,10 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="organizer"><%= t "organizer" %></label>
-              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="organizer" required
+              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
                 data-style="btn-default">
                 <% Club.all.each do |club| %>
-                  <option><%= club.name %></option>
+                  <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
                 <% end %>
               </select>
             </div>
@@ -149,10 +149,10 @@
               <%= t "field" %> :
             </div>
             <div class="form-group col-sm-4">
-              <div class="radio"><label><input type="radio" name="outdoor" value="true"> <%= t "outdoor" %></label></div>
+              <div class="radio"><label><input type="radio" name="is_outdoor" value="true" required> <%= t "outdoor" %></label></div>
             </div>
             <div class="form-group col-sm-4">
-              <div class="radio"><label><input type="radio" name="outdoor" value="false"> <%= t "indoor" %></label></div>
+              <div class="radio"><label><input type="radio" name="is_outdoor" value="false"> <%= t "indoor" %></label></div>
             </div>
           </div>
           <!-- Location of the tournament -->
@@ -162,7 +162,7 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="location"><%= t "location" %>Location</span></label>
-              <textarea rows="3" class="form-control form-control-sm mr-1" id="location" name="location" required></textarea>
+              <textarea rows="2" class="form-control form-control-sm mr-1" id="location" name="location" required><%= @location %></textarea>
             </div>
           </div>
           <!-- Who's the person responsible of the tournament -->
@@ -172,25 +172,34 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="contact"><%= t "contact" %></label>
-              <textarea rows="1" class="form-control form-control-sm mr-1" id="contact" name="contact" required></textarea>
+              <textarea rows="2" class="form-control form-control-sm mr-1" id="contact" name="contact" required><%= @contact %></textarea>
             </div>
           </div>
           <!-- Categories available for the tournament -->
           <div class="form-row">
             <div class="form-group col-sm-4">
-              <%= t "categories" %> :
+              <%= t "category" %> :
             </div>
             <div class="form-group col-sm-4">
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[0]' value='#{@categories[0][1..-1]}'>#{@categories[0]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[1]' value='#{@categories[1][1..-1]}'>#{@categories[1]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[2]' value='#{@categories[2][1..-1]}'>#{@categories[2]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[3]' value='#{@categories[3][1..-1]}'>#{@categories[3]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id}' required>&nbsp;#{@categories[0]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+1}'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+2}'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+3}'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
             </div>
             <div class="form-group col-sm-4">
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[4]' value='#{@categories[4][1..-1]}'>#{@categories[4]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[5]' value='#{@categories[5][1..-1]}'>#{@categories[5]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[6]' value='#{@categories[6][1..-1]}'>#{@categories[6]}</label></div>".html_safe %>
-              <%= "<div class='checkbox'><label><input type='checkbox' name='categories[7]' value='#{@categories[7][1..-1]}'>#{@categories[7]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+4}'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+5}'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+6}'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
+              <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+7}'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
+            </div>
+          </div>
+          <!-- Who's the person responsible of the tournament -->
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "maxNumberOfTeams" %> :
+            </div>
+            <div class="form-group col-sm-8">
+              <input type="number" class="form-control form-control-sm mr-1" name="places_left" max="10" required></textarea>
             </div>
           </div>
           <!-- Others infos -->
@@ -200,7 +209,7 @@
             </div>
             <div class="form-group col-sm-8">
               <label class="sr-only" for="other-infos"><%= t "otherInfos" %></label>
-              <textarea rows="4" class="form-control form-control-sm mr-1" id="other-infos" name="other-infos"></textarea>
+              <textarea rows="4" class="form-control form-control-sm mr-1" id="other-infos" name="other_informations"></textarea>
             </div>
           </div>
           <!-- Submit and cancel buttons -->
