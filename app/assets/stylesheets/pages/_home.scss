@@ -84,7 +84,28 @@
 }
 
 .login-btn {
-  width: 100%;
+  width: 150px;
+}
+
+.action-btn {
+  color: white !important; 
+  cursor: pointer;
+}
+
+.plus-selector {
+  text-decoration: none !important;
+  font-size: 20px;
+}
+
+.editor-selector {
+  font-size: 20px;
+  margin-right: 10px;
+  text-decoration: none !important;
+}
+
+.checkin-btn {
+  margin: 8px;
+  height: 24px;
 }
 
 footer {
