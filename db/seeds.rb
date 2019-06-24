@@ -10,7 +10,7 @@
 # User.destroy_all
 
 # puts "Create Swiss Hockey..."
-# club = Club.create({name: "Swiss Hockey", field_address: "Bahnhofweg 2, 6048 Horw", hall_address:"SH_Indoor"})
+# club = Club.create({name: "Swiss Hockey", field_address: "Bahnhofweg 2, 6048 Horw"})
 
 # puts "Create admins..."
 # User.create({first_name: "Matthieu", last_name: "Borgognon", email: "matrash@bqn.ch", password: "shtsht", phone_number: "+4176 822 3948", role: "admin", club_id: club.id})
