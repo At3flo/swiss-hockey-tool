@@ -45,40 +45,7 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= t 'addNewUser' %></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form action="/" method="post">
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <%= t "username" %> :
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="sr-only" for="username"><%= t "username" %></label>
-              <input type="text" class="form-control form-control-sm mr-1" id="username" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <%= t "password" %> :
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="sr-only" for="password"><%= t "password" %></label>
-              <input type="password" class="form-control form-control-sm mr-1" id="password" required
-                autocomplete="off">
-            </div>
-          </div>
-          <!-- Submit and cancel buttons -->
-          <div class="form-row">
-            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <%= render "registrations/form_new_user" %>
   </div>
 </div>
 
@@ -274,9 +241,9 @@
         <% if user_signed_in? %>
         <div class="col-12 ml-auto">
           <% if current_user.role == "admin" %>
-          <!-- <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
+          <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
             data-target="#addNewUser"><i class="fas fa-cogs"></i>
-            <%= t 'addNewUser' %></a> -->
+            <%= t 'addNewUser' %></a>
           <% end %>
 
           <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"

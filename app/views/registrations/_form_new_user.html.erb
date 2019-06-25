@@ -1,0 +1,84 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title"><%= t 'addNewUser' %></h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+  <div class="modal-body">
+    <form action="/users" method="post"
+      oninput="password_confirmation.setCustomValidity(password_confirmation.value != password.value ? 'Passwords do not match.' : '')">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "firstName" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="text" class="form-control form-control-sm mr-1" id="first-name" name="first_name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "lastName" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="text" class="form-control form-control-sm mr-1" id="last-name" name="last_name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "club" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <select class="selectpicker form-control form-control-sm mr-1" id="club" name="club_id" required
+            data-style="btn-default">
+            <% Club.all.each do |club| %>
+            <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "email" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="email" class="form-control form-control-sm mr-1" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "phoneNumber" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="text" class="form-control form-control-sm mr-1" id="phone-number" name="phone_number"
+            pattern="\+\d{4}\s\d{3}\s\d{4,}" title="Must be in these format: +4179 999 9999" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "password" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="password" class="form-control form-control-sm mr-1" id="password" name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            autocomplete="off" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-sm-4">
+          <%= t "confirmPassword" %> :
+        </div>
+        <div class="form-group col-sm-8">
+          <input type="password" class="form-control form-control-sm mr-1" id="confirm-password"
+            name="password_confirmation" title="Passwords must match" autocomplete="off">
+        </div>
+      </div>
+
+      <!-- Submit and cancel buttons -->
+      <div class="form-row">
+        <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'createUser' %></button>
+      </div>
+    </form>
+  </div>
+</div>
