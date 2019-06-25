@@ -61,7 +61,7 @@ en:
   U15Challenge: "U15 Challenge"
   U10Elite: "U10 Elite"
   U12Elite: "U12 Elite"
-  date: "Date"
+  tournamentDate: "Date"
   add: "Add"
   hour: "Time"
   otherInfos: "Other informations"
@@ -86,3 +86,29 @@ en:
   availabilityOfPlaces: "Availability of places"
   placesLeft: "Places left: "
   full: "Full"
+  editATournament: "Edit an existing tournament"
+  cancel: "Cancel"
+  deleteTournament: "Delete tournament"
+  simple_form:
+      labels:
+        defaults:
+          period: "Period of time"
+          start_time: "Start time"
+          is_outdoor: "Field"
+          is_tournament_open: "Tournament state"
+          location: "Location"
+          contact: "Contact"
+          category_id: "Category"
+          places_left: "Places left"
+          other_informations: "Other informations"
+  helpers:
+    submit: 
+      user:
+        create: "Submit"
+      event:
+        update: "Update tournament"
+  date:
+    order:
+      - :day
+      - :month
+      - :year
