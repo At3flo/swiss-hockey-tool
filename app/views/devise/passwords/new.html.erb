@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-6 mx-auto">
+    <div class="col-xs-12 col-sm-9 col-sm-offset-3 mx-auto">
       <div class="form-login">
         <h1><%= t 'forgotYourPassword' %></h2>
 
@@ -19,9 +19,9 @@
           </div>
 
           <div class="form-actions">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-wrap justify-content-center align-items-center mx-1">
               <%= f.button :submit, "Send me reset password instructions", class: "btn btn-warning my-3" %>
-              <div class="form-group row mb-0">
+              <div class="form-group row mb-0 mx-1">
                 <div class="col-sm-9 offset-sm-3">
                   <%= link_to root_path, class: "btn btn-outline-secondary" do %>
                   <%= t 'cancel' %>
@@ -31,6 +31,7 @@
             </div>
           </div>
           <% end %>
+          
       </div>
     </div>
   </div>
