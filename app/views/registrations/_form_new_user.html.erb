@@ -4,8 +4,7 @@
     <button type="button" class="close" data-dismiss="modal">&times;</button>
   </div>
   <div class="modal-body">
-    <form action="/users" method="post"
-      oninput="password_confirmation.setCustomValidity(password_confirmation.value != password.value ? 'Passwords do not match.' : '')">
+    <form action="/users" method="post">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <div class="form-row">
         <div class="form-group col-sm-4">
@@ -51,26 +50,6 @@
         <div class="form-group col-sm-8">
           <input type="text" class="form-control form-control-sm mr-1" id="phone-number" name="phone_number"
             pattern="\+\d{4}\s\d{3}\s\d{4,}" title="Must be in these format: +4179 999 9999" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-sm-4">
-          <%= t "password" %> :
-        </div>
-        <div class="form-group col-sm-8">
-          <input type="password" class="form-control form-control-sm mr-1" id="password" name="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-            autocomplete="off" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-sm-4">
-          <%= t "confirmPassword" %> :
-        </div>
-        <div class="form-group col-sm-8">
-          <input type="password" class="form-control form-control-sm mr-1" id="confirm-password"
-            name="password_confirmation" title="Passwords must match" autocomplete="off">
         </div>
       </div>
 

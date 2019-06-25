@@ -1,5 +1,7 @@
-<h1>User#welcome</h1>
+<p>Hi <%= @user.first_name %>,</p>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
-</p>
+<p>Someone created an account on Swiss Hockey Tool for you. You can join us through the link below.</p>
+
+<p class="aligncenter"><%= link_to 'Join Swiss Hockey Tool', edit_password_url(@user, reset_password_token: @token), class: "btn-primary", itemprop: "url" %><p>
+
+<p>Your account won't work until you access the link above and create a new password.</p>
