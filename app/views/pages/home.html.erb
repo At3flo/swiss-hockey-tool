@@ -98,7 +98,7 @@
         <!-- Date of the tournament -->
         <div class="form-row">
           <div class="form-group col-sm-4">
-            <%= t "date" %> :
+            <%= t "tournamentDate" %> :
           </div>
           <div class="form-group col-sm-4">
             <label class="sr-only" for="date"><%= t "date" %></label>
@@ -200,7 +200,7 @@
             <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+7}'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
           </div>
         </div>
-        <!-- Who's the person responsible of the tournament -->
+        <!-- Set maximal places for the tournament -->
         <div class="form-row">
           <div class="form-group col-sm-4">
             <%= t "maxNumberOfTeams" %> :
@@ -274,9 +274,9 @@
         <% if user_signed_in? %>
         <div class="col-12 ml-auto">
           <% if current_user.role == "admin" %>
-          <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
+          <!-- <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
             data-target="#addNewUser"><i class="fas fa-cogs"></i>
-            <%= t 'addNewUser' %></a>
+            <%= t 'addNewUser' %></a> -->
           <% end %>
 
           <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
@@ -418,14 +418,18 @@
 
   <!-- Start of first entry -->
 
-  <!-- Fake values for showing the result -->
+  <!-- Events tables for showing the result -->
   <% Event.all.each do |event| %>
   <div class="row row-cards">
     <div class="col-12 col-md-1">
       <% if user_signed_in? && current_user.club_id == event.club_id || user_signed_in? && current_user.role == "admin" %>
-      <%= link_to root_path do %>
-      <i class="fas fa-pen editor-selector"></i>
-      <% end %>
+        <%= link_to edit_event_path(event.id) do %>
+          <i class='fas fa-pen editor-selector'></i>
+        <% end %>
+        <!-- <%= link_to edit_event_path(event.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#edit-tournament'} do %>
+          <i class='fas fa-pen editor-selector'></i>
+        <% end %> -->
+        <!-- <%= "<a class='editor-selector' role='button' data-toggle='modal' data-target='#edit-tournament'><i class='fas fa-pen editor-selector'></i></a>".html_safe %> -->
       <% end %>
       <%= "<a href='#collapse#{event.id}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
     </div>
@@ -549,12 +553,10 @@
 <% end %>
 <!-- End of entry -->
 
-</div>
-
 
 <footer>
   <div class="container">
     <hr>
-    © 2018 Dev. by Matthieu Borgognon
+    © 2019 Designed and powered by At3flo
   </div>
 </footer>
