@@ -1,5 +1,6 @@
 .bundle
 log/*.log
+log/development.log
 tmp/**/*
 tmp/*
 !log/.keep
