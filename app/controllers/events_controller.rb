@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:edit, :update, :destroy]
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user
@@ -16,8 +18,6 @@ class EventsController < ApplicationController
       @categories << "#{t 'underShortened'}#{category.age} #{category.level}#{category.gender.capitalize if category.gender == 'girls'}".strip
     end
 
-    @event = Event.find(params[:id])
-
     @open = t 'open'
     @close = t 'close'
     
@@ -30,8 +30,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
-    
     @event.date = Time.new(params[:event]["date(1i)"], params[:event]["date(2i)"], params[:event]["date(3i)"]).strftime("%F")
     @event.period = params[:event][:period]
     @event.start_time = Time.new(2000, 1, 1, params[:event]["start_time(4i)"], params[:event]["start_time(5i)"]).strftime("%H:%M")
@@ -51,7 +49,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event.destroy
+
+    redirect_to root_path
+  end
+
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.permit(:date, :period, :start_time, :club_id, :is_outdoor, :location, :contact, :category_id, :places_left, :other_informations)

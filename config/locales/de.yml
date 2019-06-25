@@ -30,7 +30,7 @@ de:
   U15Challenge: "U15 Challenge"
   U10Elite: "U10 Elite"
   U12Elite: "U12 Elite"
-  date: "Datum"
+  tournamentDate: "Datum"
   add: "Hinzufügen"
   hour: "Zeit"
   otherInfos: "Sonstige Informationen"
@@ -56,6 +56,8 @@ de:
   placesLeft: "Freie Plätze: "
   full: "Komplett"
   editATournament: "Bearbeiten eines bestehenden Turniers"
+  cancel: "Abbrechen"
+  deleteTournament: "Turnier löschen"
   simple_form:
       labels:
         defaults:
