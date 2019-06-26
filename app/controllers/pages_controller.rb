@@ -22,4 +22,5 @@ class PagesController < ApplicationController
     @events = Event.connection.execute(sql_query)
 
   end
+
 end

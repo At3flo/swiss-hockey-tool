@@ -45,7 +45,7 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-      <%= render "registrations/form_new_user" %>
+    <%= render "registrations/form_new_user" %>
   </div>
 </div>
 
@@ -257,36 +257,51 @@
 </header>
 
 <!-- All the filters' section -->
-<!-- <div class="container">
-  <div class="row align-items-center">
+<div class="container">
+  <div class="row align-items-baseline">
     <div class="col-4 col-md-2">
       <%= t 'daterange' %> :
     </div>
     <div class="col-8 col-sm-6">
       <div class="form-group">
-
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" name="daterange"
-              data-target="#datetimepicker" />
-            <div class="input-group-append" data-target="#datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
+        <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+          <input type="text" id="datefield" class="form-control datetimepicker-input" name="daterange" data-target="#datetimepicker" />
+          <div class="input-group-append" data-target="#datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="material-switch pull-right">
-
-        <input id="hideUnscheduledEvents" name="hideUnscheduledEvents" type="checkbox" />
-        <label for="hideUnscheduledEvents" class="label-primary"></label>
-        &nbsp; <%= t 'hideUnscheduledEvents' %>
+      <div class="align-items-center material-switch pull-right">
+        <input type="checkbox" id="isTournamentOpen" value="false"/>
+        <label for="isTournamentOpen" class="label-primary"></label>
+        &nbsp; <%= t 'showOpenTournamentsOnly' %>
       </div>
     </div>
   </div>
   <div class="row row-filter align-items-center">
     <div class="col-5 col-md-2">
+      <%= t "teams" %> :
+    </div>
+    <div class="col-7 col-md-3">
+
+      <div class="dropdown">
+        <!-- <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+                  </ul> -->
+          <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
+              data-style="btn-default">
+              <option value='0'><%= t "allcategories" %></option>
+              <% Club.all.each do |club| %>
+              <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+              <% end %>
+          </select>
+      </div>
+    </div>
+    <!-- <div class="col-5 col-md-4">
       <%  t "categories" %> :
     </div>
     <div class="col-7 col-md-2">
@@ -306,27 +321,10 @@
           <li class="dropdown-item"><%= t "U12" %></li>
         </ul>
       </div>
-    </div>
-    <div class="col-5 col-md-2">
-      <%= t "teams" %> :
-    </div>
-    <div class="col-7 col-md-4">
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-          <li class="dropdown-item"><%= t "team0" %></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col text-right">
-      <button type="submit" class="btn btn-warning"><%= t "filter" %></button>
-    </div>
+    </div> -->
   </div>
   <hr>
-</div> -->
+</div>
 
 <div class="container">
 
@@ -347,179 +345,181 @@
       </div>
     </div>
     <% if user_signed_in? %>
-      <div class="col-12 col-md-2">
-    <% else %>
+    <div class="col-12 col-md-2">
+      <% else %>
       <div class="col-12 col-md-3">
-    <% end %>
-      <div class="grid-border">
-        <%= t "location" %>
-      </div>
-    </div>
-    <div class="col-12 col-md-2">
-      <div class="grid-border">
-        <%= t "organizer" %>
-      </div>
-    </div>
-    <% if user_signed_in? %>
-    <div class="col-12 col-md-2">
-      <div class="grid-border">
-        <%= t "contact" %>
-      </div>
-    </div>
-    <% end %>
-    <% if user_signed_in? %>
-      <div class="col-6 col-md-1">
-    <% else %>
-      <div class="col-6 col-md-2">
-    <% end %>
-      <div class="grid-border">
-        <%= t "categories-shortened" %>
-      </div>
-    </div>
-    <div class="col-6 col-md-1">
-      <div class="grid-border">
-        <%= t "teams" %>
-      </div>
-    </div>
-  </div>
-
-  <!-- Start of first entry -->
-
-  <!-- Events tables for showing the result -->
-  <% @events.each do |event| %>
-  <div class="row row-cards">
-    <div class="col-12 col-md-1">
-      <% if user_signed_in? && current_user.club_id == event["club_id"] || user_signed_in? && current_user.role == "admin" %>
-        <%= link_to edit_event_path(event["id"]) do %>
-          <i class='fas fa-pen editor-selector'></i>
         <% end %>
+        <div class="grid-border">
+          <%= t "location" %>
+        </div>
+      </div>
+      <div class="col-12 col-md-2">
+        <div class="grid-border">
+          <%= t "organizer" %>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+      <div class="col-12 col-md-2">
+        <div class="grid-border">
+          <%= t "contact" %>
+        </div>
+      </div>
       <% end %>
-      <%= "<a href='#collapse#{event["id"]}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
-    </div>
-    <div class="col-6 col-md-2">
-      <div class="grid-border">
-        <span><%= "#{event["date"].split("-")[2]}/#{event["date"].split("-")[1]}/#{event["date"].split("-")[0]}" %>
-          <%= "#{event["start_time"].split(":")[0]}:#{event["start_time"].split(":")[1]}" %></span>
-      </div>
-    </div>
-    <div class="col-6 col-md-1">
-      <div class="grid-border text-center">
-        <% if event["is_tournament_open"] %>
-          <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
-        <% else %>
-          <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
-        <% end %>
-        <% if event["places_left"] > 0 %>
-          <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'placesLeft'}#{event["places_left"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-        <% else %>
-          <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'full'}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-        <% end %>
-      </div>
-    </div>
-    <% if user_signed_in? %>
-      <div class="col-12 col-md-2">
-    <% else %>
-      <div class="col-12 col-md-3">
-    <% end %>
-      <div class="grid-border">
-        <%= event["location"] %>
-      </div>
-    </div>
-    <div class="col-12 col-md-2">
-      <div class="grid-border">
-        <%= Club.find(event["club_id"]).name %>
-      </div>
-    </div>
-    <% if user_signed_in? %>
-    <div class="col-12 col-md-2">
-      <div class="grid-border">
-        <%= event["contact"] %>
-      </div>
-    </div>
-    <% end %>
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <div class="col-6 col-md-1">
-    <% else %>
-      <div class="col-6 col-md-2">
-    <% end %>
-      <div class="grid-border">
-        <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
-        <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
-            class="fas fa-users-cog fa-1x"></i></button> -->
+        <% else %>
+        <div class="col-6 col-md-2">
+          <% end %>
+          <div class="grid-border">
+            <%= t "categories-shortened" %>
+          </div>
+        </div>
+        <div class="col-6 col-md-1">
+          <div class="grid-border">
+            <%= t "teams" %>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-6 col-md-1">
-      <div class="grid-border text-center">
-        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent1"><i
-            class="fa fa-users fa-1x"></i></button>
+
+      <!-- Start of first entry -->
+
+      <!-- Events tables for showing the result -->
+      <% @events.each_with_index do |event, index| %>
+      <%= "<div id='events'>".html_safe %>
+      <div class="row row-cards">
+        <div class="col-12 col-md-1">
+          <% if user_signed_in? && current_user.club_id == event["club_id"] || user_signed_in? && current_user.role == "admin" %>
+          <%= link_to edit_event_path(event["id"]) do %>
+          <i class='fas fa-pen editor-selector'></i>
+          <% end %>
+          <% end %>
+          <%= "<a href='#collapse#{event["id"]}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="grid-border">
+            <span><%= "#{event["date"].split("-")[2]}/#{event["date"].split("-")[1]}/#{event["date"].split("-")[0]}" %>
+              <%= "#{event["start_time"].split(":")[0]}:#{event["start_time"].split(":")[1]}" %></span>
+          </div>
+        </div>
+        <div class="col-6 col-md-1">
+          <div class="grid-border text-center">
+            <% if event["is_tournament_open"] %>
+            <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
+            data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+            <% else %>
+            <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
+            data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+            <% end %>
+            <% if event["places_left"] > 0 %>
+            <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+            data-content='#{t 'placesLeft'}#{event["places_left"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+            <% else %>
+            <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+            data-content='#{t 'full'}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+            <% end %>
+          </div>
+        </div>
         <% if user_signed_in? %>
-        <%= link_to root_path do %>
-        <%= image_tag asset_path("blue_checkin.png"), class: "img-reponsive checkin-btn", alt: "Checkin button"%>
-        <% end %>
-        <% end %>
+        <div class="col-12 col-md-2">
+          <% else %>
+          <div class="col-12 col-md-3">
+            <% end %>
+            <div class="grid-border">
+              <%= event["location"] %>
+            </div>
+          </div>
+          <div class="col-12 col-md-2">
+            <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
+              <%= Club.find(event["club_id"]).name %>
+            </div>
+          </div>
+          <% if user_signed_in? %>
+          <div class="col-12 col-md-2">
+            <div class="grid-border">
+              <%= event["contact"] %>
+            </div>
+          </div>
+          <% end %>
+          <% if user_signed_in? %>
+          <div class="col-6 col-md-1">
+            <% else %>
+            <div class="col-6 col-md-2">
+              <% end %>
+              <div class="grid-border">
+                <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
+                <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
+            class="fas fa-users-cog fa-1x"></i></button> -->
+              </div>
+            </div>
+            <div class="col-6 col-md-1">
+              <div class="grid-border text-center">
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#teamsPresent1"><i
+                    class="fa fa-users fa-1x"></i></button>
+                <% if user_signed_in? %>
+                <%= link_to root_path do %>
+                <%= image_tag asset_path("blue_checkin.png"), class: "img-reponsive checkin-btn", alt: "Checkin button"%>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <%= "<div class='col collapse text-center' id='collapse#{event["id"]}'>".html_safe %>
+            <div class="card card-body">
+              <%= event["other_informations"] %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <%= "<div class='col collapse text-center' id='collapse#{event["id"]}'>".html_safe %>
-    <div class="card card-body">
-      <%= event["other_informations"] %>
-    </div>
-  </div>
-</div>
 
-<!-- Modal categories -->
-<div id="categoriesAvailable1" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+      <!-- Modal categories -->
+      <div id="categoriesAvailable1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li><%= t "U12Girls" %></li>
+                <li><%= t "U10Challenge" %></li>
+                <li><%= t "U12Challenge" %></li>
+                <li><%= t "U15Challenge" %></li>
+                <li><%= t "U12Elite" %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <ul>
-          <li><%= t "U12Girls" %></li>
-          <li><%= t "U10Challenge" %></li>
-          <li><%= t "U12Challenge" %></li>
-          <li><%= t "U15Challenge" %></li>
-          <li><%= t "U12Elite" %></li>
-        </ul>
+
+      <!-- Modal teams -->
+      <div id="teamsPresent1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><%= t "teamsPresent" %></h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li><%= t "team0" %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal teams -->
-<div id="teamsPresent1" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= t "teamsPresent" %></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <ul>
-          <li><%= t "team0" %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
-<!-- End of entry -->
+      <% end %>
+      <!-- End of entry -->
 
 
-<footer>
-  <div class="container">
-    <hr>
-    © 2019 Designed and powered by At3flo
-  </div>
-</footer>
+      <footer>
+        <div class="container">
+          <hr>
+          © 2019 Designed and powered by At3flo
+        </div>
+      </footer>
