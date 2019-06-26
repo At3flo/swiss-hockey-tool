@@ -6,9 +6,9 @@ import { initDatepicker } from "../components/datepicker";
 const daysToDisplay = 90 // Days in future displayed by daterangepicker
 
 initPopover();
-initDatepicker(daysToDisplay);
 initFilter(daysToDisplay);
-initSelectorFilter();
+initDatepicker(daysToDisplay);
+initSelectorFilter(daysToDisplay);
 
 const start = moment();
 const end = moment().add(daysToDisplay, 'days');
