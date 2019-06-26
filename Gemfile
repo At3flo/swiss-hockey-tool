@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'rails-i18n'
 gem 'roadie'
 gem 'roadie-rails'
+gem 'gon'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

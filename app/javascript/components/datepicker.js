@@ -2,12 +2,12 @@ import $ from 'jquery';
 import 'daterangepicker';
 import 'moment';
 
-const initDatepicker = () => {
+const initDatepicker = (daysToDisplay) => {
 
   $(document).ready(function () {
     $('input[name="daterange"]').daterangepicker({
       startDate: moment(),
-      endDate: moment().add(30, 'days'),
+      endDate: moment().add(daysToDisplay, 'days'),
       "locale": {
         "format": "DD/MM/YYYY",
         "separator": " - ",

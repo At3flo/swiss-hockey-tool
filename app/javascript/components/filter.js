@@ -1,6 +1,6 @@
 import { initDatepicker } from "./datepicker";
 
-const initFilter = () => {
+const initFilter = (daysToDisplay) => {
   const toggle = document.querySelector('#isTournamentOpen');
   const events = document.querySelectorAll('#events');
   toggle.addEventListener('click', () => {
@@ -13,10 +13,10 @@ const initFilter = () => {
       });
       document.querySelector('#isTournamentOpen').value = false
 
-      initDatepicker();
+      initDatepicker(daysToDisplay);
       
       const start = moment();
-      const end = moment().add(30, 'days');
+      const end = moment().add(daysToDisplay, 'days');
       events.forEach(element => {
         element.style.display = '';
         const tournamentDate = element.innerText.trim().substring(6, 10) + "-" + element.innerText.trim().substring(3, 5) + "-" + element.innerText.trim().substring(0, 2)
@@ -38,6 +38,29 @@ const initFilter = () => {
   });
 }
 
+const initSelectorFilter = () => {
+  const elementSelected = document.getElementById("teams");
+  elementSelected.addEventListener("change", function () {
+
+    const events = document.querySelectorAll('#events');
+    events.forEach(element => {
+      element.style.display = '';
+    });
+
+    if (elementSelected.options[elementSelected.selectedIndex].value != 0) {
+      events.forEach(element => {
+        element.style.display = 'none';
+      });
+
+      const specificTeamEvents = document.querySelectorAll('#team-' + elementSelected.options[elementSelected.selectedIndex].value);
+      specificTeamEvents.forEach(element => {
+        element.parentNode.parentNode.parentNode.style.display = '';
+      });
+    }
+  });
+}
+
 export {
-  initFilter
+  initFilter,
+  initSelectorFilter
 };

@@ -1,14 +1,17 @@
 import "bootstrap";
 import { initPopover } from "../components/popover";
-import { initFilter } from "../components/filter";
+import { initFilter, initSelectorFilter } from "../components/filter";
 import { initDatepicker } from "../components/datepicker";
 
+const daysToDisplay = 90 // Days in future displayed by daterangepicker
+
 initPopover();
-initDatepicker();
-initFilter();
+initDatepicker(daysToDisplay);
+initFilter(daysToDisplay);
+initSelectorFilter();
 
 const start = moment();
-const end = moment().add(30, 'days');
+const end = moment().add(daysToDisplay, 'days');
 const events = document.querySelectorAll('#events')
 events.forEach(element => {
   element.style.display = '';

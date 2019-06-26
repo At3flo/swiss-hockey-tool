@@ -280,8 +280,28 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row row-filter align-items-center">
-    <div class="col-5 col-md-4">
+  <div class="row row-filter align-items-center">
+    <div class="col-5 col-md-2">
+      <%= t "teams" %> :
+    </div>
+    <div class="col-7 col-md-3">
+
+      <div class="dropdown">
+        <!-- <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item"><%= t "allcategories" %></li>
+                  </ul> -->
+          <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
+              data-style="btn-default">
+              <option value='0'><%= t "allcategories" %></option>
+              <% Club.all.each do |club| %>
+              <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+              <% end %>
+          </select>
+      </div>
+    </div>
+    <!-- <div class="col-5 col-md-4">
       <%  t "categories" %> :
     </div>
     <div class="col-7 col-md-2">
@@ -301,22 +321,8 @@
           <li class="dropdown-item"><%= t "U12" %></li>
         </ul>
       </div>
-    </div>
-    <div class="col-5 col-md-2">
-      <%= t "teams" %> :
-    </div>
-    <div class="col-7 col-md-3">
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-          <li class="dropdown-item"><%= t "team0" %></li>
-        </ul>
-      </div>
-    </div>
-  </div>-->
+    </div> -->
+  </div>
   <hr>
 </div>
 
@@ -423,7 +429,7 @@
             </div>
           </div>
           <div class="col-12 col-md-2">
-            <div class="grid-border">
+            <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
               <%= Club.find(event["club_id"]).name %>
             </div>
           </div>
