@@ -13,5 +13,13 @@ class PagesController < ApplicationController
       @categories << "#{t 'underShortened'}#{category.age} #{category.level}#{category.gender.capitalize if category.gender == 'girls'}".strip
     end
     
+    sql_query = " \
+    SELECT *
+    FROM events
+    ORDER BY date
+    ASC;"
+
+    @events = Event.connection.execute(sql_query)
+
   end
 end

@@ -386,38 +386,34 @@
   <!-- Start of first entry -->
 
   <!-- Events tables for showing the result -->
-  <% Event.all.each do |event| %>
+  <% @events.each do |event| %>
   <div class="row row-cards">
     <div class="col-12 col-md-1">
-      <% if user_signed_in? && current_user.club_id == event.club_id || user_signed_in? && current_user.role == "admin" %>
-        <%= link_to edit_event_path(event.id) do %>
+      <% if user_signed_in? && current_user.club_id == event["club_id"] || user_signed_in? && current_user.role == "admin" %>
+        <%= link_to edit_event_path(event["id"]) do %>
           <i class='fas fa-pen editor-selector'></i>
         <% end %>
-        <!-- <%= link_to edit_event_path(event.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#edit-tournament'} do %>
-          <i class='fas fa-pen editor-selector'></i>
-        <% end %> -->
-        <!-- <%= "<a class='editor-selector' role='button' data-toggle='modal' data-target='#edit-tournament'><i class='fas fa-pen editor-selector'></i></a>".html_safe %> -->
       <% end %>
-      <%= "<a href='#collapse#{event.id}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
+      <%= "<a href='#collapse#{event["id"]}' data-toggle='collapse' class='fa fa-plus plus-selector'></a>".html_safe %>
     </div>
     <div class="col-6 col-md-2">
       <div class="grid-border">
-        <span><%= "#{event.date.strftime("%d")}/#{event.date.strftime("%m")}/#{event.date.strftime("%Y")}" %>
-          <%= event.start_time.strftime("%R") %></span>
+        <span><%= "#{event["date"].split("-")[2]}/#{event["date"].split("-")[1]}/#{event["date"].split("-")[0]}" %>
+          <%= "#{event["start_time"].split(":")[0]}:#{event["start_time"].split(":")[1]}" %></span>
       </div>
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border text-center">
-        <% if event.is_tournament_open %>
+        <% if event["is_tournament_open"] %>
           <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
             data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
         <% else %>
           <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
             data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
         <% end %>
-        <% if event.places_left > 0 %>
+        <% if event["places_left"] > 0 %>
           <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'placesLeft'}#{event.places_left}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+            data-content='#{t 'placesLeft'}#{event["places_left"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
         <% else %>
           <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
             data-content='#{t 'full'}' data-trigger='hover' data-placement='right'></div>".html_safe %>
@@ -430,18 +426,18 @@
       <div class="col-12 col-md-3">
     <% end %>
       <div class="grid-border">
-        <%= event.location %>
+        <%= event["location"] %>
       </div>
     </div>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <%= Club.find(event.club_id).name %>
+        <%= Club.find(event["club_id"]).name %>
       </div>
     </div>
     <% if user_signed_in? %>
     <div class="col-12 col-md-2">
       <div class="grid-border">
-        <%= event.contact %>
+        <%= event["contact"] %>
       </div>
     </div>
     <% end %>
@@ -451,7 +447,7 @@
       <div class="col-6 col-md-2">
     <% end %>
       <div class="grid-border">
-        <%= "#{t 'underShortened'}#{Category.find(event.category_id).age} #{Category.find(event.category_id).level}#{Category.find(event.category_id).gender.capitalize if Category.find(event.category_id).gender == 'girls'}".strip %>
+        <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
         <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
             class="fas fa-users-cog fa-1x"></i></button> -->
       </div>
@@ -469,9 +465,9 @@
     </div>
   </div>
   <div class="row">
-    <%= "<div class='col collapse text-center' id='collapse#{event.id}'>".html_safe %>
+    <%= "<div class='col collapse text-center' id='collapse#{event["id"]}'>".html_safe %>
     <div class="card card-body">
-      <%= event.other_informations %>
+      <%= event["other_informations"] %>
     </div>
   </div>
 </div>
