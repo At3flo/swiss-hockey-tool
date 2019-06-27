@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     as :user do
       post "/users", to: "registrations#create"
     end
-    resources :teams_registrations, only: [:create, :destroy]
+    resources :inscriptions, only: [:create, :destroy]
     resources :events, only: [:create, :edit, :update, :destroy]
     devise_for :users, controllers: {:registrations => "registrations"}
     root to: 'pages#home'

@@ -1,45 +1,3 @@
-<!-- Modal for login -->
-<div id="login" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"><%= t 'login' %></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form action="/" method="post">
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <%= t "username" %> :
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="sr-only" for="username"><%= t "username" %></label>
-              <input type="text" class="form-control form-control-sm mr-1" id="username" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <%= t "password" %> :
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="sr-only" for="password"><%= t "password" %></label>
-              <input type="password" class="form-control form-control-sm mr-1" id="password" required
-                autocomplete="off">
-            </div>
-          </div>
-          <!-- Submit and cancel buttons -->
-          <div class="form-row">
-            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal"><%= t 'cancel' %></button>
-            <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'login' %></button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Modal for new user -->
 <div id="addNewUser" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -384,7 +342,7 @@
       <!-- Start of first entry -->
 
       <!-- Events tables for showing the result -->
-      <% @events.each_with_index do |event, index| %>
+    <% @events.each_with_index do |event, index| %>
       <%= "<div id='events'>".html_safe %>
       <div class="row row-cards">
         <div class="col-12 col-md-1">
@@ -455,7 +413,7 @@
               <div class="grid-border text-center">
                 <%= "<button type='button' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#teamsPresent#{event["id"]}'><i
                     class='fa fa-users fa-1x'></i></button>".html_safe %>
-                <% if user_signed_in? %>
+                <% if user_signed_in? && policy(Inscription).create? %>
                   <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}'>".html_safe %>
                     <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
                   </a>
@@ -512,8 +470,12 @@
                 <% else %>
                   <% Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).each do |inscription| %>
                     <li>
-                      <%= link_to teams_registration_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
-                        <i class='fas fa-trash-alt'></i>
+                      <% if user_signed_in? && policy(inscription).destroy? %>
+
+                      <%# if user_signed_in? && inscription.club_id == current_user.club_id || user_signed_in? && current_user.role == "admin" %>
+                        <%= link_to inscription_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
+                          <i class='fas fa-trash-alt'></i>
+                        <% end %>
                       <% end %>
                       <%= "#{@clubs_id_name.values_at(inscription.club_id)[0]} #{inscription.team_name}" %>
                     </li>
@@ -526,50 +488,69 @@
       </div>
 
       <!-- Modal inscriptions -->
-      <%= "<div id='teamsInscription#{event["id"]}' class='modal fade' role='dialog'>".html_safe %>
-        <div class="modal-dialog">
+      <% if user_signed_in? %>
+        <%= "<div id='teamsInscription#{event["id"]}' class='modal fade' role='dialog'>".html_safe %>
+          <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title"><%= t "teamsInscription" %></h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title"><%= t "teamsInscription" %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
 
-            <div class="modal-body">
-              <%= "<form action='/teams_registrations' method='post'>".html_safe %>
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                <div class="form-row">
-                  <div class="form-group col-sm-4">
-                    <%= t "optionalTeamName" %> :
+              <div class="modal-body">
+                <%= "<form action='/inscriptions' method='post'>".html_safe %>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <div class="form-row">
+                    <div class="form-group col-sm-4">
+                      <%= t "optionalTeamName" %> :
+                    </div>
+                    <div class="form-group col-sm-4">
+                      <input type="text" class="form-control form-control-sm mr-1" id="optional-team-name" name="team_name">
+                      <small class="form-text text-muted"><%= t 'exempliGratiaForMultipleTeams'%> RWW1, RWW2, etc.</small>
+                    </div>
                   </div>
-                  <div class="form-group col-sm-4">
-                    <input type="text" class="form-control form-control-sm mr-1" id="optional-team-name" name="team_name">
-                    <small class="form-text text-muted"><%= t 'exempliGratiaForMultipleTeams'%> RWW1, RWW2, etc.</small>
+
+                  <%= "<input type='hidden' name='event_id' value='#{event['id']}'>".html_safe %>
+                  <% if current_user.role == "admin" %>
+                    <div class="form-row">
+                    <div class="form-group col-sm-4">
+                      <%= t "adminRegistrationForTeams" %> :
+                    </div>
+                    <div class="form-group col-sm-8">
+                      <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
+                        data-style="btn-default">
+                        <% Club.all.each do |club| %>
+                        <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+                        <% end %>
+                      </select>
+                      <small class="form-text text-muted"><%= t 'asAdminYouCanRegisterTeamsForClubs'%></small>
+                    </div>
                   </div>
-                </div>
+                  <% else %>
+                  <%= "<input type='hidden' name='club_id' value='#{current_user.club_id}'>".html_safe %>
+                  <% end %>
+                  <%= "<input type='hidden' name='category_id' value='#{event["category_id"]}'>".html_safe %>
 
-                <%= "<input type='hidden' name='event_id' value='#{event['id']}'>".html_safe %>
-                <%= "<input type='hidden' name='club_id' value='#{current_user.club_id}'>".html_safe %>
-                <%= "<input type='hidden' name='category_id' value='#{event["category_id"]}'>".html_safe %>
-
-                <!-- Submit and cancel buttons -->
-                <div class="form-row">
-                  <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal"><%= t 'cancel' %></button>
-                  <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'checkIn' %></button>
-                </div>
-              </form>
+                  <!-- Submit and cancel buttons -->
+                  <div class="form-row">
+                    <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal"><%= t 'cancel' %></button>
+                    <button type="submit" class="btn btn-primary btn-sm ml-1"><%= t 'checkIn' %></button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <% end %>
-      <!-- End of entry -->
+    <% end %>
+    <!-- End of entry -->
 
 
-      <footer>
-        <div class="container">
-          <hr>
-          © 2019 Designed and powered by At3flo
-        </div>
-      </footer>
+  <footer>
+    <div class="container">
+      <hr>
+      © 2019 Designed and powered by At3flo
+    </div>
+  </footer>
