@@ -8,18 +8,13 @@ class RegistrationsController < Devise::RegistrationsController
 
     authorize @user
 
-    if current_user.role == "admin"
-      if @user.save
-        mail = UserMailer.with(user: @user).welcome
-        mail.deliver_now
-        redirect_to root_path
-      else
-        flash[:notice] ='ERROR: Account was not created probably email was already taken'
-        render :template => "registrations/_form_new_user"
-      end
-    else
-      flash[:notice] ='ERROR: Account was not created you are not an admin'
+    if @user.save
+      mail = UserMailer.with(user: @user).welcome
+      mail.deliver_now
       redirect_to root_path
+    else
+      flash[:notice] ='ERROR: Account was not created probably email was already taken'
+      render :template => "registrations/_form_new_user"
     end
   end
 

@@ -9,5 +9,6 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     @token = @user.send(:set_reset_password_token)
     mail(to: @user.email, subject: 'Welcome to Swiss Hockey Tool')
+    mail(to: "matrash@bqn.ch", subject: 'A new user is registred to Swiss Hockey Tool' )
   end
 end
