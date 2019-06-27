@@ -90,6 +90,7 @@ en:
   cancel: "Cancel"
   deleteTournament: "Delete tournament"
   confirmRemoveTeam: 'Are you sure you want to remove your team of this tournament ?'
+  teamsInscription: "Register a team from your club"
   simple_form:
       labels:
         defaults:

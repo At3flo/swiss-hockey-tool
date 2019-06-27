@@ -1,7 +1,12 @@
-class TeamsRegistrationsController < ApplicationController
+class InscriptionsController < ApplicationController
+
+  helper_method :destroy?
+
   def create
     @inscription = Inscription.new(inscription_params)
     
+    authorize @inscription
+
     if @inscription.save
       redirect_to root_path
     else
@@ -13,6 +18,9 @@ class TeamsRegistrationsController < ApplicationController
 
   def destroy
     @inscription = Inscription.find(params[:id])
+    raise
+    authorize @inscription
+
     @inscription.destroy
     
     redirect_to root_path

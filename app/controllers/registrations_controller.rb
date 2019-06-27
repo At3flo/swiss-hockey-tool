@@ -6,6 +6,8 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     @user.password = Devise.friendly_token.first(8)
 
+    authorize @user
+
     if current_user.role == "admin"
       if @user.save
         mail = UserMailer.with(user: @user).welcome
@@ -16,6 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
         render :template => "registrations/_form_new_user"
       end
     else
+      flash[:notice] ='ERROR: Account was not created you are not an admin'
       redirect_to root_path
     end
   end

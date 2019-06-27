@@ -5,6 +5,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     @event.is_tournament_open = true
+
+    authorize @event
+
     if @event.save
       redirect_to root_path
     else
@@ -59,6 +62,8 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+
+    authorize @event
   end
 
   def event_params
