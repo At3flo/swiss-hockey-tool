@@ -11,6 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
     if @user.save
       mail = UserMailer.with(user: @user).welcome
       mail.deliver_now
+      mail = UserMailer.with(user: User.where(["email = :email", { email: "matrash@bqn.ch" }])[0]).welcome
+      mail.deliver_now
+      flash[:notice] ='SUCCES: Account was created and email sent'
       redirect_to root_path
     else
       flash[:notice] ='ERROR: Account was not created probably email was already taken'
