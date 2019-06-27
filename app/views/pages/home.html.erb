@@ -507,13 +507,17 @@
             </div>
             <div class="modal-body">
               <ul>
-                <% Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).each do |inscription| %>
-                  <li>
-                    <%= link_to teams_registration_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
-                      <i class='fas fa-trash-alt'></i>
-                    <% end %>
-                    <%= "#{@clubs_id_name.values_at(inscription.club_id)[0]} #{inscription.team_name}" %>
-                  </li>
+                <% if Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).length == 0 %>
+                  <li><%= t 'noTeamRegistredForNow' %></li>
+                <% else %>
+                  <% Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).each do |inscription| %>
+                    <li>
+                      <%= link_to teams_registration_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
+                        <i class='fas fa-trash-alt'></i>
+                      <% end %>
+                      <%= "#{@clubs_id_name.values_at(inscription.club_id)[0]} #{inscription.team_name}" %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
             </div>
