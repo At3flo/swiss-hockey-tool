@@ -21,6 +21,16 @@ class PagesController < ApplicationController
 
     @events = Event.connection.execute(sql_query)
 
+    @clubs = Club.all
+
+    @clubs_id_name = []
+
+    @clubs.each do |club|
+      @clubs_id_name[club[:id]] = club.name
+    end
+
+    @confirmRemoveTeam = t 'confirmRemoveTeam'
+
   end
 
 end

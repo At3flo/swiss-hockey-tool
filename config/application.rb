@@ -16,6 +16,9 @@ module SwissHockeyTool
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # Raise error on strong params
+    config.action_controller.action_on_unpermitted_parameters = :raise
+
     # Initernalization
     config.i18n.available_locales = [:en, :fr, :de]
     config.i18n.default_locale = :en
