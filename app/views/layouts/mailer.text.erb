@@ -1,0 +1,15 @@
+<% if content_for?(:header) %>
+<%= yield(:header) %>
+<% end %>
+
+<%= yield %>
+
+<% if content_for?(:footer) %>
+  <%= yield(:footer) %>
+<% end %>
+
+
+— The Swiss Hockey Team
+
+<%# Follow @Colocation on Easy Coloc'. %>
+<%#= ApplicationGlobals::GlobalVar::BASE_URL %>

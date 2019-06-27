@@ -1,0 +1,116 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  login: "Login"
+  tournamentManager: "Tournament manager"
+  dateAndTime: "Date and time"
+  addNewTournament: "Add a new tournament"
+  daterange: "Date range"
+  hideUnscheduledEvents: "Hide unscheduled events"
+  categories: "Categories"
+  allcategories: "All"
+  challenge: "Challenge"
+  elite: "Elite"
+  U8: "U8"
+  U10: "U10"
+  U12: "U12"
+  U15: "U15"
+  teams: "Teams"
+  team0: "Team0"
+  filter: "Filter"
+  status: "Status"
+  location: "Location"
+  organizer: "Organizer"
+  contact: "Contact"
+  categories-shortened: "Cat."
+  teamsPresent: "Teams present"
+  categoriesAvailable: "Categories available"
+  U12Girls: "U12 Girls"
+  U15Girls: "U15 Girls"
+  U10Challenge: "U10 Challenge"
+  U12Challenge: "U12 Challenge"
+  U15Challenge: "U15 Challenge"
+  U10Elite: "U10 Elite"
+  U12Elite: "U12 Elite"
+  tournamentDate: "Date"
+  add: "Add"
+  hour: "Time"
+  otherInfos: "Other informations"
+  username: "Username"
+  password: "Password"
+  field: "Field"
+  outdoor: "Outdoor"
+  indoor: "Indoor"
+  addNewUser: "Add a new user"
+  logout: "Logout"
+  startTime: "Start time"
+  period: "Period of time"
+  morning: "Morning"
+  afternoon: "Afternoon"
+  fullDay: "Full day"
+  underShortened: "U"
+  category: "Category"
+  maxNumberOfTeams: "Max. number of teams"
+  tournamentState: "Tournament state"
+  open: "Open"
+  close: "Close"
+  availabilityOfPlaces: "Availability of places"
+  placesLeft: "Places left: "
+  full: "Full"
+  editATournament: "Edit an existing tournament"
+  cancel: "Cancel"
+  deleteTournament: "Delete tournament"
+  confirmRemoveTeam: 'Are you sure you want to remove your team of this tournament ?'
+  teamsInscription: "Register a team from your club"
+  simple_form:
+      labels:
+        defaults:
+          period: "Period of time"
+          start_time: "Start time"
+          is_outdoor: "Field"
+          is_tournament_open: "Tournament state"
+          location: "Location"
+          contact: "Contact"
+          category_id: "Category"
+          places_left: "Places left"
+          other_informations: "Other informations"
+  helpers:
+    submit: 
+      user:
+        create: "Submit"
+      event:
+        update: "Update tournament"
+  date:
+    order:
+      - :day
+      - :month
+      - :year
