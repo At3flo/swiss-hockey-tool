@@ -21,12 +21,16 @@ class PagesController < ApplicationController
 
     @events = Event.connection.execute(sql_query)
 
-  end
+    @clubs = Club.all
 
-  def mark_as_true
-    raise
-    
-    # redirect, respond with json, whatever
+    @clubs_id_name = []
+
+    @clubs.each do |club|
+      @clubs_id_name[club[:id]] = club.name
+    end
+
+    @confirmRemoveTeam = t 'confirmRemoveTeam'
+
   end
 
 end

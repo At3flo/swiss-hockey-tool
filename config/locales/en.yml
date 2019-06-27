@@ -89,6 +89,7 @@ en:
   editATournament: "Edit an existing tournament"
   cancel: "Cancel"
   deleteTournament: "Delete tournament"
+  confirmRemoveTeam: 'Are you sure you want to remove your team of this tournament ?'
   simple_form:
       labels:
         defaults:
