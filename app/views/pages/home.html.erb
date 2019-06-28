@@ -302,6 +302,13 @@
         <%= t "status" %>
       </div>
     </div>
+
+    <div class="col-12 col-md-2">
+      <div class="grid-border">
+        <%= t "organizer" %>
+      </div>
+    </div>
+
     <% if user_signed_in? %>
     <div class="col-12 col-md-2">
       <% else %>
@@ -311,11 +318,7 @@
           <%= t "location" %>
         </div>
       </div>
-      <div class="col-12 col-md-2">
-        <div class="grid-border">
-          <%= t "organizer" %>
-        </div>
-      </div>
+
       <% if user_signed_in? %>
       <div class="col-12 col-md-2">
         <div class="grid-border">
@@ -377,32 +380,35 @@
             <% end %>
           </div>
         </div>
+
+        <div class="col-12 col-md-2 organizer">
+          <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
+            <%= Club.find(event["club_id"]).name %>
+          </div>
+        </div>
+
         <% if user_signed_in? %>
-        <div class="col-12 col-md-2">
-          <% else %>
+          <div class="col-12 col-md-2 location">
+        <% else %>
           <div class="col-12 col-md-3">
-            <% end %>
+        <% end %>
             <div class="grid-border">
               <%= event["location"] %>
             </div>
-          </div>
-          <div class="col-12 col-md-2">
-            <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
-              <%= Club.find(event["club_id"]).name %>
-            </div>
-          </div>
+        </div>
+
           <% if user_signed_in? %>
-          <div class="col-12 col-md-2">
+          <div class="col-12 col-md-2 contact">
             <div class="grid-border">
               <%= event["contact"] %>
             </div>
           </div>
           <% end %>
           <% if user_signed_in? %>
-          <div class="col-6 col-md-1">
-            <% else %>
+            <div class="col-6 col-md-1 category">
+          <% else %>
             <div class="col-6 col-md-2">
-              <% end %>
+          <% end %>
               <div class="grid-border">
                 <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
                 <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
