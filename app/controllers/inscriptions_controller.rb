@@ -10,7 +10,7 @@ class InscriptionsController < ApplicationController
     if @inscription.save
       redirect_to root_path
     else
-      flash[:notice] ='ERROR: Registration was not created contact your admin'
+      flash[:alert] ='ERROR: Registration was not created contact your admin'
       redirect_to root_path
     end
 
