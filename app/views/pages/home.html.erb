@@ -131,7 +131,7 @@
             <%= t "maxNumberOfTeams" %> :
           </div>
           <div class="form-group col-sm-8">
-            <input type="number" class="form-control form-control-sm mr-1" name="places_left" max="10"
+            <input type="number" class="form-control form-control-sm mr-1" name="total_places" min="0" max="20"
               required></textarea>
           </div>
         </div>
@@ -373,10 +373,10 @@
             <% end %>
             <% if event["places_left"] > 0 %>
             <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'placesLeft'}#{event["places_left"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+            data-content='#{t 'placesLeft'}#{event["places_left"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
             <% else %>
             <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'full'}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+            data-content='#{t 'full'} #{event["total_places"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
             <% end %>
           </div>
         </div>

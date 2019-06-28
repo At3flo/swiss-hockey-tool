@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  has_many :inscriptions
+  has_many :inscriptions, dependent: :destroy
 end

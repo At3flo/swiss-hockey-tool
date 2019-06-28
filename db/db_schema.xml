@@ -121,6 +121,9 @@
 <row name="places_left" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="total_places" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <row name="location" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>

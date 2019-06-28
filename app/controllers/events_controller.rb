@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.places_left = @event.total_places
     @event.user = current_user
     @event.is_tournament_open = true
 
@@ -36,15 +37,18 @@ class EventsController < ApplicationController
     @event.date = Time.new(params[:event]["date(1i)"], params[:event]["date(2i)"], params[:event]["date(3i)"]).strftime("%F")
     @event.period = params[:event][:period]
     @event.start_time = Time.new(2000, 1, 1, params[:event]["start_time(4i)"], params[:event]["start_time(5i)"]).strftime("%H:%M")
-    @event.places_left = params[:event][:places_left]
+    @event.places_left += params[:event][:total_places].to_i - @event.total_places.to_i
+    @event.total_places = params[:event][:total_places].to_i
     @event.location = params[:event][:location]
     @event.contact = params[:event][:contact]
     @event.is_tournament_open = params[:event][:is_tournament_open]
     @event.is_outdoor = params[:event][:is_outdoor]
     @event.other_informations = params[:event][:other_informations]
     @event.user = current_user
-    @event.category = Category.find(params[:event][:category_id])
+    @event.category = Category.find(params[:event][:category_id].to_i)
     
+    @event.is_tournament_open = false if @event.places_left == 0
+
     if @event.save
       redirect_to root_path
     else
@@ -67,6 +71,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.permit(:date, :period, :start_time, :club_id, :is_outdoor, :location, :contact, :category_id, :places_left, :other_informations)
+    params.permit(:date, :period, :start_time, :club_id, :is_outdoor, :location, :contact, :category_id, :total_places, :other_informations)
   end
 end
