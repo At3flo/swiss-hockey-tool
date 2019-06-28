@@ -1,6 +1,6 @@
 {
   "name": "swiss-hockey-tool",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Swiss Hockey Tool (SHT) is an online tool that provide the ability to administer the organization of an Hockey tournament.",
   "repository": {
     "type": "git",
