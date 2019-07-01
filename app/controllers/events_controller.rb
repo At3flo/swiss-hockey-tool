@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
     authorize @event
 
-    if @event.save
+    if @event.save!
       redirect_to root_path
     else
       render :new
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     
     @event.is_tournament_open = false if @event.places_left == 0
 
-    if @event.save
+    if @event.save!
       redirect_to root_path
     else
       render :new

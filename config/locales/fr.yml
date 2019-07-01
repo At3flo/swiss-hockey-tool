@@ -39,7 +39,7 @@ fr:
   field: "Terrain"
   outdoor: "Extérieur"
   indoor: "Salle"
-  addNewUser: "Ajouter un nouvel utilisateur"
+  addNewUser: "Ajouter un Team Manager"
   logout: "Déconnexion"
   startTime: "Heure de début"
   period: "Période"
