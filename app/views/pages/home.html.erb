@@ -114,24 +114,14 @@
             <br>(<%= t "maxNumberOfTeams" %>)
           </div>
           <div class="form-group col-sm-4">
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id}' value='true'>&nbsp;#{@categories[0]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+1}' value='true'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+2}' value='true'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+3}' value='true'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+4}' value='true'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+5}' value='true'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+6}' value='true'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
-            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+7}' value='true'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
+            <% Category.all.each_with_index do |categorie, i| %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{categorie.id}' value='true'>&nbsp;#{@categories[i]}</label></div>".html_safe %>
+            <% end %>
           </div>
           <div class="form-group col-sm-4">
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+1}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+2}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+3}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+4}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+5}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+6}' min='0' max='20' value='0'></textarea>".html_safe %>
-            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+7}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <% Category.all.each do |categorie| %>
+              <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{categorie.id}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <% end %>
           </div>
         </div>
         <!-- Others infos -->

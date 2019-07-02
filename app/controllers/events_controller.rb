@@ -12,23 +12,19 @@ class EventsController < ApplicationController
       other_informations: params[:other_informations]
     )
 
-    categories_selected_array = []
-    (1..8).each do |i|
-      categories_selected_array << i if params["category-#{i}"]
+    categories_h = {}
+    Category.all.each do |category|
+      if params["category-#{category.id}"]
+        categories_h[category.id] = { "places_left": params["total_places-#{category.id}"], "total_places": params["total_places-#{category.id}"] }
+      else 
+        categories_h[category.id] = { "places_left": 0, "total_places": 0 }
+      end
     end
-    @event.categories = categories_selected_array.join(",")
-    @event.category_id = 1
-    
-    total_places_selected_array = []
-    (1..8).each do |i|
-      total_places_selected_array << params["total_places-#{i}"] if params["category-#{i}"]
-    end
-    @event.total_places = total_places_selected_array.join(",")
 
-    @event.places_left = @event.total_places
+    @event.categories = categories_h
     @event.user = current_user
     
-    # @event.is_tournament_open = true
+    @event.is_tournament_open = true
 
     authorize @event
 
