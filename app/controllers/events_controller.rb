@@ -2,10 +2,33 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy]
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(date: params[:date], 
+      period: params[:period], 
+      start_time: params[:start_time], 
+      club_id: params[:club_id], 
+      is_outdoor: params[:is_outdoor],
+      location: params[:location],
+      contact: params[:contact],
+      other_informations: params[:other_informations]
+    )
+
+    categories_selected_array = []
+    (1..8).each do |i|
+      categories_selected_array << i if params["category-#{i}"]
+    end
+    @event.categories = categories_selected_array.join(",")
+    @event.category_id = 1
+    
+    total_places_selected_array = []
+    (1..8).each do |i|
+      total_places_selected_array << params["total_places-#{i}"] if params["category-#{i}"]
+    end
+    @event.total_places = total_places_selected_array.join(",")
+
     @event.places_left = @event.total_places
     @event.user = current_user
-    @event.is_tournament_open = true
+    
+    # @event.is_tournament_open = true
 
     authorize @event
 
@@ -70,7 +93,4 @@ class EventsController < ApplicationController
     authorize @event
   end
 
-  def event_params
-    params.permit(:date, :period, :start_time, :club_id, :is_outdoor, :location, :contact, :category_id, :total_places, :other_informations)
-  end
 end

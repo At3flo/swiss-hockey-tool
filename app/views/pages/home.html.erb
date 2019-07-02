@@ -107,32 +107,31 @@
               required><%= @contact %></textarea>
           </div>
         </div>
-        <!-- Categories available for the tournament -->
+        <!-- Categories available for the tournament and set maximal places for each category-->
         <div class="form-row">
           <div class="form-group col-sm-4">
             <%= t "category" %> :
+            <br>(<%= t "maxNumberOfTeams" %>)
           </div>
           <div class="form-group col-sm-4">
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id}' required>&nbsp;#{@categories[0]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+1}'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+2}'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+3}'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id}' value='true'>&nbsp;#{@categories[0]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+1}' value='true'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+2}' value='true'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+3}' value='true'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+4}' value='true'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+5}' value='true'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+6}' value='true'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
+            <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{Category.first.id+7}' value='true'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
           </div>
           <div class="form-group col-sm-4">
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+4}'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+5}'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+6}'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+7}'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
-          </div>
-        </div>
-        <!-- Set maximal places for the tournament -->
-        <div class="form-row">
-          <div class="form-group col-sm-4">
-            <%= t "maxNumberOfTeams" %> :
-          </div>
-          <div class="form-group col-sm-8">
-            <input type="number" class="form-control form-control-sm mr-1" name="total_places" min="0" max="20"
-              required></textarea>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+1}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+2}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+3}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+4}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+5}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+6}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{Category.first.id+7}' min='0' max='20' value='0'></textarea>".html_safe %>
           </div>
         </div>
         <!-- Others infos -->
@@ -259,27 +258,6 @@
           </select>
       </div>
     </div>
-    <!-- <div class="col-5 col-md-4">
-      <%  t "categories" %> :
-    </div>
-    <div class="col-7 col-md-2">
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-          <li class="dropdown-header"><%= t "challenge" %></li>
-          <li class="dropdown-item"><%= t "U8" %></li>
-          <li class="dropdown-item"><%= t "U10" %></li>
-          <li class="dropdown-item"><%= t "U12" %></li>
-          <li class="dropdown-item"><%= t "U15" %></li>
-          <li class="divider"></li>
-          <li class="dropdown-header"><%= t "elite" %></li>
-          <li class="dropdown-item"><%= t "U12" %></li>
-        </ul>
-      </div>
-    </div> -->
   </div>
   <hr>
 </div>
@@ -299,7 +277,7 @@
     </div>
     <div class="col-6 col-md-1">
       <div class="grid-border">
-        <%= t "status" %>
+        <%= t "field" %>
       </div>
     </div>
 
@@ -309,11 +287,7 @@
       </div>
     </div>
 
-    <% if user_signed_in? %>
-    <div class="col-12 col-md-2">
-      <% else %>
-      <div class="col-12 col-md-3">
-        <% end %>
+    <div class="col-12 col-md-3">
         <div class="grid-border">
           <%= t "location" %>
         </div>
@@ -326,15 +300,7 @@
         </div>
       </div>
       <% end %>
-      <% if user_signed_in? %>
-      <div class="col-6 col-md-1">
-        <% else %>
-        <div class="col-6 col-md-2">
-          <% end %>
-          <div class="grid-border">
-            <%= t "categories-shortened" %>
-          </div>
-        </div>
+      
         <div class="col-6 col-md-1">
           <div class="grid-border">
             <%= t "teams" %>
@@ -364,20 +330,11 @@
         </div>
         <div class="col-6 col-md-1">
           <div class="grid-border text-center">
-            <% if event["is_tournament_open"] %>
-            <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+            <% if event["is_outdoor"] %>
+              <%= t "outdoor" %>
             <% else %>
-            <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
-            <% end %>
-            <% if event["places_left"] > 0 %>
-            <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'placesLeft'}#{event["places_left"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-            <% else %>
-            <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'full'} #{event["total_places"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-            <% end %>
+              <%= t 'indoor' %>
+            <% end %> 
           </div>
         </div>
 
@@ -387,11 +344,7 @@
           </div>
         </div>
 
-        <% if user_signed_in? %>
-          <div class="col-12 col-md-2 location">
-        <% else %>
           <div class="col-12 col-md-3">
-        <% end %>
             <div class="grid-border">
               <%= event["location"] %>
             </div>
@@ -404,26 +357,11 @@
             </div>
           </div>
           <% end %>
-          <% if user_signed_in? %>
-            <div class="col-6 col-md-1 category">
-          <% else %>
-            <div class="col-6 col-md-2">
-          <% end %>
-              <div class="grid-border">
-                <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
-                <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
-            class="fas fa-users-cog fa-1x"></i></button> -->
-              </div>
-            </div>
+          
             <div class="col-6 col-md-1">
               <div class="grid-border text-center">
                 <%= "<button type='button' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#teamsPresent#{event["id"]}'><i
                     class='fa fa-users fa-1x'></i></button>".html_safe %>
-                <% if user_signed_in? && policy(Inscription).create? %>
-                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}'>".html_safe %>
-                    <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
-                  </a>
-                <% end %>
               </div>
             </div>
           </div>
@@ -431,29 +369,6 @@
             <%= "<div class='col collapse text-center' id='collapse#{event["id"]}'>".html_safe %>
             <div class="card card-body">
               <%= event["other_informations"] %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal categories -->
-      <div id="categoriesAvailable1" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-              <ul>
-                <li><%= t "U12Girls" %></li>
-                <li><%= t "U10Challenge" %></li>
-                <li><%= t "U12Challenge" %></li>
-                <li><%= t "U15Challenge" %></li>
-                <li><%= t "U12Elite" %></li>
-              </ul>
             </div>
           </div>
         </div>
@@ -470,6 +385,14 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+              <% (JSON.parse event["categories"]).keys.each do |categorie| %>             
+              <h5><%= @categories[categorie.to_i - 1] %>
+              <% if user_signed_in? && policy(Inscription).create? %>
+                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}'>".html_safe %>
+                    <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
+                  </a>
+                <% end %>
+              </h5>
               <ul>
                 <% if Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).length == 0 %>
                   <li><%= t 'noTeamRegistredForNow' %></li>
@@ -488,6 +411,7 @@
                   <% end %>
                 <% end %>
               </ul>
+              <% end %>
             </div>
           </div>
         </div>
@@ -537,7 +461,7 @@
                   <% else %>
                   <%= "<input type='hidden' name='club_id' value='#{current_user.club_id}'>".html_safe %>
                   <% end %>
-                  <%= "<input type='hidden' name='category_id' value='#{event["category_id"]}'>".html_safe %>
+                  <%= "<input type='hidden' name='category_id' value='#{(JSON.parse event["categories"])["1"]}'>".html_safe %>
 
                   <!-- Submit and cancel buttons -->
                   <div class="form-row">
