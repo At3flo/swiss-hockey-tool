@@ -394,14 +394,12 @@
                 <% end %>
               </h5>
               <ul>
-                <% if Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).length == 0 %>
+              <% if Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).length == 0 %>
                   <li><%= t 'noTeamRegistredForNow' %></li>
                 <% else %>
-                  <% Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).each do |inscription| %>
+                <% Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).each do |inscription| %>
                     <li>
                       <% if user_signed_in? && policy(inscription).destroy? %>
-
-                      <%# if user_signed_in? && inscription.club_id == current_user.club_id || user_signed_in? && current_user.role == "admin" %>
                         <%= link_to inscription_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
                           <i class='fas fa-trash-alt'></i>
                         <% end %>
