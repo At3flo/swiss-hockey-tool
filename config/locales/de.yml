@@ -58,6 +58,9 @@ de:
   editATournament: "Bearbeiten eines bestehenden Turniers"
   cancel: "Abbrechen"
   deleteTournament: "Turnier löschen"
+  confirmRemoveTeam: 'Sind Sie sicher, dass Sie Ihre Mannschaft aus diesem Turnier entfernen wollen?'
+  teamsInscription: "Registrieren Sie ein Team aus Ihrem Verein"
+  noTeamRegistredForNow: "Zur Zeit ist noch kein Team angemeldet"
   simple_form:
       labels:
         defaults:

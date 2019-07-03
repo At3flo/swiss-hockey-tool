@@ -229,16 +229,11 @@
   </div>
   <div class="row row-filter align-items-center">
     <div class="col-5 col-md-2">
-      <%= t "teams" %> :
+      <%= t "organizer" %> :
     </div>
     <div class="col-7 col-md-3">
 
       <div class="dropdown">
-        <!-- <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-                  </ul> -->
           <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
               data-style="btn-default">
               <option value='0'><%= t "allcategories" %></option>
@@ -265,19 +260,28 @@
         <%= t 'dateAndTime' %>
       </div>
     </div>
-    <div class="col-6 col-md-1">
+
+    <% unless user_signed_in? %>
+      <div class="col-6 col-md-2">
+    <% else %>
+      <div class="col-6 col-md-1">
+    <% end %>
       <div class="grid-border">
         <%= t "field" %>
       </div>
     </div>
 
-    <div class="col-12 col-md-3">
+    <% unless user_signed_in? %>
+      <div class="col-12 col-md-3">
+    <% else %>
+      <div class="col-12 col-md-2">
+    <% end %>
       <div class="grid-border">
         <%= t "organizer" %>
       </div>
     </div>
 
-    <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3">
         <div class="grid-border">
           <%= t "location" %>
         </div>
@@ -318,8 +322,13 @@
               <%= "#{event["start_time"].split(":")[0]}:#{event["start_time"].split(":")[1]}" %></span>
           </div>
         </div>
-        <div class="col-6 col-md-1">
-          <div class="grid-border text-center">
+
+        <% unless user_signed_in? %>
+          <div class="col-6 col-md-2">
+        <% else %>
+          <div class="col-6 col-md-1 smaller">
+        <% end %>
+          <div class="grid-border">
             <% if event["is_outdoor"] %>
               <%= t "outdoor" %>
             <% else %>
@@ -327,21 +336,29 @@
             <% end %> 
           </div>
         </div>
-
-        <div class="col-12 col-md-3 organizer">
+            
+        <% unless user_signed_in? %>
+          <div class="col-12 col-md-3 organizer">
+        <% else %>
+          <div class="col-12 col-md-2 organizer smaller">
+        <% end %>
           <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
             <%= Club.find(event["club_id"]).name %>
           </div>
         </div>
 
+        <% unless user_signed_in? %>
           <div class="col-12 col-md-3">
+        <% else %>
+          <div class="col-12 col-md-3 smaller">
+        <% end %>
             <div class="grid-border">
               <%= event["location"] %>
             </div>
         </div>
 
           <% if user_signed_in? %>
-          <div class="col-12 col-md-2 contact">
+          <div class="col-12 col-md-2 smaller">
             <div class="grid-border">
               <%= event["contact"] %>
             </div>
@@ -400,8 +417,10 @@
                   <% end %>
                 <% end %>
               </ul>
+              <hr>
               <% end %>
               <% end %>
+
             </div>
           </div>
         </div>
