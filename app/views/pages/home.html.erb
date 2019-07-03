@@ -189,7 +189,7 @@
         <div class="col-12 ml-auto">
           <% if current_user.role == "admin" %>
           <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
-            data-target="#addNewUser"><i class="fas fa-cogs"></i>
+            data-target="#addNewUser"><span class="fa fa-plus"></span>
             <%= t 'addNewUser' %></a>
           <% end %>
 
@@ -236,7 +236,7 @@
       <div class="dropdown">
           <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
               data-style="btn-default">
-              <option value='0'><%= t "allcategories" %></option>
+              <option value='0'><%= t "allOrganizer" %></option>
               <% Club.all.each do |club| %>
               <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
               <% end %>

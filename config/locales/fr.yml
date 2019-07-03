@@ -7,6 +7,7 @@ fr:
   hideUnscheduledEvents: "Masquer les événements non planifiés"
   categories: "Catégories"
   allcategories: "Toutes"
+  allOrganizer: "Tous"
   challenge: "Challenge"
   elite: "Elite"
   U8: "M8"

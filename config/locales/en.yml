@@ -38,6 +38,7 @@ en:
   hideUnscheduledEvents: "Hide unscheduled events"
   categories: "Categories"
   allcategories: "All"
+  allOrganizer: "All"
   challenge: "Challenge"
   elite: "Elite"
   U8: "U8"

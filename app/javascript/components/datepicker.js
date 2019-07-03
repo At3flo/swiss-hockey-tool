@@ -48,7 +48,7 @@ const initDatepicker = (daysToDisplay) => {
         const events = document.querySelectorAll('#events')
         events.forEach(element => {
           const elementSelected = document.getElementById("teams");
-          if (elementSelected.options[elementSelected.selectedIndex].value == 0 && document.querySelector('#isTournamentOpen').value === "false") {
+          if (elementSelected.options[elementSelected.selectedIndex].value == 0) {
             element.style.display = '';
           }
           const tournamentDate = element.innerText.trim().substring(6, 10) + "-" + element.innerText.trim().substring(3, 5) + "-" + element.innerText.trim().substring(0, 2)
