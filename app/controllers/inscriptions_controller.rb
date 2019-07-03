@@ -8,10 +8,9 @@ class InscriptionsController < ApplicationController
 
     authorize @inscription
 
-    if @event.places_left > 0 && @inscription.save
-      @event.places_left -= 1
-      @event.is_tournament_open = false if @event.places_left == 0
-      if @event.save
+    if @event.categories[@inscription.category_id.to_s]["places_left"] > 0 && @inscription.save
+      @event.categories[@inscription.category_id.to_s]["places_left"] -= 1
+      if @event.save!
         redirect_to root_path
       else
         flash[:alert] ='ERROR: Places left were not updated but event was created contact the sysadmin'
@@ -30,7 +29,7 @@ class InscriptionsController < ApplicationController
     authorize @inscription
     
     @event = Event.find(@inscription.event_id)
-    @event.places_left += 1
+    @event.categories[@inscription.category_id.to_s]["places_left"] += 1
     if @event.save
       @inscription.destroy
       redirect_to root_path

@@ -271,7 +271,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-md-2">
+    <div class="col-12 col-md-3">
       <div class="grid-border">
         <%= t "organizer" %>
       </div>
@@ -328,7 +328,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-2 organizer">
+        <div class="col-12 col-md-3 organizer">
           <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
             <%= Club.find(event["club_id"]).name %>
           </div>
@@ -377,13 +377,13 @@
             <div class="modal-body">
               <% (JSON.parse event["categories"]).keys.each do |categorie| %>
               <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %>             
-              <h5><%= @categories[categorie.to_i - 1] %>
-              <% if user_signed_in? && policy(Inscription).create? %>
-                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}'>".html_safe %>
+              <h5><%= @categories[categorie.to_i - 1] %></h5>
+              <span><%= t 'placesLeft' %> <%= "#{(JSON.parse event["categories"])[categorie]["places_left"].to_i} / #{(JSON.parse event["categories"])[categorie]["total_places"]}" %></span>
+              <% if user_signed_in? && policy(Inscription).create? && (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
+                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}-#{categorie}'>".html_safe %>
                     <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
                   </a>
                 <% end %>
-              </h5>
               <ul>
               <% if Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).length == 0 %>
                   <li><%= t 'noTeamRegistredForNow' %></li>
@@ -409,7 +409,8 @@
 
       <!-- Modal inscriptions -->
       <% if user_signed_in? %>
-        <%= "<div id='teamsInscription#{event["id"]}' class='modal fade' role='dialog'>".html_safe %>
+        <% (JSON.parse event["categories"]).keys.each do |categorie| %>
+        <%= "<div id='teamsInscription#{event["id"]}-#{categorie}' class='modal fade' role='dialog'>".html_safe %>
           <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -451,7 +452,7 @@
                   <% else %>
                   <%= "<input type='hidden' name='club_id' value='#{current_user.club_id}'>".html_safe %>
                   <% end %>
-                  <%= "<input type='hidden' name='category_id' value='#{(JSON.parse event["categories"])["1"]}'>".html_safe %>
+                  <%= "<input type='hidden' name='category_id' value='#{categorie.to_i}'>".html_safe %>
 
                   <!-- Submit and cancel buttons -->
                   <div class="form-row">
@@ -463,6 +464,7 @@
             </div>
           </div>
         </div>
+      <% end %>
       <% end %>
     <% end %>
     <!-- End of entry -->
