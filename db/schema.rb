@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_171646) do
+ActiveRecord::Schema.define(version: 2019_07_02_160215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_171646) do
   create_table "events", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
-    t.integer "places_left"
     t.text "location"
     t.text "contact"
     t.boolean "is_tournament_open"
@@ -42,12 +41,10 @@ ActiveRecord::Schema.define(version: 2019_06_28_171646) do
     t.text "other_informations"
     t.bigint "club_id"
     t.bigint "user_id"
-    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "period"
-    t.integer "total_places"
-    t.index ["category_id"], name: "index_events_on_category_id"
+    t.jsonb "categories"
     t.index ["club_id"], name: "index_events_on_club_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -82,7 +79,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_171646) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "categories"
   add_foreign_key "events", "clubs"
   add_foreign_key "events", "users"
   add_foreign_key "inscriptions", "categories"

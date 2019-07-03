@@ -1,6 +1,6 @@
 import "bootstrap";
 import { initPopover } from "../components/popover";
-import { initFilter, initSelectorFilter } from "../components/filter";
+import { initSelectorFilter } from "../components/filter";
 import { initDatepicker } from "../components/datepicker";
 import { initFlashes } from "../components/flashes";
 
@@ -8,7 +8,6 @@ const daysToDisplay = 365 // Days in future displayed by daterangepicker
 
 initFlashes();
 initPopover();
-initFilter(daysToDisplay);
 initDatepicker(daysToDisplay);
 initSelectorFilter(daysToDisplay);
 

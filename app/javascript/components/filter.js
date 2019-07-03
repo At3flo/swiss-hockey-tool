@@ -1,31 +1,31 @@
 import { initDatepicker } from "./datepicker";
 
-const initFilter = (daysToDisplay) => {
-  const toggle = document.querySelector('#isTournamentOpen');
-  const events = document.querySelectorAll('#events');
-  toggle.addEventListener('click', () => {
-    if (document.querySelector('#isTournamentOpen').value === "true") {
-      events.forEach(element => {
-        if (element.getElementsByClassName('btn-danger sqValidation')[0]) {
-          let eventClosed = element.getElementsByClassName('btn-danger sqValidation')[0].parentNode.parentNode.parentNode.parentNode;
-          eventClosed.style.display = '';
-        }
-      });
-      document.querySelector('#isTournamentOpen').value = false
+// const initFilter = (daysToDisplay) => {
+//   const toggle = document.querySelector('#isTournamentOpen');
+//   const events = document.querySelectorAll('#events');
+//   toggle.addEventListener('click', () => {
+//     if (document.querySelector('#isTournamentOpen').value === "true") {
+//       events.forEach(element => {
+//         if (element.getElementsByClassName('btn-danger sqValidation')[0]) {
+//           let eventClosed = element.getElementsByClassName('btn-danger sqValidation')[0].parentNode.parentNode.parentNode.parentNode;
+//           eventClosed.style.display = '';
+//         }
+//       });
+//       document.querySelector('#isTournamentOpen').value = false
 
-      initializeDatepickeField(daysToDisplay);
+//       initializeDatepickeField(daysToDisplay);
 
-    } else {
-      events.forEach(element => {
-        if (element.getElementsByClassName('btn-danger sqValidation')[0]) {
-          let eventClosed = element.getElementsByClassName('btn-danger sqValidation')[0].parentNode.parentNode.parentNode.parentNode;
-          eventClosed.style.display = 'none';
-        }
-      });
-      document.querySelector('#isTournamentOpen').value = true
-    }
-  });
-}
+//     } else {
+//       events.forEach(element => {
+//         if (element.getElementsByClassName('btn-danger sqValidation')[0]) {
+//           let eventClosed = element.getElementsByClassName('btn-danger sqValidation')[0].parentNode.parentNode.parentNode.parentNode;
+//           eventClosed.style.display = 'none';
+//         }
+//       });
+//       document.querySelector('#isTournamentOpen').value = true
+//     }
+//   });
+// }
 
 const initSelectorFilter = (daysToDisplay) => {
   const elementSelected = document.getElementById("teams");
@@ -70,6 +70,5 @@ const initializeDatepickeField = (daysToDisplay) => {
 }
 
 export {
-  initFilter,
   initSelectorFilter
 };
