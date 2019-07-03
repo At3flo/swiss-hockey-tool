@@ -107,32 +107,21 @@
               required><%= @contact %></textarea>
           </div>
         </div>
-        <!-- Categories available for the tournament -->
+        <!-- Categories available for the tournament and set maximal places for each category-->
         <div class="form-row">
           <div class="form-group col-sm-4">
             <%= t "category" %> :
+            <br>(<%= t "maxNumberOfTeams" %>)
           </div>
           <div class="form-group col-sm-4">
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id}' required>&nbsp;#{@categories[0]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+1}'>&nbsp;#{@categories[1]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+2}'>&nbsp;#{@categories[2]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+3}'>&nbsp;#{@categories[3]}</label></div>".html_safe %>
+            <% Category.all.each_with_index do |categorie, i| %>
+              <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{categorie.id}' value='true'>&nbsp;#{@categories[i]}</label></div>".html_safe %>
+            <% end %>
           </div>
           <div class="form-group col-sm-4">
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+4}'>&nbsp;#{@categories[4]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+5}'>&nbsp;#{@categories[5]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+6}'>&nbsp;#{@categories[6]}</label></div>".html_safe %>
-            <%= "<div class='radio'><label><input type='radio' name='category_id' value='#{Category.first.id+7}'>&nbsp;#{@categories[7]}</label></div>".html_safe %>
-          </div>
-        </div>
-        <!-- Set maximal places for the tournament -->
-        <div class="form-row">
-          <div class="form-group col-sm-4">
-            <%= t "maxNumberOfTeams" %> :
-          </div>
-          <div class="form-group col-sm-8">
-            <input type="number" class="form-control form-control-sm mr-1" name="total_places" min="0" max="20"
-              required></textarea>
+            <% Category.all.each do |categorie| %>
+              <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{categorie.id}' min='0' max='20' value='0'></textarea>".html_safe %>
+            <% end %>
           </div>
         </div>
         <!-- Others infos -->
@@ -200,7 +189,7 @@
         <div class="col-12 ml-auto">
           <% if current_user.role == "admin" %>
           <a class="btn btn-warning btn-lg btn-block action-btn" role="button" data-toggle="modal"
-            data-target="#addNewUser"><i class="fas fa-cogs"></i>
+            data-target="#addNewUser"><span class="fa fa-plus"></span>
             <%= t 'addNewUser' %></a>
           <% end %>
 
@@ -231,55 +220,29 @@
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="align-items-center material-switch pull-right">
+      <!-- <div class="align-items-center material-switch pull-right">
         <input type="checkbox" id="isTournamentOpen" value="false"/>
         <label for="isTournamentOpen" class="label-primary"></label>
         &nbsp; <%= t 'showOpenTournamentsOnly' %>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="row row-filter align-items-center">
     <div class="col-5 col-md-2">
-      <%= t "teams" %> :
+      <%= t "organizer" %> :
     </div>
     <div class="col-7 col-md-3">
 
       <div class="dropdown">
-        <!-- <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-                  </ul> -->
           <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
               data-style="btn-default">
-              <option value='0'><%= t "allcategories" %></option>
+              <option value='0'><%= t "allOrganizer" %></option>
               <% Club.all.each do |club| %>
               <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
               <% end %>
           </select>
       </div>
     </div>
-    <!-- <div class="col-5 col-md-4">
-      <%  t "categories" %> :
-    </div>
-    <div class="col-7 col-md-2">
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= t "allcategories" %>
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-item"><%= t "allcategories" %></li>
-          <li class="dropdown-header"><%= t "challenge" %></li>
-          <li class="dropdown-item"><%= t "U8" %></li>
-          <li class="dropdown-item"><%= t "U10" %></li>
-          <li class="dropdown-item"><%= t "U12" %></li>
-          <li class="dropdown-item"><%= t "U15" %></li>
-          <li class="divider"></li>
-          <li class="dropdown-header"><%= t "elite" %></li>
-          <li class="dropdown-item"><%= t "U12" %></li>
-        </ul>
-      </div>
-    </div> -->
   </div>
   <hr>
 </div>
@@ -297,23 +260,28 @@
         <%= t 'dateAndTime' %>
       </div>
     </div>
-    <div class="col-6 col-md-1">
+
+    <% unless user_signed_in? %>
+      <div class="col-6 col-md-2">
+    <% else %>
+      <div class="col-6 col-md-1">
+    <% end %>
       <div class="grid-border">
-        <%= t "status" %>
+        <%= t "field" %>
       </div>
     </div>
 
-    <div class="col-12 col-md-2">
+    <% unless user_signed_in? %>
+      <div class="col-12 col-md-3">
+    <% else %>
+      <div class="col-12 col-md-2">
+    <% end %>
       <div class="grid-border">
         <%= t "organizer" %>
       </div>
     </div>
 
-    <% if user_signed_in? %>
-    <div class="col-12 col-md-2">
-      <% else %>
       <div class="col-12 col-md-3">
-        <% end %>
         <div class="grid-border">
           <%= t "location" %>
         </div>
@@ -326,15 +294,7 @@
         </div>
       </div>
       <% end %>
-      <% if user_signed_in? %>
-      <div class="col-6 col-md-1">
-        <% else %>
-        <div class="col-6 col-md-2">
-          <% end %>
-          <div class="grid-border">
-            <%= t "categories-shortened" %>
-          </div>
-        </div>
+      
         <div class="col-6 col-md-1">
           <div class="grid-border">
             <%= t "teams" %>
@@ -362,35 +322,35 @@
               <%= "#{event["start_time"].split(":")[0]}:#{event["start_time"].split(":")[1]}" %></span>
           </div>
         </div>
-        <div class="col-6 col-md-1">
-          <div class="grid-border text-center">
-            <% if event["is_tournament_open"] %>
-            <%= "<div class='btn btn-sq-xs btn-success sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'open'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
+
+        <% unless user_signed_in? %>
+          <div class="col-6 col-md-2">
+        <% else %>
+          <div class="col-6 col-md-1 smaller">
+        <% end %>
+          <div class="grid-border">
+            <% if event["is_outdoor"] %>
+              <%= t "outdoor" %>
             <% else %>
-            <%= "<div class='btn btn-sq-xs btn-danger sqValidation' data-toggle='popover' title='#{t 'tournamentState'}'
-            data-content='#{t 'close'}' data-trigger='hover' data-placement='left'></div>".html_safe %>
-            <% end %>
-            <% if event["places_left"] > 0 %>
-            <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'placesLeft'}#{event["places_left"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-            <% else %>
-            <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-            data-content='#{t 'full'} #{event["total_places"]}/#{event["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
-            <% end %>
+              <%= t 'indoor' %>
+            <% end %> 
           </div>
         </div>
-
-        <div class="col-12 col-md-2 organizer">
+            
+        <% unless user_signed_in? %>
+          <div class="col-12 col-md-3 organizer">
+        <% else %>
+          <div class="col-12 col-md-2 organizer smaller">
+        <% end %>
           <%= "<div class='grid-border' id='team-#{event['club_id']}'>".html_safe %>
             <%= Club.find(event["club_id"]).name %>
           </div>
         </div>
 
-        <% if user_signed_in? %>
-          <div class="col-12 col-md-2 location">
-        <% else %>
+        <% unless user_signed_in? %>
           <div class="col-12 col-md-3">
+        <% else %>
+          <div class="col-12 col-md-3 smaller">
         <% end %>
             <div class="grid-border">
               <%= event["location"] %>
@@ -398,32 +358,17 @@
         </div>
 
           <% if user_signed_in? %>
-          <div class="col-12 col-md-2 contact">
+          <div class="col-12 col-md-2 smaller">
             <div class="grid-border">
               <%= event["contact"] %>
             </div>
           </div>
           <% end %>
-          <% if user_signed_in? %>
-            <div class="col-6 col-md-1 category">
-          <% else %>
-            <div class="col-6 col-md-2">
-          <% end %>
-              <div class="grid-border">
-                <%= "#{t 'underShortened'}#{Category.find(event["category_id"]).age} #{Category.find(event["category_id"]).level}#{Category.find(event["category_id"]).gender.capitalize if Category.find(event["category_id"]).gender == 'girls'}".strip %>
-                <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#categoriesAvailable1"><i
-            class="fas fa-users-cog fa-1x"></i></button> -->
-              </div>
-            </div>
+          
             <div class="col-6 col-md-1">
               <div class="grid-border text-center">
                 <%= "<button type='button' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#teamsPresent#{event["id"]}'><i
                     class='fa fa-users fa-1x'></i></button>".html_safe %>
-                <% if user_signed_in? && policy(Inscription).create? %>
-                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}'>".html_safe %>
-                    <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
-                  </a>
-                <% end %>
               </div>
             </div>
           </div>
@@ -431,29 +376,6 @@
             <%= "<div class='col collapse text-center' id='collapse#{event["id"]}'>".html_safe %>
             <div class="card card-body">
               <%= event["other_informations"] %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal categories -->
-      <div id="categoriesAvailable1" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title"><%= t "categoriesAvailable" %></h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-              <ul>
-                <li><%= t "U12Girls" %></li>
-                <li><%= t "U10Challenge" %></li>
-                <li><%= t "U12Challenge" %></li>
-                <li><%= t "U15Challenge" %></li>
-                <li><%= t "U12Elite" %></li>
-              </ul>
             </div>
           </div>
         </div>
@@ -470,15 +392,22 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+              <% (JSON.parse event["categories"]).keys.each do |categorie| %>
+              <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %>             
+              <h5><%= @categories[categorie.to_i - 1] %></h5>
+              <span><%= t 'placesLeft' %> <%= "#{(JSON.parse event["categories"])[categorie]["places_left"].to_i} / #{(JSON.parse event["categories"])[categorie]["total_places"]}" %></span>
+              <% if user_signed_in? && policy(Inscription).create? && (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
+                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}-#{categorie}'>".html_safe %>
+                    <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
+                  </a>
+                <% end %>
               <ul>
-                <% if Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).length == 0 %>
+              <% if Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).length == 0 %>
                   <li><%= t 'noTeamRegistredForNow' %></li>
                 <% else %>
-                  <% Inscription.where(["event_id = :eventId", { eventId: event["id"] }]).each do |inscription| %>
+                <% Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).each do |inscription| %>
                     <li>
                       <% if user_signed_in? && policy(inscription).destroy? %>
-
-                      <%# if user_signed_in? && inscription.club_id == current_user.club_id || user_signed_in? && current_user.role == "admin" %>
                         <%= link_to inscription_path(inscription.id), method: :delete, data: { confirm: @confirmRemoveTeam } do %>
                           <i class='fas fa-trash-alt'></i>
                         <% end %>
@@ -488,6 +417,10 @@
                   <% end %>
                 <% end %>
               </ul>
+              <hr>
+              <% end %>
+              <% end %>
+
             </div>
           </div>
         </div>
@@ -495,7 +428,8 @@
 
       <!-- Modal inscriptions -->
       <% if user_signed_in? %>
-        <%= "<div id='teamsInscription#{event["id"]}' class='modal fade' role='dialog'>".html_safe %>
+        <% (JSON.parse event["categories"]).keys.each do |categorie| %>
+        <%= "<div id='teamsInscription#{event["id"]}-#{categorie}' class='modal fade' role='dialog'>".html_safe %>
           <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -537,7 +471,7 @@
                   <% else %>
                   <%= "<input type='hidden' name='club_id' value='#{current_user.club_id}'>".html_safe %>
                   <% end %>
-                  <%= "<input type='hidden' name='category_id' value='#{event["category_id"]}'>".html_safe %>
+                  <%= "<input type='hidden' name='category_id' value='#{categorie.to_i}'>".html_safe %>
 
                   <!-- Submit and cancel buttons -->
                   <div class="form-row">
@@ -549,6 +483,7 @@
             </div>
           </div>
         </div>
+      <% end %>
       <% end %>
     <% end %>
     <!-- End of entry -->

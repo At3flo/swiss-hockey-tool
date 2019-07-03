@@ -38,6 +38,7 @@ en:
   hideUnscheduledEvents: "Hide unscheduled events"
   categories: "Categories"
   allcategories: "All"
+  allOrganizer: "All"
   challenge: "Challenge"
   elite: "Elite"
   U8: "U8"
@@ -91,6 +92,7 @@ en:
   deleteTournament: "Delete tournament"
   confirmRemoveTeam: 'Are you sure you want to remove your team of this tournament ?'
   teamsInscription: "Register a team from your club"
+  noTeamRegistredForNow: "No team registred for now"
   simple_form:
       labels:
         defaults:

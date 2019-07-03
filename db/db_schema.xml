@@ -118,11 +118,12 @@
 <row name="start_time" null="1" autoincrement="0">
 <datatype>TIME</datatype>
 <default>NULL</default></row>
-<row name="places_left" null="1" autoincrement="0">
+<row name="club_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="total_places" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="clubs" row="id" />
+</row>
+<row name="is_outdoor" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
 <default>NULL</default></row>
 <row name="location" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
@@ -130,26 +131,18 @@
 <row name="contact" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
-<row name="is_tournament_open" null="1" autoincrement="0">
-<datatype>BOOLEAN</datatype>
+<row name="categories" null="1" autoincrement="0">
+<datatype>XML</datatype>
 <default>NULL</default></row>
-<row name="is_outdoor" null="1" autoincrement="0">
+<row name="is_tournament_open" null="1" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>NULL</default></row>
 <row name="other_informations" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
-<row name="club_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="clubs" row="id" />
-</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="category_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="categories" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

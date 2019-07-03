@@ -7,6 +7,7 @@ fr:
   hideUnscheduledEvents: "Masquer les événements non planifiés"
   categories: "Catégories"
   allcategories: "Toutes"
+  allOrganizer: "Tous"
   challenge: "Challenge"
   elite: "Elite"
   U8: "M8"
@@ -58,6 +59,9 @@ fr:
   editATournament: "Edition d'un tournoi existant"
   cancel: "Annuler"
   deleteTournament: "Supprimer le tournament"
+  confirmRemoveTeam: 'Êtes-vous sûr de vouloir retirer votre équipe pour ce tournoi ?'
+  teamsInscription: "Inscrire une équipe de votre club"
+  noTeamRegistredForNow: "Aucune équipe inscrite pour le moment"
   simple_form:
     labels:
       defaults:

@@ -34,16 +34,27 @@
 
           <%= f.input :contact %>
 
-          <%= f.input :category_id, as: :radio_buttons, collection: [[1, @categories[0]],
-                                                                     [2, @categories[1]],
-                                                                     [3, @categories[2]],
-                                                                     [4, @categories[3]],
-                                                                     [5, @categories[4]],
-                                                                     [6, @categories[5]],
-                                                                     [7, @categories[6]],
-                                                                     [8, @categories[7]]], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline %>
-
-          <%= f.input :total_places, prompt: :translate, input_html: { min: 0, max: 20 } %>
+          <!-- Categories available for the tournament and set maximal places for each category-->
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <%= t "category" %> :
+              <br>(<%= t "maxNumberOfTeams" %>)
+            </div>
+            <div class="form-group col-sm-4">
+              <% Category.all.each_with_index do |categorie, i| %>
+                <% if @event.categories[categorie.id.to_s]["total_places"].to_i > 0 %>
+                <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{categorie.id}' value='true' checked>&nbsp;#{@categories[i]}</label></div>".html_safe %>
+                <% else %>
+                <%= "<div class='checkbox'><label><input type='checkbox' name='category-#{categorie.id}' value='true'>&nbsp;#{@categories[i]}</label></div>".html_safe %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="form-group col-sm-4">
+              <% Category.all.each do |categorie| %>
+                <%= "<input type='number' class='form-control form-control-sm mr-1' name='total_places-#{categorie.id}' min='0' max='20' value='#{@event.categories[categorie.id.to_s]["total_places"].to_i}'></textarea>".html_safe %>
+              <% end %>
+            </div>
+          </div>
 
           <%= f.input :other_informations %>
 
