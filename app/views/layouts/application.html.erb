@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TODO</title>
+    <title>Swiss Hockey Tool</title>
+    <meta name="description" content="The Swiss Hockey Tool is an application aimed to easily organize tournaments between clubs in the swiss hockey federation.">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="Hockey tournament manager">
+    <meta property="og:image" content="<%= asset_path('og_image.png') %>">
+    <meta property="og:image:width" content="1872" />
+    <meta property="og:image:height" content="980" />
+    <meta property="og:description" content="The Swiss Hockey Tool is an application aimed to easily organize tournaments between clubs in the swiss hockey federation.">
+    <meta property="og:site_name" content="Swiss Hockey Tool"/>
+    <meta property="og:type" content="web application" />
+    <meta property="og:url" content="https://www.swisshockeytool.ch"/>
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hockey tournament manager">
+    <meta name="twitter:description" content="The Swiss Hockey Tool is an application aimed to easily organize tournaments between clubs in the swiss hockey federation.">
+    <meta name="twitter:image:src" content="<%= asset_path('og_image.png') %>">
+
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag  %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
