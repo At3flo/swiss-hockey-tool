@@ -369,6 +369,17 @@
               <div class="grid-border text-center">
                 <%= "<button type='button' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#teamsPresent#{event["id"]}'><i
                     class='fa fa-users fa-1x'></i></button>".html_safe %>
+                <% (JSON.parse event["categories"]).keys.each do |categorie| %>
+                <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %> 
+                <% if (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
+                  <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'placesLeft'}#{(JSON.parse event["categories"])[categorie]["places_left"].to_i}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+                <% else %>
+                  <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'full'} #{(JSON.parse event["categories"])[categorie]["total_places"]}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+                <% end %>
+                <% end %>
+                <% end %>
               </div>
             </div>
           </div>

@@ -67,7 +67,7 @@ class EventsController < ApplicationController
     categories_h = {}
     Category.all.each do |category|
       if params["category-#{category.id}"]
-        categories_h[category.id] = { "places_left": @event[:categories][category.id.to_s]["places_left"].to_i + (params["total_places-#{category.id}"].to_i - @event[:categories][category.id.to_s]["places_left"].to_i), "total_places": params["total_places-#{category.id}"].to_i }
+        categories_h[category.id] = { "places_left": @event[:categories][category.id.to_s]["places_left"].to_i + (params["total_places-#{category.id}"].to_i - @event[:categories][category.id.to_s]["total_places"].to_i), "total_places": params["total_places-#{category.id}"].to_i }
       else 
         categories_h[category.id] = { "places_left": 0, "total_places": 0 }
       end
