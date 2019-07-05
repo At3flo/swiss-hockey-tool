@@ -150,8 +150,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-4">
-        <a
-          href="#"><%= image_tag asset_path('logoSwissHockey.png'), class: "img-responsive", alt: "Swiss Hockey Logo" %></a>
+        <%= link_to root_path do %>
+          <%= image_tag asset_path('logoSwissHockey.png'), class: "img-responsive", alt: "Swiss Hockey Logo" %>
+        <% end %>
       </div>
       <div class="col-12 col-sm-4">
         <h1>Swiss Hockey Tool</h1>
