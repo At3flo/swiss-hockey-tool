@@ -1,0 +1,11 @@
+<p>Hi <%= @admin.first_name %>,</p>
+
+<p><%= @current_team_manager.first_name %> <%= @current_team_manager.last_name %> created an account on Swiss Hockey Tool for: </p>
+
+<p class="aligncenter"><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
+
+<p>Send him an email with the link below.</p>
+
+<%= mail_to @user.email do %>
+  <p class="aligncenter"><span class="btn-primary"><%= @user.email.downcase %></span><p>
+<% end %>
