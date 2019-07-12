@@ -1,0 +1,11 @@
+Hi <%= @admin.first_name %>,
+
+<%= @current_team_manager.first_name %> <%= @current_team_manager.last_name %> created an account on Swiss Hockey Tool for:
+
+<%= @user.first_name %> <%= @user.last_name %>
+
+Send him an email with the link below.
+
+<%= mail_to @user.email do %>
+  <%= @user.email.downcase %>
+<% end %>
