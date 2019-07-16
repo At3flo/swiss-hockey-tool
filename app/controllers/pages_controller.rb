@@ -30,6 +30,7 @@ class PagesController < ApplicationController
     end
 
     @confirmRemoveTeam = t 'confirmRemoveTeam'
+    @selectsOneOrMoreCategories = t 'selectsOneOrMoreCategories'
 
   end
 

@@ -207,10 +207,10 @@
 <!-- All the filters' section -->
 <div class="container">
   <div class="row align-items-baseline">
-    <div class="col-4 col-md-2">
+    <div class="col-12 col-md-2">
       <%= t 'daterange' %> :
     </div>
-    <div class="col-8 col-sm-6">
+    <div class="col-12 col-md-6">
       <div class="form-group">
         <div class="input-group date" id="datetimepicker" data-target-input="nearest">
           <input type="text" id="datefield" class="form-control datetimepicker-input" name="daterange" data-target="#datetimepicker" />
@@ -220,26 +220,34 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-4">
-      <!-- <div class="align-items-center material-switch pull-right">
-        <input type="checkbox" id="isTournamentOpen" value="false"/>
-        <label for="isTournamentOpen" class="label-primary"></label>
-        &nbsp; <%= t 'showOpenTournamentsOnly' %>
-      </div> -->
-    </div>
   </div>
   <div class="row row-filter align-items-center">
-    <div class="col-5 col-md-2">
+    <div class="col-3 col-md-2">
       <%= t "organizer" %> :
     </div>
-    <div class="col-7 col-md-3">
+    <div class="col-9 col-md-4">
 
       <div class="dropdown">
-          <select class="selectpicker form-control form-control-sm mr-1" id="teams" name="club_id" required
+          <select class="form-control mr-1" id="teams" name="club_id" required
               data-style="btn-default">
               <option value='0'><%= t "allOrganizer" %></option>
               <% Club.all.each do |club| %>
               <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+              <% end %>
+          </select>
+      </div>
+    </div>
+    <div class="col-3 col-md-2">
+      <%= t "category" %> :
+    </div>
+    <div class="col-9 col-md-4">
+
+      <div class="dropdown">
+          <%= "<select class='form-control' name='category_id' id='categories-selection' placeholder='#{@selectsOneOrMoreCategories}' 
+          multiple>".html_safe %>
+              <option value='0' selected><%= t "allcategories" %></option>
+              <% @categories.each_with_index do |category, i| %>
+              <%= "<option value='#{Category.first.id+i}'>#{category}</option>".html_safe %>
               <% end %>
           </select>
       </div>
@@ -374,10 +382,10 @@
                 <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %> 
                 <% if (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
                   <%= "<div class='btn btn-sq-xs btn-success sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'placesLeft'}#{(JSON.parse event["categories"])[categorie]["places_left"].to_i}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'placesLeft'}#{(JSON.parse event["categories"])[categorie]["places_left"].to_i}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
                 <% else %>
                   <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'full'} #{(JSON.parse event["categories"])[categorie]["total_places"]}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='right'></div>".html_safe %>
+                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'full'} #{(JSON.parse event["categories"])[categorie]["total_places"]}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
                 <% end %>
                 <% end %>
                 <% end %>

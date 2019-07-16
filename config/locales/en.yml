@@ -93,6 +93,7 @@ en:
   confirmRemoveTeam: 'Are you sure you want to remove your team of this tournament ?'
   teamsInscription: "Register a team from your club"
   noTeamRegistredForNow: "No team registred for now"
+  selectsOneOrMoreCategories: "Selects one or more categories"
   simple_form:
       labels:
         defaults:

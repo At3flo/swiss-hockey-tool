@@ -3,6 +3,7 @@ import { initPopover } from "../components/popover";
 import { initSelectorFilter } from "../components/filter";
 import { initDatepicker } from "../components/datepicker";
 import { initFlashes } from "../components/flashes";
+import { initChoices } from "../components/choices";
 
 const daysToDisplay = 365 // Days in future displayed by daterangepicker
 
@@ -10,6 +11,7 @@ initFlashes();
 initPopover();
 initDatepicker(daysToDisplay);
 initSelectorFilter(daysToDisplay);
+initChoices(daysToDisplay);
 
 const start = moment();
 const end = moment().add(daysToDisplay, 'days');
@@ -21,4 +23,3 @@ events.forEach(element => {
     element.style.display = 'none';
   }
 });
-
