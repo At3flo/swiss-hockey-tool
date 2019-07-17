@@ -31,11 +31,11 @@ const subject = new Subject();
 // }, 5000);
 
 subject.subscribe({
-  next: (picker, categoriesEvent) => {
-    console.log(`observerA: started`)
+  next: (picker) => {
+    // console.log(`observerA: started`)
 
-    console.log(`StartDate: ${picker.startDate.format('YYYY-MM-DD')}`);
-    console.log(`EndDate: ${picker.endDate.format('YYYY-MM-DD')}`);
+    // console.log(`StartDate: ${picker.startDate.format('YYYY-MM-DD')}`);
+    // console.log(`EndDate: ${picker.endDate.format('YYYY-MM-DD')}`);
 
     const start = picker.startDate;
     const end = picker.endDate;
@@ -47,43 +47,27 @@ subject.subscribe({
 
     events.forEach(element => {
 
-      if (teamSelected === "0") { // choices.passedElement.element[0].value === "0" && teamSelected === "0") {
+      if (teamSelected === "0" && document.getElementById("categories-selection").value === "0") {
         element.style.display = '';
       } else {
         element.style.display = 'none';
       }
 
-      // initTeamFilter(element);      
-      
-      if (teamSelected != "0") {
-        const specificTeamEvents = document.querySelectorAll('#team-' + teamSelected);
-        specificTeamEvents.forEach(element => {
-          element.parentNode.parentNode.parentNode.style.display = '';
-        });
+      if (choices.passedElement.element.length === 0) {
+        choices.setChoiceByValue("0");
       }
-
-      // initAddCategoriesFilter(daysToDisplay, choices);
-
-      // if (categoriesEvent && categoriesEvent.detail.value === "0") {
-      //   choices.removeActiveItems(categoriesEvent.detail.id);
-      // } else {
-      //   choices.removeActiveItemsByValue("0");
-      // }
-
-      // initRemoveCategoriesFilter(daysToDisplay, choices);
       
-      // if (choices.passedElement.element.length === 0) {
-      //   choices.setChoiceByValue("0");
-      // }
-
-      // For both method
-
-      // for (let i=0; i < choices.passedElement.element.length; i++) {
-      //   const specificCategoryEvents = document.querySelectorAll('#category-' + choices.passedElement.element[i].value);
-      //   specificCategoryEvents.forEach(element => {
-      //     element.parentNode.parentNode.parentNode.parentNode.style.display = '';
-      //   });
-      // }
+      // Filters consecutivelly by organizer AND category
+      
+      if (teamSelected === "0" || teamSelected === element.getElementsByClassName("organizer")[0].firstChild.nextSibling.id.substr(5)) {
+        for (let i=0; i < element.querySelectorAll(".sqPlaces").length; i++) {
+          for (let j=0; j < choices.passedElement.element.length; j++) {
+            if (choices.passedElement.element[j].value === element.querySelectorAll(".sqPlaces")[i].id.substring(9)) {
+              element.style.display = '';
+            }
+          }
+        } 
+      }
 
       const tournamentDate = element.innerText.trim().substring(6, 10) + "-" + element.innerText.trim().substring(3, 5) + "-" + element.innerText.trim().substring(0, 2)
       if (tournamentDate < start.format('YYYY-MM-DD') || tournamentDate > end.format('YYYY-MM-DD')) {
@@ -101,11 +85,13 @@ resetBtn.addEventListener("click", function () {
 
   document.getElementById("teams").value = 0;
 
+  choices.removeActiveItems();
+  choices.setChoiceByValue("0");
+
   subject.next(picker);
 });
 
 $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
-  //do something, like clearing an input
   subject.next(picker);
 });
 
@@ -115,12 +101,14 @@ teamSelector.addEventListener("change", function () {
   subject.next(picker);
 });
 
-// choices.passedElement.element.addEventListener('addItem', function(categoriesEvent) {
-//   let picker = $('input[name="daterange"]').data('daterangepicker')
-//   subject.next(picker, categoriesEvent);
-// });
+choices.passedElement.element.addEventListener('change', function(categoriesEvent) {
 
-// choices.passedElement.element.addEventListener('removeItem', function(categoriesEvent) {
-//   let picker = $('input[name="daterange"]').data('daterangepicker')
-//   subject.next(picker);
-// });
+  if (categoriesEvent.detail.value === "0") {
+    choices.removeActiveItems(categoriesEvent.detail.id);
+  } else {
+    choices.removeActiveItemsByValue("0");
+  }
+
+  let picker = $('input[name="daterange"]').data('daterangepicker')
+  subject.next(picker, categoriesEvent);
+});
