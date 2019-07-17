@@ -1,33 +1,55 @@
-import Choices from 'choices.js';
+const initAddCategoriesFilter = (daysToDisplay, choices) => {
 
-const initChoices = (daysToDisplay) => {
-  const choices = new Choices('#categories-selection', {
-    removeItemButton: true,
-    classNames: {
-      highlightedState: 'is-active',
-    }
-  });
+    const events = document.querySelectorAll('#events');
 
-  choices.passedElement.element.addEventListener('addItem', function(event) {
+    // if (event.detail.value === "0") {
+    //   choices.removeActiveItems(event.detail.id);
+    //   events.forEach(element => {
+    //     element.style.display = '';
+    //   });
+    // } else {
+    //   events.forEach(element => {
+    //     element.style.display = 'none';
+    //   });
+    // }
 
-    if (choices.passedElement.element[choices.passedElement.element.length-1].value === "0") {
-      choices.removeActiveItems(event.detail.id);
-    }
     
     for (let i=0; i < choices.passedElement.element.length; i++) {
       if (parseInt(choices.passedElement.element[i].value) != 0){           
         choices.removeActiveItemsByValue("0");
       }
     }
-  }, false);
 
-  choices.passedElement.element.addEventListener('removeItem', function(event) {
+    for (let i=0; i < choices.passedElement.element.length; i++) {
+      const specificCategoryEvents = document.querySelectorAll('#category-' + choices.passedElement.element[i].value);
+      specificCategoryEvents.forEach(element => {
+        element.parentNode.parentNode.parentNode.parentNode.style.display = '';
+      });
+    }
+}
     
-    if (choices.passedElement.element.length === 0){
-        choices.setChoiceByValue("0");
+const initRemoveCategoriesFilter = (daysToDisplay, choices) => {
+    
+    const events = document.querySelectorAll('#events');
+
+    // if (choices.passedElement.element.length === 0){
+    //   choices.setChoiceByValue("0");
+    //   events.forEach(element => {
+    //     element.style.display = '';
+    //   });
+    // } else {
+    //   events.forEach(element => {
+    //     element.style.display = 'none';
+    //   });
+    // }
+
+    for (let i=0; i < choices.passedElement.element.length; i++) {
+      const specificCategoryEvents = document.querySelectorAll('#category-' + choices.passedElement.element[i].value);
+      specificCategoryEvents.forEach(element => {
+        element.parentNode.parentNode.parentNode.parentNode.style.display = '';
+      });
     }
     
-  }, false);
 }
 
-export { initChoices };
+export { initAddCategoriesFilter, initRemoveCategoriesFilter };
