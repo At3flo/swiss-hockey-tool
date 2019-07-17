@@ -63,6 +63,7 @@ de:
   teamsInscription: "Registrieren Sie ein Team aus Ihrem Verein"
   noTeamRegistredForNow: "Zur Zeit ist noch kein Team angemeldet"
   selectsOneOrMoreCategories: "Wählt eine oder mehrere Kategorien aus"
+  resetFilters: "Filtern zurücksetzen"
   simple_form:
       labels:
         defaults:

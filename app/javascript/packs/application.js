@@ -1,11 +1,11 @@
 import "bootstrap";
 import $ from 'jquery';
+
 import { initPopover } from "../components/popover";
-import { initTeamFilter } from "../components/teamfilter";
 import { initDatepicker } from "../components/datepicker";
 import { initFlashes } from "../components/flashes";
+
 import Choices from 'choices.js';
-import { initAddCategoriesFilter, initRemoveCategoriesFilter } from "../components/choices";
 import { Subject } from "rxjs";
 
 const daysToDisplay = 365 // Days in future displayed by daterangepicker
@@ -22,13 +22,6 @@ const choices = new Choices('#categories-selection', {
 });
 
 const subject = new Subject();
-
-// const subscription = datePicker$.subscribe(val => console.log(val));
-
-// // automatically unsub after 5s
-// setTimeout(() => {
-//   subscription.unsubscribe();
-// }, 5000);
 
 subject.subscribe({
   next: (picker) => {
@@ -47,6 +40,8 @@ subject.subscribe({
 
     events.forEach(element => {
 
+      // Reset all entries if all selectors set to all
+
       if (teamSelected === "0" && document.getElementById("categories-selection").value === "0") {
         element.style.display = '';
       } else {
@@ -57,17 +52,19 @@ subject.subscribe({
         choices.setChoiceByValue("0");
       }
       
-      // Filters consecutivelly by organizer AND category
+      // Filtering consecutivelly by organizer AND category
       
       if (teamSelected === "0" || teamSelected === element.getElementsByClassName("organizer")[0].firstChild.nextSibling.id.substr(5)) {
         for (let i=0; i < element.querySelectorAll(".sqPlaces").length; i++) {
           for (let j=0; j < choices.passedElement.element.length; j++) {
-            if (choices.passedElement.element[j].value === element.querySelectorAll(".sqPlaces")[i].id.substring(9)) {
+            if (choices.passedElement.element[j].value === "0" || choices.passedElement.element[j].value === element.querySelectorAll(".sqPlaces")[i].id.substring(9)) {
               element.style.display = '';
             }
           }
         } 
       }
+
+      // Filter by selected date
 
       const tournamentDate = element.innerText.trim().substring(6, 10) + "-" + element.innerText.trim().substring(3, 5) + "-" + element.innerText.trim().substring(0, 2)
       if (tournamentDate < start.format('YYYY-MM-DD') || tournamentDate > end.format('YYYY-MM-DD')) {

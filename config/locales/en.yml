@@ -94,6 +94,7 @@ en:
   teamsInscription: "Register a team from your club"
   noTeamRegistredForNow: "No team registred for now"
   selectsOneOrMoreCategories: "Selects one or more categories"
+  resetFilters: "Reset filters"
   simple_form:
       labels:
         defaults:
