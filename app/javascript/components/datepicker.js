@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import 'daterangepicker';
 import 'moment';
+import { Observable } from 'rxjs';
 
 const initDatepicker = (daysToDisplay) => {
 
-  $(document).ready(function () {
     if (document.getElementById('datefield').value != `01/01/2000 - ${moment().format('DD/MM/YYYY')}`) {
       $('input[name="daterange"]').daterangepicker({
         startDate: moment(),
@@ -45,20 +45,9 @@ const initDatepicker = (daysToDisplay) => {
         },
         opens: 'right'
       }, function (start, end, label) {
-        const events = document.querySelectorAll('#events')
-        events.forEach(element => {
-          const elementSelected = document.getElementById("teams");
-          if (elementSelected.options[elementSelected.selectedIndex].value == 0) {
-            element.style.display = '';
-          }
-          const tournamentDate = element.innerText.trim().substring(6, 10) + "-" + element.innerText.trim().substring(3, 5) + "-" + element.innerText.trim().substring(0, 2)
-          if (tournamentDate < start.format('YYYY-MM-DD') || tournamentDate > end.format('YYYY-MM-DD')) {
-            element.style.display = 'none';
-          }
-        });
+        // Callback do not use here work with RxJs Subject on Application.js
       });
     }
-  });
 }
 
 export { initDatepicker };

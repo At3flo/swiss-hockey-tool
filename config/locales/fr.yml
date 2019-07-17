@@ -62,6 +62,8 @@ fr:
   confirmRemoveTeam: 'Êtes-vous sûr de vouloir retirer votre équipe pour ce tournoi ?'
   teamsInscription: "Inscrire une équipe de votre club"
   noTeamRegistredForNow: "Aucune équipe inscrite pour le moment"
+  selectsOneOrMoreCategories: "Sélectionne une ou plusieurs catégories"
+  resetFilters: "Réinitialiser les filtres"
   simple_form:
     labels:
       defaults:
