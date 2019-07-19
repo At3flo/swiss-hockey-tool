@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     sql_query = " \
     SELECT *
     FROM events
-    WHERE date > now() - interval '0 week'
+    WHERE date > now() - interval '4 weeks'
     ORDER BY date
     ASC;"
 
