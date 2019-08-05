@@ -63,11 +63,17 @@
           </div>
           <div class="form-group col-sm-8">
             <label class="sr-only" for="organizer"><%= t "organizer" %></label>
-            <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
+            <% if user_signed_in? && current_user.role == "admin" %>
+              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
               data-style="btn-default">
-              <% Club.all.each do |club| %>
-              <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
-              <% end %>
+                <% Club.all.each do |club| %>
+                <%= "<option value='#{club.id}'>#{club.name}</option>".html_safe %>
+                <% end %>
+            <% elsif user_signed_in? %>
+              <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
+              data-style="btn-default" disabled>
+                <%= "<option value='#{current_user.club_id}'>#{Club.find(current_user.club_id).name}</option>".html_safe %>
+            <% end %>
             </select>
           </div>
         </div>
@@ -384,15 +390,18 @@
                 <%= "<button type='button' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#teamsPresent#{event["id"]}'><i
                     class='fa fa-users fa-1x'></i></button>".html_safe %>
                 <% (JSON.parse event["categories"]).keys.each do |categorie| %>
-                <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %> 
-                <% if (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
-                  <%= "<div class='btn btn-sq-xs btn-success sqPlaces' id='category-#{categorie.to_i}' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'placesLeft'}#{(JSON.parse event["categories"])[categorie]["places_left"].to_i}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
-                <% else %>
-                  <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' id='category-#{categorie.to_i}' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
-                  data-content='#{@categories[categorie.to_i - 1]}: #{t 'full'} #{(JSON.parse event["categories"])[categorie]["total_places"]}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
-                <% end %>
-                <% end %>
+                  <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %> 
+                    <% if !event["is_tournament_open"] %>
+                      <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' id='category-#{categorie.to_i}' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+                      data-content='#{@categories[categorie.to_i - 1]}: #{t 'tournamentIsClosed'}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
+                    <% elsif (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
+                      <%= "<div class='btn btn-sq-xs btn-success sqPlaces' id='category-#{categorie.to_i}' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+                      data-content='#{@categories[categorie.to_i - 1]}: #{t 'placesLeft'}#{(JSON.parse event["categories"])[categorie]["places_left"].to_i}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
+                    <% else %>
+                      <%= "<div class='btn btn-sq-xs btn-danger sqPlaces' id='category-#{categorie.to_i}' data-toggle='popover' title='#{t 'availabilityOfPlaces'}'
+                      data-content='#{@categories[categorie.to_i - 1]}: #{t 'full'} #{(JSON.parse event["categories"])[categorie]["total_places"]}/#{(JSON.parse event["categories"])[categorie]["total_places"]}' data-trigger='hover' data-placement='bottom'></div>".html_safe %>
+                    <% end %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -417,15 +426,20 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+              <% if !event["is_tournament_open"] %>
+                <div class="tournament-closed"><%= t 'tournamentIsClosed' %></div>
+              <% end %>
               <% (JSON.parse event["categories"]).keys.each do |categorie| %>
-              <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %>             
+              <% if (JSON.parse event["categories"])[categorie]["total_places"].to_i > 0 %>
               <h5><%= @categories[categorie.to_i - 1] %></h5>
-              <span><%= t 'placesLeft' %> <%= "#{(JSON.parse event["categories"])[categorie]["places_left"].to_i} / #{(JSON.parse event["categories"])[categorie]["total_places"]}" %></span>
-              <% if user_signed_in? && policy(Inscription).create? && (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
-                  <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}-#{categorie}'>".html_safe %>
-                    <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
-                  </a>
+              <% if event["is_tournament_open"] %>
+                <span><%= t 'placesLeft' %> <%= "#{(JSON.parse event["categories"])[categorie]["places_left"].to_i} / #{(JSON.parse event["categories"])[categorie]["total_places"]}" %></span>
+                <% if user_signed_in? && policy(Inscription).create? && (JSON.parse event["categories"])[categorie]["places_left"].to_i > 0 %>
+                    <%= "<a data-toggle='modal' data-target='#teamsInscription#{event["id"]}-#{categorie}'>".html_safe %>
+                      <%= image_tag asset_path('blue_checkin.png'), class: "img-responsive checkin-btn", alt: "Checkin button" %>
+                    </a>
                 <% end %>
+              <% end %>
               <ul>
               <% if Inscription.where(["event_id = :eventId AND category_id = :category_id", { eventId: event["id"], category_id: categorie.to_i }]).length == 0 %>
                   <li><%= t 'noTeamRegistredForNow' %></li>

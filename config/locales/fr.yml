@@ -64,6 +64,7 @@ fr:
   noTeamRegistredForNow: "Aucune équipe inscrite pour le moment"
   selectsOneOrMoreCategories: "Sélectionne une ou plusieurs catégories"
   resetFilters: "Réinitialiser les filtres"
+  tournamentIsClosed: "Le tournoi est fermé"
   simple_form:
     labels:
       defaults:

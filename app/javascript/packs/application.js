@@ -74,8 +74,7 @@ subject.subscribe({
   }
 });
 
-const resetBtn = document.getElementById("reset-button");
-resetBtn.addEventListener("click", function () {
+$( document ).ready(function() {
   $('input[name="daterange"]').data('daterangepicker').setStartDate(moment());
   $('input[name="daterange"]').data('daterangepicker').setEndDate(moment().add(daysToDisplay, 'days'));
   let picker = $('input[name="daterange"]').data('daterangepicker')
@@ -84,6 +83,15 @@ resetBtn.addEventListener("click", function () {
 
   choices.removeActiveItems();
   choices.setChoiceByValue("0");
+
+  subject.next(picker);
+});
+
+const resetBtn = document.getElementById("reset-button");
+resetBtn.addEventListener("click", function () {
+  $('input[name="daterange"]').data('daterangepicker').setStartDate(moment());
+  $('input[name="daterange"]').data('daterangepicker').setEndDate(moment().add(daysToDisplay, 'days'));
+  let picker = $('input[name="daterange"]').data('daterangepicker')
 
   subject.next(picker);
 });
