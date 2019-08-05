@@ -95,6 +95,7 @@ en:
   noTeamRegistredForNow: "No team registred for now"
   selectsOneOrMoreCategories: "Selects one or more categories"
   resetFilters: "Reset filters"
+  tournamentIsClosed: "Tournament is closed"
   simple_form:
       labels:
         defaults:
