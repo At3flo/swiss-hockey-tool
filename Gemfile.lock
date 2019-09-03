@@ -70,6 +70,7 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    ffi (1.11.1)
     ffi (1.11.1-x64-mingw32)
     font-awesome-sass (5.6.1)
       sassc (>= 1.11)
@@ -98,11 +99,15 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
+    msgpack (1.3.0)
     msgpack (1.3.0-x64-mingw32)
     nio4r (2.3.1)
-    nokogiri (1.10.3-x64-mingw32)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.4-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (0.21.0)
     pg (0.21.0-x64-mingw32)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -211,6 +216,7 @@ GEM
     websocket-extensions (0.1.4)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
