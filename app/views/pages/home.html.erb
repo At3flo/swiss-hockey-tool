@@ -73,8 +73,9 @@
               <select class="selectpicker form-control form-control-sm mr-1" id="organizer" name="club_id" required
               data-style="btn-default" disabled>
                 <%= "<option value='#{current_user.club_id}'>#{Club.find(current_user.club_id).name}</option>".html_safe %>
+                <%= hidden_field_tag :club_id, current_user.club_id %>
             <% end %>
-            </select>
+            </select>  
           </div>
         </div>
         <!-- Outdoor or indoor tournament -->
