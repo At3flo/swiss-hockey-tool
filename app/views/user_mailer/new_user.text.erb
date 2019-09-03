@@ -4,8 +4,6 @@ Hi <%= @admin.first_name %>,
 
 <%= @user.first_name %> <%= @user.last_name %>
 
-Send him an email with the link below.
+He's Team Manager for:
 
-<%= mail_to @user.email do %>
-  <%= @user.email.downcase %>
-<% end %>
+<%= Club.find(@user.club_id).name %>

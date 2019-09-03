@@ -4,8 +4,6 @@
 
 <p class="aligncenter"><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
 
-<p>Send him an email with the link below.</p>
+<p>He's Team Manager for:</p>
 
-<%= mail_to @user.email do %>
-  <p class="aligncenter"><span class="btn-primary"><%= @user.email.downcase %></span><p>
-<% end %>
+<p class="aligncenter"><strong><%= Club.find(@user.club_id).name %></strong></p>
