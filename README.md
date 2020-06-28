@@ -8,7 +8,7 @@ The main benefit is to provide a reliable software that record inscriptions to a
 
 # References
 
-Link to legacy website : http://swisshockey.org/index.asp?inc=minihockeytour/index.asp
+Link to legacy website : https://web.archive.org/web/20190629084435/http://swisshockey.org/index.asp?inc=minihockeytour/index.asp
 
 Prototype design for the new website : https://wireframe.cc/OqtBSz
 

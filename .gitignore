@@ -21,3 +21,10 @@ yarn-error.log
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
