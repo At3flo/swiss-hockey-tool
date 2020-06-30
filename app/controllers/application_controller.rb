@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :set_locale
+  after_action :set_csp_header
+
+  def set_csp_header
+    response.set_header("Content-Security-Policy", "frame-ancestors 'self' swisshockey.org")
+  end
 
   include Pundit
 
