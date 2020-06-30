@@ -6,6 +6,10 @@ In résumé, the two main goals of the application are: 1° Administered the tou
 
 The main benefit is to provide a reliable software that record inscriptions to a tournament in simple effective forms, for instance. Secondly the app should display nicely and in a simple way those informations. 
 
+## Overview
+
+![Swiss Hockey Tool Overview](https://github.com/At3flo/swiss-hockey-tool/raw/master/app/assets/images/og_image.png)
+
 # References
 
 Link to legacy website : https://web.archive.org/web/20190629084435/http://swisshockey.org/index.asp?inc=minihockeytour/index.asp
