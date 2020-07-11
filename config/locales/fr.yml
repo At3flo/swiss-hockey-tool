@@ -1,6 +1,6 @@
 fr:
   login: "Connexion"
-  tournamentManager: "Logiciel de gestion de tournoi"
+  tournamentManager: "Outil de planification"
   dateAndTime: "Date et heure"
   addNewTournament: "Ajouter un nouveau tournoi"
   daterange: "Période"

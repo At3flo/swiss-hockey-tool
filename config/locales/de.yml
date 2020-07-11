@@ -1,6 +1,6 @@
 de:
   login: "Einloggen"
-  tournamentManager: "Turnierverwaltungssoftware"
+  tournamentManager: "Planungstool"
   dateAndTime: "Datum und Zeit"
   addNewTournament: "Neues Turnier hinzufügen"
   daterange: "Datumsbereich"
@@ -63,7 +63,7 @@ de:
   teamsInscription: "Registrieren Sie ein Team aus Ihrem Verein"
   noTeamRegistredForNow: "Zur Zeit ist noch kein Team angemeldet"
   selectsOneOrMoreCategories: "Wählt eine oder mehrere Kategorien aus"
-  resetFilters: "Filtern zurücksetzen"
+  resetFilters: "Filter zurücksetzen"
   tournamentIsClosed: "Turnier ist geschlossen"
   simple_form:
       labels:
