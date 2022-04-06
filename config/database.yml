@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: swiss-hockey-tool_development
+  database: _swisshockeytool
+  username: postgres
+  password: masterkey
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +82,4 @@ test:
 #
 production:
   <<: *default
-  database: swiss-hockey-tool_production
-  username: swiss-hockey-tool
-  password: <%= ENV['SWISS-HOCKEY-TOOL_DATABASE_PASSWORD'] %>
+  url: <%= ENV['SHT_DATABASE_URL'] %>

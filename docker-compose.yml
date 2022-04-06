@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: swisshockeytool_db
+    image: postgres:14-alpine
+    restart: always
+    env_file: .env
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5442:5432"
+    networks:
+      - swisshockeytool
+
+  app:
+    container_name: swisshockeytool_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: always
+    env_file: .env
+    ports:
+      - "3333:3000"
+    networks:
+      - swisshockeytool
+
+networks:
+  swisshockeytool:
+
+volumes:
+  db:

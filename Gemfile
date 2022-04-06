@@ -4,9 +4,9 @@ ruby '>=2.5'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
-gem 'pg', '~> 1.2'
+gem 'pg'
 gem 'puma'
-gem 'rails', '5.2.4.3'
+gem 'rails', '5.2.7'
 gem 'redis'
 gem 'tzinfo-data'
 

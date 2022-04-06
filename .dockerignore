@@ -1,0 +1,16 @@
+.yarn*
+log
+node_modules
+public/assets
+public/packs
+storage
+test
+tmp
+.dockerignore
+.gitignore
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
+.bundle
+.git
