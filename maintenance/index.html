@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swisshockeytool Maintenance</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<!-- React entrypoint-->
+<div id="app"></div>
+
+<!-- Bootstrap Script-->
+<script crossorigin="anonymous"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- React Script -->
+<script type="text/babel">
+
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+
+        }
+
+        render() {
+            return (
+                <>
+                    <Navbar/>
+                    <Body/>
+                    <Footer/>
+                </>
+            )
+        }
+    }
+
+    const Navbar = () => {
+        return (
+            <nav className="navbar sticky-top bg-light justify-content-center">
+                            <span className="navbar-text px-4">
+                                Site under maintenance...
+                            </span>
+            </nav>
+        )
+    }
+
+    const Body = () => {
+        return (
+            <div className="container py-5">
+                <img src="assets/img/logoSwissHockey.png" alt="Logo Swisshockey"/>
+                <img id="img-bg" src="assets/img/logoSwissHockey.png" alt=""/>
+            </div>
+        )
+    }
+
+    class Footer extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.handleClick = this.handleClick.bind(this)
+        }
+
+        decode(a) {
+            return a.replace(/[a-zA-Z]/g, function (c) {
+                return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
+                    ? c : c - 26);
+            })
+        }
+
+        handleClick() {
+            const decodedString = this.decode("znvygb:vasb@gz4fbhy.pu");
+            const emailElement = document.getElementById("email")
+            emailElement.innerHTML = decodedString.substring(7)
+            emailElement.setAttribute("href", decodedString);
+            emailElement.setAttribute("onclick", "");
+        }
+
+
+        render() {
+            return (
+                <footer>
+                    <p>If you notice this message for more than 3 hours please contact your administrator</p>
+                </footer>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <App/>, document.getElementById('app')
+    )
+</script>
+</body>
+</html>
