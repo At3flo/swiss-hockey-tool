@@ -43,9 +43,11 @@
 
 # puts "Generate categories..."
 # Category.create({age: 8, level: "", gender: "mixed"})
+# Category.create({age: 8, level: "Hockey5s", gender: "mixed"})
 # Category.create({age: 10, level: "Challenge", gender: "mixed"})
 # Category.create({age: 10, level: "Elite", gender: "mixed"})
 # Category.create({age: 10, level: "", gender: "girls"})
+# Category.create({age: 10, level: "Hockey5s", gender: "mixed"})
 # Category.create({age: 12, level: "Challenge", gender: "mixed"})
 # Category.create({age: 12, level: "Elite", gender: "mixed"})
 # Category.create({age: 12, level: "", gender: "girls"})
